@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+.contents {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.initial-loading {
+  position: fixed;
+  z-index: 30000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  visibility: visible;
+  background-color: #222;
+  opacity: 1;
+  transition: all 0ms ease 500ms;
+
+  &.-loaded {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
