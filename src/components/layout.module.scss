@@ -9,14 +9,14 @@
 }
 .initial-loading {
   position: fixed;
-  z-index: 30000;
+  z-index: $z_initialLoading;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100vw;
   height: 100vh;
   visibility: visible;
-  background-color: #222;
+  background-color: $color_black;
   opacity: 1;
   transition: all 0ms ease 500ms;
 
