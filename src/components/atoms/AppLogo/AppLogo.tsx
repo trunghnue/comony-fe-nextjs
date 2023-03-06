@@ -1,17 +1,19 @@
-import { FC, useMemo } from "react";
+import { useMemo } from "react";
 import { icons } from "@/constants/icons";
 import IconBase from "../IconBase/IconBase";
 import styles from "./AppLogo.module.scss";
 
-type IconBaseProps = {
+interface Props {
   size: string;
   iconColor: string;
   direction: string;
-};
+}
 
-const AppLogo: FC<IconBaseProps> = ({ size = "medium", direction = "horizontal", iconColor = "#222" }) => {
+export default function AppLogo({ size = "medium", direction = "horizontal", iconColor = "#222" }: Props) {
   const classes = useMemo(() => {
-    return `${styles[`-size--${size}`]} ${styles[`-direction--${direction}`]} ${styles[`-iconColor--${iconColor}`]}`;
+    return `${size && styles[`-size--${size}`]} ${direction && styles[`-direction--${direction}`]} ${
+      iconColor && styles[`-iconColor--${iconColor}`]
+    }`;
   }, [size, direction, iconColor]);
 
   const markSize = useMemo((): string => {
@@ -79,6 +81,4 @@ const AppLogo: FC<IconBaseProps> = ({ size = "medium", direction = "horizontal",
       />
     </div>
   );
-};
-
-export default AppLogo;
+}

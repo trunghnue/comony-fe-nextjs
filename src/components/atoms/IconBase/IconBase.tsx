@@ -34,7 +34,6 @@ export default function IconBase({
   viewBox = "0, 0, 100, 100",
   width = "100",
 }: Props) {
-  console.log("🚀 ~ file: IconBase.tsx:37 ~ path:", isArray(path));
   const [isHover, setIsHover] = useState(false);
 
   return (
