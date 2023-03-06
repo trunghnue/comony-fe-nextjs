@@ -2,6 +2,7 @@ import { useState } from "react";
 import { isArray } from "@/utilities";
 
 interface Props {
+  className?: string;
   favoriteIcon?: boolean;
   height?: string;
   iconColor?: string;
@@ -18,6 +19,7 @@ interface Props {
 }
 
 export default function IconBase({
+  className = "",
   favoriteIcon = false,
   height = "100",
   iconColor = "#222",
@@ -32,10 +34,12 @@ export default function IconBase({
   viewBox = "0, 0, 100, 100",
   width = "100",
 }: Props) {
+  console.log("🚀 ~ file: IconBase.tsx:37 ~ path:", isArray(path));
   const [isHover, setIsHover] = useState(false);
 
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
@@ -46,8 +50,7 @@ export default function IconBase({
       onMouseOut={() => setIsHover(false)}
     >
       <title id={iconName} lang="en">
-        {" "}
-        {`${iconName} icon`}{" "}
+        {`${iconName} icon`}
       </title>
       {favoriteIcon ? (
         <template>
@@ -62,7 +65,7 @@ export default function IconBase({
           {isArray(path) ? (
             <>
               {path.map((item, index) => {
-                <path key={index} d={item.value} fill={item.fill} fillRule={item.fillRule} clipRule={item.clipRule} />;
+                return <path key={index} d={item.value} fill={item.fill} fillRule={item.fillRule} clipRule={item.clipRule} />;
               })}
             </>
           ) : (

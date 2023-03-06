@@ -1,0 +1,67 @@
+.appLogo {
+  display: inline-block;
+
+  &.-direction {
+    &--horizontal {
+      .appLogo_mark {
+        display: block;
+        margin: 0 auto $spacing_3x;
+      }
+
+      .appLogo_name {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    &--vertical {
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+
+      .appLogo_mark {
+        margin-right: $spacing_3x;
+      }
+    }
+  }
+
+  &.-size {
+    &--small {
+      &.-direction--horizontal {
+        .appLogo_mark {
+          margin-bottom: $spacing_1x;
+        }
+      }
+
+      &.-direction--vertical {
+        .appLogo_mark {
+          margin-right: $spacing_1x;
+        }
+      }
+    }
+
+    &--large {
+      &.-direction--horizontal {
+        .appLogo_mark {
+          margin-bottom: $spacing_4x;
+        }
+      }
+
+      &.-direction--vertical {
+        .appLogo_mark {
+          margin-right: $spacing_4x;
+        }
+      }
+    }
+  }
+
+  &.-iconColor {
+    &--white {
+      color: $color_white;
+    }
+
+    &--black {
+      color: $color_gray_1000;
+    }
+  }
+}
