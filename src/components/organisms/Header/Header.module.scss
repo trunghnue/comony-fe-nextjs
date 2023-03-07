@@ -1,0 +1,38 @@
+.header {
+  z-index: $z_header;
+  width: 100%;
+  background-color: $color_white;
+  border-bottom: 1px solid $color_gray_200;
+
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: $header_H_pc;
+  padding: 0 $spacing_8x;
+
+  &.-bgColor {
+    &--black {
+      color: $color_white;
+      background-color: $color_gray_1000;
+      border-bottom: none;
+    }
+  }
+
+  &_menu {
+    display: flex;
+    align-items: center;
+  }
+
+  &_nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    &_item {
+      position: relative;
+      word-break: keep-all;
+      margin-right: $spacing_4x;
+    }
+  }
+}
