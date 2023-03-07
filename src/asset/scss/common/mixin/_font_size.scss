@@ -1,0 +1,8 @@
+/********************************************
+		Font-size Mixin (Export px/rem)
+********************************************/
+
+@mixin fz($size, $important: false) {
+  font-size: $size + px;
+  font-size: calc(($size / 10) * 1rem);
+}

@@ -1,0 +1,22 @@
+/********************************************
+		Media-query Mixin
+********************************************/
+
+@mixin screen($breakpoints_min, $breakpoints_max) {
+  @media screen and (min-width: $breakpoints_min) and (max-width: $breakpoints_max) {
+    @content;
+  }
+}
+
+// header break_point
+@mixin header-pc() {
+  @media screen and (min-width: ($breakpoints_header + 1)) {
+    @content;
+  }
+}
+
+@mixin mb() {
+  @media screen and (max-width: (map-get($breakpoints, md) - 1)) {
+    @content;
+  }
+}

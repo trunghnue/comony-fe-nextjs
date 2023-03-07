@@ -1,0 +1,20 @@
+/********************************************
+		Scrollbar Mixin
+********************************************/
+
+@mixin scrollbar($width) {
+  ::-webkit-scrollbar {
+    width: $width + px;
+    margin-top: $spacing_1x;
+    height: $width + px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $color_gray_200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $color_gray_400;
+    border-radius: 10px;
+  }
+}

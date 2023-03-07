@@ -1,0 +1,118 @@
+/********************************************
+		Common
+********************************************/
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.25;
+  margin: 0;
+  padding: 0;
+}
+
+dd,
+dl,
+dt,
+label,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  font-family: $font_base;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+img {
+  vertical-align: middle;
+}
+
+html {
+  font-size: 62.5%;
+  height: -webkit-fill-available;
+}
+
+body,
+html {
+  width: 100%;
+  @include scrollbar(6);
+
+  @include mb() {
+    @include scrollbar(4);
+  }
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  font-family: $font_base;
+  color: $font_color_base;
+  line-height: 1.5;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  @include ls(20);
+  @include fz($font_size_15);
+
+  @include mb() {
+    @include fz($font_size_14);
+  }
+
+  // prevent scroll
+  &.body-fixed {
+    overflow: hidden;
+  }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  color: $font_color_base;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
+
+iframe {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+::placeholder {
+  color: $color_gray_400;
+}
+
+/* Edge */
+::-ms-input-placeholder {
+  color: $color_gray_400;
+}
+
+/* IE */
+:-ms-input-placeholder {
+  color: $color_gray_400;
+}

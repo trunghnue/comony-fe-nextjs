@@ -4,13 +4,21 @@
   background-color: $color_white;
   border-bottom: 1px solid $color_gray_200;
 
-  position: sticky;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: $header_H_pc;
-  padding: 0 $spacing_8x;
+  @include ls(100);
+
+  @include header-pc() {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $header_H_pc;
+    padding: 0 $spacing_8x;
+  }
+
+  @include screen($breakpoints_header, map-get($breakpoints, xl)) {
+    padding: 0 $spacing_4x;
+  }
 
   &.-bgColor {
     &--black {
@@ -21,18 +29,28 @@
   }
 
   &_menu {
-    display: flex;
-    align-items: center;
+    @include header-pc() {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &_nav {
-    position: relative;
-    display: flex;
-    align-items: center;
+    @include header-pc() {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
     &_item {
       position: relative;
       word-break: keep-all;
-      margin-right: $spacing_4x;
+
+      @include fz($font_size_14);
+
+      @include header-pc() {
+        margin-right: $spacing_4x;
+      }
     }
   }
 }

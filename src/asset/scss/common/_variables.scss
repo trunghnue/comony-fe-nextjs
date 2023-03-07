@@ -3,15 +3,38 @@
 ********************************************/
 
 /* -----------------------------------------
+      Breakpoints
+------------------------------------------- */
+$breakpoints: (
+  // Extra small screen / Fold screen
+  xxs: 280px,
+  // Extra small screen / phone
+  xs: 414px,
+  // Small screen / phone
+  sm: 640px,
+  // Medium screen / tablet
+  md: 768px,
+  lg: 1044px,
+  xl: 1120px,
+  // Large screen / desktop
+  xxl: 1280px,
+  // Extra screen / desktop
+  xxxl: 1368px
+) !default;
+$breakpoints_header: 924px;
+
+/* -----------------------------------------
       Color
 ------------------------------------------- */
 
 //static pages
+$font_color_base: #222;
 $color_black: #222;
 
 // Gray
 $color_white: #fff;
 $color_gray_200: #edecee;
+$color_gray_400: #bdbabf;
 $color_gray_1000: #100f09;
 
 /* -----------------------------------------
@@ -26,3 +49,14 @@ $spacing_1x: 0.4rem;
 $spacing_3x: 1.2rem;
 $spacing_4x: 1.6rem;
 $spacing_8x: 3.2rem;
+
+/* -----------------------------------------
+      Font size
+------------------------------------------- */
+$font_size_14: 14;
+$font_size_15: 15;
+
+/* -----------------------------------------
+      Font family
+------------------------------------------- */
+$font_base: "Noto Sans JP", sans-serif;
