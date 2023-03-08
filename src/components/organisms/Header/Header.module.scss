@@ -51,6 +51,65 @@
       @include header-pc() {
         margin-right: $spacing_4x;
       }
+      & .--right-border {
+        margin-right: $spacing_4x;
+
+        &::after {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          width: 1px;
+          height: 30px;
+          content: "";
+          background-color: $color_gray_lighten1;
+          transform: translateY(-50%);
+        }
+      }
+    }
+    &_link {
+      &:hover {
+        color: $color_yellow;
+      }
+    }
+  }
+  &_dropdown {
+    display: none;
+    word-break: keep-all;
+    white-space: nowrap;
+    background-color: $color_white;
+
+    @include header-pc {
+      position: absolute;
+      top: $header_H_pc;
+      left: 50%;
+      border-top: 0;
+      border-radius: 0 0 5px 5px;
+      transform: translateX(-50%);
+    }
+    &.-bgColor {
+      &--black {
+        color: $color_white;
+        background-color: $color_gray_1000;
+        border-bottom: 1px solid $color_gray_1000;
+      }
+    }
+    &.is-open {
+      display: block;
+    }
+
+    &_parent {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      color: inherit;
+      cursor: pointer;
+      background-color: inherit;
+
+      @include header-pc() {
+        @include fz($font_size_14);
+        height: $header_H_pc;
+        line-height: $header_H_pc;
+      }
     }
   }
 }
