@@ -11,8 +11,8 @@ interface Props {
 
 export default function AppLogo({ size = "medium", direction = "horizontal", iconColor = "#222" }: Props) {
   const classes = useMemo(() => {
-    return `${size && styles[`-size--${size}`]} ${direction && styles[`-direction--${direction}`]} ${
-      iconColor && styles[`-iconColor--${iconColor}`]
+    return `${size && styles[`_size__${size}`]} ${direction && styles[`_direction__${direction}`]} ${
+      iconColor && styles[`_iconColor__${iconColor}`]
     }`;
   }, [size, direction, iconColor]);
 

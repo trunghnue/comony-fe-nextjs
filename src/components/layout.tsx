@@ -18,7 +18,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={`${inLoaded ? styles["-loaded"] : ""} ${styles["initial-loading"]} `} />
+      <div className={`${inLoaded ? styles._loaded : ""} ${styles.initial_loading} `} />
       <div className={styles.contents}>
         <Header bgColor="black" />
         <main>{children}</main>

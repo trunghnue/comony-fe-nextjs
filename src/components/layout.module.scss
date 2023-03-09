@@ -8,7 +8,7 @@
   min-height: 100vh;
   background-color: $color_black;
 }
-.initial-loading {
+.initial_loading {
   position: fixed;
   z-index: $z_initialLoading;
   display: flex;
@@ -21,7 +21,7 @@
   opacity: 1;
   transition: all 0ms ease 500ms;
 
-  &.-loaded {
+  &._loaded {
     visibility: hidden;
     opacity: 0;
   }

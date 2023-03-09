@@ -1,8 +1,8 @@
 .appLogo {
   display: inline-block;
 
-  &.-direction {
-    &--vertical {
+  &._direction {
+    &__vertical {
       display: inline-flex;
       align-items: center;
       height: 100%;
@@ -13,9 +13,9 @@
     }
   }
 
-  &.-size {
-    &--small {
-      &.-direction--vertical {
+  &._size {
+    &__small {
+      &._direction__vertical {
         .appLogo_mark {
           margin-right: $spacing_1x;
         }
@@ -23,8 +23,8 @@
     }
   }
 
-  &.-iconColor {
-    &--white {
+  &._iconColor {
+    &__white {
       color: $color_white;
     }
   }

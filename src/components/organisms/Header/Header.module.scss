@@ -20,8 +20,8 @@
     padding: 0 $spacing_4x;
   }
 
-  &.-bgColor {
-    &--black {
+  &._bgColor {
+    &__black {
       color: $color_white;
       background-color: $color_gray_1000;
       border-bottom: none;
@@ -51,7 +51,7 @@
       @include header-pc() {
         margin-right: $spacing_4x;
       }
-      & .--right-border {
+      & .__right_border {
         margin-right: $spacing_4x;
 
         &::after {
@@ -86,14 +86,14 @@
       border-radius: 0 0 5px 5px;
       transform: translateX(-50%);
     }
-    &.-bgColor {
-      &--black {
+    &._bgColor {
+      &__black {
         color: $color_white;
         background-color: $color_gray_1000;
         border-bottom: 1px solid $color_gray_1000;
       }
     }
-    &.is-open {
+    &.is_open {
       display: block;
     }
 
