@@ -1,0 +1,73 @@
+.CTAButton {
+  position: relative;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  overflow: hidden;
+  font-weight: $font_weight_bold;
+  line-height: 1;
+  text-align: center;
+  letter-spacing: normal;
+  cursor: pointer;
+
+  &_label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transition: opacity 0.2s;
+    transform: translate(-50%, -50%);
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    bottom: 0;
+    left: -100%;
+    display: block;
+    transition: all 0.5s ease;
+  }
+
+  &::hover {
+    &::after {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transition: all 0.5s ease;
+    }
+  }
+
+  &._type {
+    &__outline {
+      color: $color_white;
+      background: transparent;
+      border: 1px solid $color_white;
+
+      &::after {
+        content: "";
+        background: $color_yellow_gradient;
+      }
+
+      &:hover {
+        color: $color_gray_1000;
+        border: 1px solid transparent;
+        border-image: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%);
+        border-image-slice: 1;
+      }
+    }
+  }
+  &._size {
+    &__small {
+      @include pc() {
+        min-width: 15.2rem;
+        height: 3.9rem;
+        padding: $spacing_3x;
+        @include fz($font_size_15);
+      }
+    }
+  }
+}

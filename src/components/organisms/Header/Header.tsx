@@ -4,6 +4,7 @@ import styles from "./Header.module.scss";
 import Link from "next/link";
 import IconBase from "@/components/atoms/IconBase/IconBase";
 import { icons } from "@/constants/icons";
+import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
 
 export default function Header({ bgColor }: { bgColor: string }) {
   console.log("🚀 ~ file: Header.tsx:4 ~ styles:", styles);
@@ -88,7 +89,9 @@ export default function Header({ bgColor }: { bgColor: string }) {
             </div>
           </div>
         </nav>
-        <div className={styles.headerButton}>Sign in</div>
+        <div className={styles.headerButton}>
+          <CTAButton link="/login" label="Sign In" type="outline" size="small" />
+        </div>
       </div>
     </header>
   );

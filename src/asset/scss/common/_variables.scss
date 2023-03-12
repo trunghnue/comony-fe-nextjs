@@ -46,6 +46,11 @@ $color_yellow: #ffc700;
 $color_light_blue_100: #f7f7fd;
 
 /* -----------------------------------------
+      Font Weight
+------------------------------------------- */
+$font_weight_bold: 700;
+
+/* -----------------------------------------
       Width / Height
 ------------------------------------------- */
 $header_H_pc: 64px;
@@ -69,3 +74,6 @@ $font_size_15: 15;
       Font family
 ------------------------------------------- */
 $font_base: "Noto Sans JP", sans-serif;
+
+//Gradiention
+$color_yellow_gradient: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000;

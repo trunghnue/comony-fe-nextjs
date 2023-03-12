@@ -20,3 +20,9 @@
     @content;
   }
 }
+
+@mixin pc() {
+  @media screen and (min-width: map-get($breakpoints, md)) {
+    @content;
+  }
+}
