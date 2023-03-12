@@ -1,11 +1,13 @@
 import AppLogo from "@/components/atoms/AppLogo/AppLogo";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import styles from "./Header.module.scss";
 import Link from "next/link";
 import IconBase from "@/components/atoms/IconBase/IconBase";
 import { icons } from "@/constants/icons";
 
 export default function Header({ bgColor }: { bgColor: string }) {
+  console.log("🚀 ~ file: Header.tsx:4 ~ styles:", styles);
+
   const iconColor = useMemo(() => {
     return bgColor === "white" ? "black" : "white";
   }, [bgColor]);
@@ -13,7 +15,9 @@ export default function Header({ bgColor }: { bgColor: string }) {
   const bgColorClass = useMemo(() => {
     return `${bgColor && styles[`_bgColor__${bgColor}`]}`;
   }, [bgColor]);
-  console.log("🚀 ~ file: Header.tsx:4 ~ styles:", styles);
+
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+
   return (
     <header className={`${styles.header} ${bgColorClass}`}>
       <AppLogo iconColor={iconColor} size="small" direction="vertical" />
@@ -44,7 +48,11 @@ export default function Header({ bgColor }: { bgColor: string }) {
               Download App
             </Link>
           </div>
-          <div className={`${styles.header_nav_item} ${styles.is_header_pc}`}>
+          <div
+            className={`${styles.header_nav_item} ${styles.is_header_pc}`}
+            onMouseOver={() => setIsLanguageMenuOpen(true)}
+            onMouseOut={() => setIsLanguageMenuOpen(false)}
+          >
             <button className={styles.header_dropdown_parent}>
               <IconBase
                 iconName="earth"
@@ -70,11 +78,11 @@ export default function Header({ bgColor }: { bgColor: string }) {
                 iconHoverColor={bgColor === "black" ? "#fff" : "#2b5ba9"}
               />
             </button>
-            <div className={`${styles.header_dropdown} ${styles.is_open}  ${bgColorClass}`}>
+            <div className={`${styles.header_dropdown} ${isLanguageMenuOpen ? styles.is_open : ""}  ${bgColorClass}`}>
               <div className={styles.header_dropdown_item}>
                 <Link href="/">日本語</Link>
               </div>
-              <div className={styles.header_dropdown_item}>
+              <div className={`${styles.header_dropdown_item} ${styles._active}`}>
                 <Link href="/">English</Link>
               </div>
             </div>

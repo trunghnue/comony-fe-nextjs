@@ -111,5 +111,43 @@
         line-height: $header_H_pc;
       }
     }
+    &_item {
+      @include header-pc() {
+        margin: $spacing_2x 0;
+      }
+      a {
+        display: block;
+        padding: $spacing_2x $spacing_4x;
+      }
+      & ._active {
+        background-color: $color_light_blue_100;
+      }
+      &:hover {
+        background-color: $color_light_blue_100;
+      }
+    }
+  }
+  .icon_earth {
+    margin-top: 0.2rem;
+    margin-right: $spacing_1x;
+  }
+  .icon_arrow {
+    margin-left: $spacing_2x;
+  }
+  ._bgColor {
+    &__black {
+      color: $color_white;
+      background-color: $color_gray_1000;
+      border-bottom: 1px solid $color_gray_1000;
+      .header_dropdown_item {
+        &._active {
+          color: $color_yellow;
+          background-color: rgba($color: $color_gray_800, $alpha: 0.2);
+        }
+        &:hover {
+          background-color: rgba($color: $color_gray_800, $alpha: 0.2);
+        }
+      }
+    }
   }
 }

@@ -35,11 +35,15 @@ $color_black: #222;
 $color_white: #fff;
 $color_gray_200: #edecee;
 $color_gray_400: #bdbabf;
+$color_gray_800: #484649;
 $color_gray_1000: #100f09;
 $color_gray_lighten1: #ccc;
 
 // Yellow
 $color_yellow: #ffc700;
+
+// LightBlue
+$color_light_blue_100: #f7f7fd;
 
 /* -----------------------------------------
       Width / Height
@@ -50,6 +54,7 @@ $header_H_pc: 64px;
       spacing for padding / margin
 ------------------------------------------- */
 $spacing_1x: 0.4rem;
+$spacing_2x: 0.8rem;
 $spacing_3x: 1.2rem;
 $spacing_4x: 1.6rem;
 $spacing_8x: 3.2rem;
