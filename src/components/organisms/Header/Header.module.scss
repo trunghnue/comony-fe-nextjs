@@ -150,9 +150,17 @@
       }
     }
   }
-  // &_button {
-  //   @include header-mb() {
-  //     width: 90%;
-  //   }
-  // }
+  &_button {
+    @include header-mb() {
+      width: 90%;
+      margin: $spacing_4x auto $spacing_2x;
+    }
+
+    a {
+      @include header-mb() {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
 }

@@ -30,16 +30,22 @@ export default function CTAButton({
   type = "default",
 }: I_ButtonProps) {
   const classes = useMemo(() => {
-    return `${type && styles[`_type__${type}`]} ${size && styles[`_size__${size}`]} ${disabled && styles._disabled} ${
-      textChangeHover && styles._textChanged
+    return `${type && styles[`_type__${type}`]} ${size && styles[`_size__${size}`]} ${disabled ? styles._disabled : ""} ${
+      textChangeHover ? styles._textChanged : ""
     }`;
   }, [type, size, disabled, textChangeHover]);
+
   const iconClasses = useMemo(() => {
     return `${iconColor && `_iconColor__${iconColor}`}`;
   }, [iconColor]);
   const Component = externalLink ? "a" : link !== "" ? Link : "button";
+
   return (
-    <Component href={link} target={externalLink ? "_blank" : ""} className={`${classes} ${classNameForGa} ${styles.CTAButton}`}>
+    <Component
+      href={link}
+      target={externalLink ? "_blank" : ""}
+      className={`${classes} ${classNameForGa && styles[classNameForGa]} ${styles.CTAButton}`}
+    >
       <span className={`${styles.CTAButton_label} ${labelMb && styles.is_pc}`}>{label}</span>
       {labelMb && <span className={`${styles.CTAButton_label} ${styles.is_sp}`}>{labelMb}</span>}
       {textChangeHover && <span className={`${styles.CTAButton_label} ${styles.is_pc}`}>buttonTextChange</span>}

@@ -89,8 +89,10 @@ export default function Header({ bgColor }: { bgColor: string }) {
             </div>
           </div>
         </nav>
-        <div className={styles.headerButton}>
-          <CTAButton link="/login" label="Sign In" type="outline" size="small" />
+        <div>
+          <div className={styles.header_button}>
+            <CTAButton link="/login" label="Sign in" type="outline" size="small" />
+          </div>
         </div>
       </div>
     </header>

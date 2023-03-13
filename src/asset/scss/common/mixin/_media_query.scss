@@ -15,6 +15,12 @@
   }
 }
 
+@mixin header-mb() {
+  @media screen and (max-width: $breakpoints_header) {
+    @content;
+  }
+}
+
 @mixin mb() {
   @media screen and (max-width: (map-get($breakpoints, md) - 1)) {
     @content;
