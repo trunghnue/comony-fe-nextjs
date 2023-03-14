@@ -1,0 +1,9 @@
+.mainVisual {
+  position: relative;
+  width: 100%;
+  overflow-y: visible;
+  background-color: $color_gray_400;
+  @include pc() {
+    height: 147.9rem;
+  }
+}

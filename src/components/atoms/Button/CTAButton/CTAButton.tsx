@@ -3,6 +3,7 @@ import styles from "./CTAButton.module.scss";
 import Link from "next/link";
 
 interface I_ButtonProps {
+  className?: string;
   type?: string;
   label?: string;
   labelMb?: string;
@@ -17,6 +18,7 @@ interface I_ButtonProps {
 }
 
 export default function CTAButton({
+  className = "",
   classNameForGa = "",
   disabled = false,
   externalLink = false,
@@ -44,7 +46,7 @@ export default function CTAButton({
     <Component
       href={link}
       target={externalLink ? "_blank" : ""}
-      className={`${classes} ${classNameForGa && styles[classNameForGa]} ${styles.CTAButton}`}
+      className={`${className} ${classes} ${classNameForGa && styles[classNameForGa]} ${styles.CTAButton}`}
     >
       <span className={`${styles.CTAButton_label} ${labelMb && styles.is_pc}`}>{label}</span>
       {labelMb && <span className={`${styles.CTAButton_label} ${styles.is_sp}`}>{labelMb}</span>}
