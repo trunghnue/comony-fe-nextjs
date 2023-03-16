@@ -89,6 +89,13 @@
       left: 0;
       transition: all 0.5s ease;
     }
+
+    & .CTAButton_icon {
+      &::before {
+        width: 40px;
+        height: 0.5px;
+      }
+    }
   }
 
   &._type {
@@ -107,8 +114,16 @@
       &:hover {
         color: $color_white;
         border: 1px solid $color_white;
-        border-image: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%);
-        border-image-slice: 1;
+
+        & .CTAButton_icon {
+          &::before {
+            background: $color_white;
+          }
+
+          &::after {
+            border-color: transparent transparent transparent $color_white;
+          }
+        }
       }
     }
     &__outline {
@@ -143,7 +158,7 @@
         min-width: 44.8rem;
         height: 9.2rem;
         padding: $spacing_9x $spacing_6x;
-        @include fz($font_size_15);
+        @include fz($font_size_24);
       }
     }
   }

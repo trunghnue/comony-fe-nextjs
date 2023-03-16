@@ -1,0 +1,23 @@
+/********************************************
+		Utilities
+********************************************/
+
+// responsive
+.is-pc {
+  @include pc() {
+    display: block !important;
+  }
+
+  @include mb() {
+    display: none !important;
+  }
+}
+
+.is-sp {
+  @include pc() {
+    display: none !important;
+  }
+  @include mb() {
+    display: block !important;
+  }
+}

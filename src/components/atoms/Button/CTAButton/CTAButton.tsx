@@ -48,8 +48,8 @@ export default function CTAButton({
       target={externalLink ? "_blank" : ""}
       className={`${className} ${classes} ${classNameForGa && styles[classNameForGa]} ${styles.CTAButton}`}
     >
-      <span className={`${styles.CTAButton_label} ${labelMb && styles.is_pc}`}>{label}</span>
-      {labelMb && <span className={`${styles.CTAButton_label} ${styles.is_sp}`}>{labelMb}</span>}
+      <span className={`${styles.CTAButton_label} ${labelMb ? "is-pc" : ""}`}>{label}</span>
+      {labelMb && <span className={`${styles.CTAButton_label} is-sp`}>{labelMb}</span>}
       {textChangeHover && <span className={`${styles.CTAButton_label} ${styles.is_pc}`}>buttonTextChange</span>}
       {icon && <span className={`${styles.CTAButton_icon} ${styles[iconClasses]}`} />}
     </Component>
