@@ -20,7 +20,9 @@ export default function MainVisualVideo2() {
             link="/spaces"
           />
         </div>
-        <div className={styles.mainVisual_video}></div>
+        <div className={styles.mainVisual_video}>
+          <video controls src={"/video/mainvisual-movie.mp4"} />
+        </div>
       </div>
     </div>
   );

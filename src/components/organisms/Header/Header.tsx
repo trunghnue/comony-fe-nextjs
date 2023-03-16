@@ -7,8 +7,6 @@ import { icons } from "@/constants/icons";
 import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
 
 export default function Header({ bgColor }: { bgColor: string }) {
-  console.log("🚀 ~ file: Header.tsx:4 ~ styles:", styles);
-
   const iconColor = useMemo(() => {
     return bgColor === "white" ? "black" : "white";
   }, [bgColor]);
