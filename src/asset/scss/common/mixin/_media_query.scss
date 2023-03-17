@@ -32,3 +32,9 @@
     @content;
   }
 }
+
+@mixin screen($breakpoints_min, $breakpoints_max) {
+  @media screen and (min-width: $breakpoints_min) and (max-width: $breakpoints_max) {
+    @content;
+  }
+}

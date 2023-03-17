@@ -1,0 +1,23 @@
+.textMainVisual {
+  &._type {
+    &__heading {
+      margin: 0;
+      overflow: hidden;
+      font-weight: $font_weight_black;
+      word-break: break-word;
+      animation-name: bright;
+      animation-duration: 4s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+
+      @include pc() {
+        @include fz($font_size_64);
+      }
+
+      @include screen(769px, 1225px) {
+        height: auto;
+        font-size: 5.6vw;
+      }
+    }
+  }
+}
