@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./TextMainVisual.module.scss";
 
 interface TextMainVisualProps {
@@ -20,7 +20,15 @@ export default function TextMainVisual({
   title = "",
   type = "default",
 }: TextMainVisualProps) {
+  const [classes, setClasses] = useState({});
+
   useEffect(() => {
+    const computedClasses = `${type && styles[`_type__${type}`]} ${position && styles[`_position__${position}`]} ${
+      color && styles[`_color__${color}`]
+    } ${isVertical ? styles.__vertical : ""}`;
+
+    setClasses(computedClasses);
+
     const html = document.querySelector<HTMLElement>(`#${id}`);
     const animationDelay = 20;
     let content = "";
@@ -43,21 +51,17 @@ export default function TextMainVisual({
 
     const length = html?.children.length || 0;
 
-    for (let index = 0; index < length; index++) {
+    for (let index: number = 0; index < length; index++) {
       if (html) {
         const element = html.children[index] as HTMLElement;
 
         element.style["animation-delay"] = `${animationDelay * index}ms`;
       }
     }
-  }, [id, title, type]);
+  }, [color, id, isVertical, position, title, type]);
 
-  const Component = tag;
-  const classes = useMemo(() => {
-    return `${type && styles[`_type__${type}`]} ${position && styles[`_position__${position}`]} ${color && styles[`_color__${color}`]} ${
-      isVertical ? styles.__vertical : ""
-    }`;
-  }, [type, position, color, isVertical]);
-
-  return <Component id={id} className={`${styles.textMainVisual} ${classes}`}></Component>;
+  return React.createElement(tag, {
+    id,
+    className: `${styles.textMainVisual} ${classes}`,
+  });
 }
