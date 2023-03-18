@@ -10,6 +10,8 @@ export default function MainVisualVideo2() {
         <div className={styles.mainVisual_inner}>
           <div className={styles.mainVisual_heading}>
             <TextMainVisual id="title1" isVertical type="heading" title="For All Architecture Fans" />
+            <TextMainVisual id="title2" isVertical type="heading" title="Gain insight about architecture with the Architectural Metaverse" />
+            <TextMainVisual id="subTitle" isVertical type="subTitle" title="Designing the future by the architectural metaverse." />
           </div>
           <div className={styles.mainVisual_inner_bannerRight}></div>
           {/* circleLively */}

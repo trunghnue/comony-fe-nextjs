@@ -26,6 +26,25 @@
         animation: revolveDrop 1.5s both;
       }
     }
+    &__subTitle {
+      margin-top: $spacing_6x;
+      font-weight: normal;
+      word-break: break-word;
+      animation-name: bright;
+      animation-duration: 4s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+
+      @include fz($font_size_16);
+
+      span {
+        display: inline-block;
+        word-break: break-word;
+        opacity: 0;
+        transform: translate(0, 30px);
+        animation: bottomToTop 2s both;
+      }
+    }
   }
 
   &._color {
@@ -42,5 +61,37 @@
   100% {
     opacity: 1;
     transform: translate(0) scale(1);
+  }
+}
+
+@keyframes bright {
+  0% {
+    text-shadow: 0;
+  }
+
+  35% {
+    text-shadow: 0 0 11px rgba(255, 255, 255, 0.5);
+  }
+
+  50% {
+    text-shadow: 0 0 11px rgba(255, 255, 255, 0.6);
+  }
+
+  65% {
+    text-shadow: 0 0 11px rgba(255, 255, 255, 0.5);
+  }
+
+  100% {
+    text-shadow: 0;
+  }
+}
+
+@keyframes bottomToTop {
+  0% {
+    transform: translate((0, 30px));
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
   }
 }
