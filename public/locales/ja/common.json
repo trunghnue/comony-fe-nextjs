@@ -1,17 +1,19 @@
 {
-  "mainVisual": {
-    "button": "空間ギャラリーへ",
-    "button_mb": "空間ギャラリーへ",
-    "description1": "様々な建築空間を仮想空間内に構築することで 近未来のコンセプトを形にします。",
-    "description3": "また、友達と仮想空間に入って交流したりイベントに参加したり、未来の都市空間を一足先に体験することもできます。",
-    "description6": "comonyの建築メタバースを通して過去から現在そして未来へと時空を越えた体験を提供します。",
-    "linkText": "※ 推奨スペック",
-    "linkTextSp": "推奨スペックを確認する",
-    "subTitle": "すべての建築ファンへ",
-    "title1": "すべての建築ファンへ",
-    "title1Vettical": "理解を深めよう",
-    "title2": "建築メタバースで建築の理解を深めよう",
-    "title2Vertical": "建築メタバースで",
-    "title3": "建築メタバースプラットフォーム"
+  "header": {
+    "appDl": "アプリDL",
+    "business": "ビジネスでご使用の方",
+    "contact": "お問い合わせ",
+    "creator": "クリエイターの方",
+    "faq": "よくある質問",
+    "login": "ログイン",
+
+    "profilePage": "プロフィールページ",
+
+    "signup": "新規登録",
+
+    "spaceList": "空間ギャラリー",
+
+    "tryNow": "ログインする",
+    "workSpaceLogin": "にログイン中"
   }
 }

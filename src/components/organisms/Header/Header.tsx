@@ -5,8 +5,10 @@ import Link from "next/link";
 import IconBase from "@/components/atoms/IconBase/IconBase";
 import { icons } from "@/constants/icons";
 import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
+import { useTranslation } from "next-i18next";
 
 export default function Header({ bgColor }: { bgColor: string }) {
+  const { t } = useTranslation("common");
   const iconColor = useMemo(() => {
     return bgColor === "white" ? "black" : "white";
   }, [bgColor]);
@@ -24,27 +26,27 @@ export default function Header({ bgColor }: { bgColor: string }) {
         <nav className={styles.header_nav}>
           <div className={styles.header_nav_item}>
             <Link className={styles.header_nav_link} href="/spaces">
-              Space Gallery
+              {t("header.spaceList")}
             </Link>
           </div>
           <div className={styles.header_nav_item}>
             <Link className={styles.header_nav_link} href="/spaces">
-              For Business
+              {t("header.business")}
             </Link>
           </div>
           <div className={styles.header_nav_item}>
             <Link className={styles.header_nav_link} href="/spaces">
-              For Creator
+              {t("header.creator")}
             </Link>
           </div>
           <div className={styles.header_nav_item}>
             <Link className={styles.header_nav_link} href="/spaces">
-              Contact
+              {t("header.contact")}
             </Link>
           </div>
           <div className={styles.header_nav_item}>
             <Link className={`${styles.header_nav_link} ${styles.__right_border}`} href="/spaces">
-              Download App
+              {t("header.appDl")}
             </Link>
           </div>
           <div
@@ -89,7 +91,7 @@ export default function Header({ bgColor }: { bgColor: string }) {
         </nav>
         <div>
           <div className={styles.header_button}>
-            <CTAButton link="/login" label="Sign in" type="outline" size="small" />
+            <CTAButton link="/login" label={t("header.tryNow") || ""} type="outline" size="small" />
           </div>
         </div>
       </div>

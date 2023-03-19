@@ -12,6 +12,7 @@ interface Props {}
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
+  console.log("🚀 ~ file: index.tsx:15 ~ _props:", _props);
   return (
     <Layout>
       <MainVisualVideo2 />
@@ -22,6 +23,6 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
 // or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "en", ["common", "footer"])),
+    ...(await serverSideTranslations(locale ?? "en", ["common", "top"])),
   },
 });

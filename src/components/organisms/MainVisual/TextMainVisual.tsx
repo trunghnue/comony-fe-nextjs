@@ -31,31 +31,20 @@ export default function TextMainVisual({
 
     const html = document.querySelector<HTMLElement>(`#${id}`);
     const animationDelay = 20;
-    let content = "";
-
-    for (let index = 0; index < title.length; index++) {
-      if (title[index] === " ") {
-        content += '<span style="display: inline;"> </span>';
-      } else {
-        content += `<span>${title[index]}</span>`;
-      }
-    }
 
     if (html) {
-      html.innerHTML = content;
-    }
+      html.innerHTML = title
+        .split("")
+        .map((char) => (char === " " ? '<span style="display: inline;"> </span>' : `<span>${char}</span>`))
+        .join("");
+      console.log("🚀 ~ file: TextMainVisual.tsx:40 ~ html:", html);
 
-    if (["subTitle", "title"].includes(type)) {
-      return;
-    }
-
-    const length = html?.children.length || 0;
-
-    for (let index: number = 0; index < length; index++) {
-      if (html) {
-        const element = html.children[index] as HTMLElement;
-
-        element.style["animation-delay"] = `${animationDelay * index}ms`;
+      if (!["subTitle", "title"].includes(type)) {
+        Array.from(html.children).forEach((element, index: number) => {
+          if (element instanceof HTMLElement) {
+            element.style["animation-delay"] = `${animationDelay * index}ms`;
+          }
+        });
       }
     }
   }, [color, id, isVertical, position, title, type]);
