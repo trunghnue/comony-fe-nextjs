@@ -37,7 +37,6 @@ export default function TextMainVisual({
         .split("")
         .map((char) => (char === " " ? '<span style="display: inline;"> </span>' : `<span>${char}</span>`))
         .join("");
-      console.log("🚀 ~ file: TextMainVisual.tsx:40 ~ html:", html);
 
       if (!["subTitle", "title"].includes(type)) {
         Array.from(html.children).forEach((element, index: number) => {

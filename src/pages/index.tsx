@@ -12,7 +12,6 @@ interface Props {}
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log("🚀 ~ file: index.tsx:15 ~ _props:", _props);
   return (
     <Layout>
       <MainVisualVideo2 />

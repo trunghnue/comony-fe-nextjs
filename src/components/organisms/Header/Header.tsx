@@ -9,6 +9,7 @@ import { useTranslation } from "next-i18next";
 
 export default function Header({ bgColor }: { bgColor: string }) {
   const { t } = useTranslation("common");
+
   const iconColor = useMemo(() => {
     return bgColor === "white" ? "black" : "white";
   }, [bgColor]);
@@ -81,10 +82,14 @@ export default function Header({ bgColor }: { bgColor: string }) {
             </button>
             <div className={`${styles.header_dropdown} ${isLanguageMenuOpen ? styles.is_open : ""}  ${bgColorClass}`}>
               <div className={styles.header_dropdown_item}>
-                <Link href="/">日本語</Link>
+                <Link href="/" locale="ja">
+                  日本語
+                </Link>
               </div>
               <div className={`${styles.header_dropdown_item} ${styles._active}`}>
-                <Link href="/">English</Link>
+                <Link href="/" locale="en">
+                  English
+                </Link>
               </div>
             </div>
           </div>
