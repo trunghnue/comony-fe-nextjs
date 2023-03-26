@@ -4,12 +4,13 @@ import IconBase from "../IconBase/IconBase";
 import styles from "./AppLogo.module.scss";
 
 interface Props {
-  size: string;
-  iconColor: string;
-  direction: string;
+  className?: string;
+  size?: string;
+  iconColor?: string;
+  direction?: string;
 }
 
-export default function AppLogo({ size = "medium", direction = "horizontal", iconColor = "#222" }: Props) {
+export default function AppLogo({ size = "medium", direction = "horizontal", iconColor = "#222", className = "" }: Props) {
   const classes = useMemo(() => {
     return `${size && styles[`_size__${size}`]} ${direction && styles[`_direction__${direction}`]} ${
       iconColor && styles[`_iconColor__${iconColor}`]
@@ -56,7 +57,7 @@ export default function AppLogo({ size = "medium", direction = "horizontal", ico
   }, [size]);
 
   return (
-    <div className={`${styles.appLogo} ${classes}`}>
+    <div className={`${className} ${styles.appLogo} ${classes}`}>
       <IconBase
         className={styles.appLogo_mark}
         iconName="logo"

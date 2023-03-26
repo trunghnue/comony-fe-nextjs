@@ -45,6 +45,31 @@
         animation: bottomToTop 2s both;
       }
     }
+    &__title {
+      margin: 0 0 $spacing_12x;
+      font-weight: $font_weight_bold;
+      word-break: break-word;
+      @include fz($font_size_24);
+    }
+    &__default {
+      display: inline;
+      margin: 0;
+      overflow: hidden;
+      font-weight: $font_weight_normal;
+      word-break: break-word;
+      @include fz($font_size_16);
+
+      span {
+        word-break: break-world;
+        animation: opacityDrop 2s both;
+      }
+    }
+  }
+
+  &._position {
+    &__center {
+      text-align: center;
+    }
   }
 
   &._color {
@@ -93,5 +118,17 @@
   100% {
     opacity: 1;
     transform: translate(0);
+  }
+}
+
+@keyframes opacityDrop {
+  0% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

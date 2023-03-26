@@ -50,6 +50,9 @@ $color_light_blue_100: #f7f7fd;
 ------------------------------------------- */
 $font_weight_black: 900;
 $font_weight_bold: 700;
+$font_weight_medium: 500;
+$font_weight_normal: 400;
+$font_weight_light: 100;
 
 /* -----------------------------------------
       Width / Height
@@ -67,6 +70,10 @@ $spacing_5x: 2rem;
 $spacing_6x: 2.4rem;
 $spacing_8x: 3.2rem;
 $spacing_9x: 3.6rem;
+$spacing_10x: 4rem;
+$spacing_12x: 4.8rem;
+$spacing_14x: 5.6rem;
+$spacing_24x: 9.6rem;
 $spacing_42x: 16.8rem;
 
 /* -----------------------------------------
@@ -85,3 +92,4 @@ $font_base: "Noto Sans JP", sans-serif;
 
 //Gradiention
 $color_yellow_gradient: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000;
+$color_black_gradien_opacity: linear-gradient(90deg, rgba(#100f09, 0.9) 0%, rgba(#2b2e33, 0.9) 100%);

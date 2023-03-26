@@ -20,6 +20,42 @@
       left: 50%;
       transform: translate(-50%, -7.2rem);
     }
+    &_bannerRight {
+      position: absolute;
+      top: calc(100% - 950px);
+      height: 77rem;
+      width: 59rem;
+      right: 0;
+      color: #fff;
+      background: $color_black_gradien_opacity;
+      padding: $spacing_14x $spacing_14x $spacing_24x;
+      &_inner {
+        max-width: 41.5rem;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    &_logo {
+      margin-bottom: $spacing_10x;
+      justify-content: center;
+      animation: bottomToTop2 1.5s both;
+    }
+    &_description {
+      margin: 0 0 $spacing_14x;
+      line-height: 1.75;
+    }
+    &_appDownload {
+      & .appDownload_pc {
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: $spacing_2x;
+      }
+      & .appDownload_link {
+        display: flex;
+        justify-content: center;
+        text-decoration: underline;
+      }
+    }
   }
   &_heading {
     position: relative;
@@ -61,5 +97,19 @@
       transform: translate(-50%, -50%);
       object-fit: cover;
     }
+  }
+}
+
+@keyframes bottomToTop2 {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  60% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
   }
 }

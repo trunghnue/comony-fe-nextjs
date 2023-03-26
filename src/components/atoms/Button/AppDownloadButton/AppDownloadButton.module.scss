@@ -1,0 +1,18 @@
+.appDownload_button {
+  background-color: $color_gray_1000;
+  border-radius: $spacing_2x;
+  border: 1px solid $color_white;
+  &_inner {
+    display: flex;
+    align-items: center;
+    padding: 2px 13px;
+  }
+  &_img {
+    margin-right: $spacing_1x;
+  }
+  &_label {
+    font-weight: $font_weight_bold;
+    text-align: center;
+    @include fz($font_size_14);
+  }
+}
