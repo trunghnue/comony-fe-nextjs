@@ -6,6 +6,7 @@ import { useTranslation } from "next-i18next";
 import AppLogo from "@/components/atoms/AppLogo/AppLogo";
 import Link from "next/link";
 import AppDownloadButton from "@/components/atoms/Button/AppDownloadButton/AppDownloadButton";
+import CircleLively from "@/components/atoms/CircleLively/CircleLively";
 
 export default function MainVisualVideo2() {
   const { t } = useTranslation("top");
@@ -40,8 +41,8 @@ export default function MainVisualVideo2() {
             </div>
           </div>
         </div>
-        {/* circleLively */}
-        {/* <CTAButton
+        <CircleLively />
+        <CTAButton
           className={styles.mainVisual_inner_button}
           type="default"
           label="Go to the gallery page"
@@ -49,7 +50,7 @@ export default function MainVisualVideo2() {
           icon
           iconColor="black"
           link="/spaces"
-        /> */}
+        />
       </div>
       <div className={styles.mainVisual_video}>
         <video controls src={"/video/mainvisual-movie.mp4"} poster="/images/mainvisual-poster.webp" playsInline autoPlay loop muted />

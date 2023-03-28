@@ -1,0 +1,34 @@
+.circleLively {
+  position: absolute;
+  bottom: 5%;
+  left: -6rem;
+  width: 40rem;
+  height: 40rem;
+  animation: scale 5s infinite;
+  &_svg {
+    animation: rotation 5s infinite;
+  }
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
