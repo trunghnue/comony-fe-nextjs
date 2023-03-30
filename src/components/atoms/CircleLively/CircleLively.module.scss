@@ -4,9 +4,19 @@
   left: -6rem;
   width: 40rem;
   height: 40rem;
-  animation: scale 5s infinite;
   &_svg {
-    animation: rotation 5s infinite;
+    animation: rotate 10s infinite;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  70% {
+    transform: rotate(-180deg) scale(1.5);
+  }
+  100% {
+    transform: rotate(-1turn) scale(1);
   }
 }
 @keyframes rotation {
