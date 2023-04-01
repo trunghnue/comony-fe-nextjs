@@ -8,18 +8,13 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import styles from "./index.module.scss";
 import { I_Newslist } from "@/types/schema/news";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 interface Props {}
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
-  if (typeof window !== "undefined") {
-    console.log("This code is running on the client");
-  } else {
-    console.log("This code is running on the server");
-  }
-
   const [newsList, setNewsList] = useState([]);
 
   const fetchNews = async () => {
@@ -44,7 +39,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
       }
       const data = await response.json();
       console.log("🚀 ~ file: index.tsx:28 ~ data:", data);
-      setNewsList(data.list);
+      setNewsList(data.data.list);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -58,19 +53,31 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
     <Layout>
       <MainVisualVideo2 />
       <div className={styles.newsList}>
-        <h1>News</h1>
-        <ul>
+        <h1 className={styles.newsList_header}>News</h1>
+        <div className={styles.newsList_content}>
           {newsList &&
             newsList.map((news, index) => (
-              <li key={index}>
-                <p>{news.titleEn}</p>
-              </li>
+              <Link key={index} href="./">
+                <p className={styles.newsList_item}>
+                  <span className={styles.newsList_date}>{formatTime(news.publishedAt)}</span> {news.titleEn}
+                </p>
+              </Link>
             ))}
-        </ul>
+        </div>
+        <div className={styles.newsList_footer}>
+          <p>More</p>
+        </div>
       </div>
     </Layout>
   );
 }
+
+const formatTime = (publishedAt: string) => {
+  const dateString = publishedAt;
+  const date = new Date(dateString);
+  const formattedDate = `${date.getFullYear()}/${(date.getMonth() + 1).toString().padStart(2, "0")}/${date.getDate().toString().padStart(2, "0")}`;
+  return formattedDate;
+};
 
 // or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
