@@ -1,0 +1,7 @@
+.animatedDirection {
+  &.-bottomToTop {
+    .imageBoxAnimated {
+      transform: translateY(100px);
+    }
+  }
+}

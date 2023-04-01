@@ -9,6 +9,7 @@ import styles from "./index.module.scss";
 import { I_Newslist } from "@/types/schema/news";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
 
 interface Props {}
 
@@ -52,21 +53,25 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
   return (
     <Layout>
       <MainVisualVideo2 />
-      <div className={styles.newsList}>
-        <h1 className={styles.newsList_header}>News</h1>
-        <div className={styles.newsList_content}>
-          {newsList &&
-            newsList.map((news, index) => (
-              <Link key={index} href="./">
-                <p className={styles.newsList_item}>
-                  <span className={styles.newsList_date}>{formatTime(news.publishedAt)}</span> {news.titleEn}
-                </p>
-              </Link>
-            ))}
-        </div>
-        <div className={styles.newsList_footer}>
-          <p>More</p>
-        </div>
+      <div className="animatedDirection -bottomToTop">
+        <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
+          <div className={styles.newsList}>
+            <h1 className={styles.newsList_header}>News</h1>
+            <div className={styles.newsList_content}>
+              {newsList &&
+                newsList.map((news, index) => (
+                  <Link key={index} href="./">
+                    <p className={styles.newsList_item}>
+                      <span className={styles.newsList_date}>{formatTime(news.publishedAt)}</span> {news.titleEn}
+                    </p>
+                  </Link>
+                ))}
+            </div>
+            <div className={styles.newsList_footer}>
+              <p>More</p>
+            </div>
+          </div>
+        </SectionContainer>
       </div>
     </Layout>
   );

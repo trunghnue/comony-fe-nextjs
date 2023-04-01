@@ -30,6 +30,10 @@ $breakpoints_header: 924px;
 //static pages
 $font_color_base: #222;
 $color_black: #222;
+$color_primary: #f69a08;
+$color_secondary: #215ed7;
+$color_darkblue: #0d3584;
+$color_gray_lighten3: #f8f8f8;
 
 // Gray
 $color_white: #fff;
@@ -45,6 +49,10 @@ $color_yellow: #ffc700;
 // LightBlue
 $color_light_blue_100: #f7f7fd;
 
+// Gradiention
+$color_black_gradient: linear-gradient(90deg, #100f09 0%, #2b2e33 100%);
+$color_white_gradient: linear-gradient(108.46deg, #fff 1.35%, #faf9f3 85.13%);
+
 /* -----------------------------------------
       Font Weight
 ------------------------------------------- */
@@ -58,6 +66,12 @@ $font_weight_light: 100;
       Width / Height
 ------------------------------------------- */
 $header_H_pc: 64px;
+
+// for business
+$default_contents_W: 1044px;
+$default_contents_W_medium: 1216px;
+$default_contents_W_large: 1440px;
+$default_contents_W_xlarge: 1920px;
 
 /* ------------------------------------------
       spacing for padding / margin

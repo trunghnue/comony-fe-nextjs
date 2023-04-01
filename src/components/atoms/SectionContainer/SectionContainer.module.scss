@@ -1,0 +1,155 @@
+.section {
+  position: relative;
+  z-index: 1;
+
+  &._wrapSize {
+    &__normal {
+      @include mb() {
+        padding: $spacing_6x $spacing_4x $spacing_14x;
+      }
+
+      @include pc() {
+        padding: $spacing_14x $spacing_8x $spacing_24x;
+      }
+    }
+
+    &__large {
+      @include mb() {
+        padding: $spacing_14x $spacing_4x;
+      }
+
+      @include pc() {
+        padding: $spacing_24x $spacing_8x;
+      }
+    }
+  }
+
+  &._position {
+    &__center {
+      text-align: center;
+    }
+
+    &__left {
+      text-align: left;
+    }
+  }
+
+  &._bgColor {
+    &__white {
+      color: $font_color_base;
+      background-color: $color_white;
+    }
+
+    &__primary {
+      color: $color_white;
+      background-color: $color_primary;
+    }
+
+    &__secondary {
+      color: $color_white;
+      background-color: $color_secondary;
+    }
+
+    &__darkblue {
+      color: $color_white;
+      background-color: $color_darkblue;
+    }
+
+    &__gray {
+      color: $font_color_base;
+      background-color: $color_gray_lighten3;
+    }
+
+    &__black {
+      color: $color_white;
+      background-color: $color_gray_1000;
+    }
+
+    &__transparent {
+      color: inherit;
+      background-color: transparent;
+    }
+
+    &__darkgray {
+      color: $color_white;
+      background-color: $font_color_base;
+    }
+
+    &__black-gradient {
+      color: $color_white;
+      background: $color_black_gradient;
+    }
+
+    &__white-gradient {
+      color: $color_gray_1000;
+      background: $color_white_gradient;
+    }
+  }
+
+  &._borderTopColor {
+    &__primary {
+      border-top: 2rem solid $color_primary;
+    }
+
+    &__secondary {
+      border-top: 2rem solid $color_secondary;
+    }
+
+    &__none {
+      border-top: none;
+    }
+  }
+
+  &_inner {
+    margin: 0 auto;
+
+    &._containerSize {
+      &__lg {
+        max-width: $default_contents_W; // 1044px
+      }
+
+      &__xlg {
+        max-width: $default_contents_W_medium; // 1120px
+      }
+
+      &__xxlg {
+        max-width: $default_contents_W_large; // 1280px
+      }
+
+      &__full {
+        width: 100%;
+      }
+    }
+  }
+
+  &_contents {
+    @include pc() {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  &_column {
+    &._col {
+      &__1 {
+        width: 100%;
+      }
+
+      &__3 {
+        @include pc() {
+          width: calc((100% - 2rem * 2) / 3);
+        }
+
+        &:not(:last-child) {
+          @include mb() {
+            margin-bottom: $spacing_10x;
+          }
+        }
+      }
+    }
+  }
+
+  &.__fullWidth {
+    padding: inherit 0;
+  }
+}
