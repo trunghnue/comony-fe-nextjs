@@ -40,7 +40,7 @@ export default function CTAButton({
   const iconClasses = useMemo(() => {
     return `${iconColor && `_iconColor__${iconColor}`}`;
   }, [iconColor]);
-  const Component = externalLink ? "a" : link !== "" ? Link : "button";
+  const Component: React.ElementType = externalLink ? "a" : link !== "" ? Link : "button";
 
   return (
     <Component

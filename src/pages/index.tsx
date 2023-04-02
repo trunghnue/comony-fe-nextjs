@@ -10,6 +10,7 @@ import { I_Newslist } from "@/types/schema/news";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
+import Heading from "@/components/atoms/Heading/Heading";
 
 interface Props {}
 
@@ -56,7 +57,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
       <div className="animatedDirection -bottomToTop">
         <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
           <div className={styles.newsList}>
-            <h1 className={styles.newsList_header}>News</h1>
+            <Heading level="2" align="left" fontWeight="700" headings={[{ text: "News", color: "white", spBreak: false }]} />
             <div className={styles.newsList_content}>
               {newsList &&
                 newsList.map((news, index) => (

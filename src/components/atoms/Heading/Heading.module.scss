@@ -1,0 +1,26 @@
+.heading {
+  color: $font_color_base;
+  &._lv {
+    &__1 {
+      @include pc() {
+        @include fz($font_size_55);
+      }
+      @include mb() {
+        @include fz($font_size_30);
+      }
+    }
+    &__2 {
+      @include pc() {
+        @include fz($font_size_46);
+      }
+      @include mb() {
+        @include fz($font_size_28);
+      }
+    }
+  }
+  & ._fontColor {
+    &__white {
+      color: $color_white;
+    }
+  }
+}
