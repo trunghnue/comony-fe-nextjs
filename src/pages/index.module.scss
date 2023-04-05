@@ -1,20 +1,13 @@
 .newsList {
-  margin: $spacing_14x $spacing_18x $spacing_24x;
-  color: $color_white;
-  &_content {
-    margin-bottom: $spacing_14x;
-  }
-  &_footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: underline;
+  &_contents {
+    margin: $spacing_8x auto $spacing_14x;
+    @include mb() {
+      margin: $spacing_8x auto;
+    }
   }
   &_item {
-    font-size: 18px;
-  }
-  &_date {
-    margin-right: $spacing_4x;
-    font-weight: $font_weight_bold;
+    &:not(:last-child) {
+      margin-bottom: $spacing_6x;
+    }
   }
 }
