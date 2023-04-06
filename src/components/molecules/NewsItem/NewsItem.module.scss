@@ -32,7 +32,7 @@
       @include fz($font_size_12);
     }
 
-    &_color {
+    &._color {
       &__white {
         color: $color_white;
         &:hover {

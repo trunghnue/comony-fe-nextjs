@@ -6,7 +6,6 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import styles from "./index.module.scss";
 import { I_Get_News_Id_Response_Data, I_Newslist } from "@/types/schema/news";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
 import Heading from "@/components/atoms/Heading/Heading";
 import NewsItem from "@/components/molecules/NewsItem/NewsItem";
