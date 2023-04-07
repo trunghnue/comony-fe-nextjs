@@ -33,21 +33,29 @@ $color_black: #222;
 $color_primary: #f69a08;
 $color_secondary: #215ed7;
 $color_darkblue: #0d3584;
+$color_gray_lighten1: #ccc;
 $color_gray_lighten3: #f8f8f8;
 
 // Gray
 $color_white: #fff;
+$color_gray_50: #faf9fa;
+$color_gray_100: #f5f4f5;
 $color_gray_200: #edecee;
+$color_gray_300: #e0dfe2;
 $color_gray_400: #bdbabf;
+$color_gray_500: #a29da4;
+$color_gray_600: #767378;
+$color_gray_700: #615f63;
 $color_gray_800: #484649;
+$color_gray_900: #212022;
 $color_gray_1000: #100f09;
-$color_gray_lighten1: #ccc;
 
 // Yellow
 $color_yellow: #ffc700;
 
 // LightBlue
 $color_light_blue_100: #f7f7fd;
+$color_light_blue_200: #dfe6f0;
 
 // Gradiention
 $color_black_gradient: linear-gradient(90deg, #100f09 0%, #2b2e33 100%);
@@ -66,6 +74,7 @@ $font_weight_light: 100;
       Width / Height
 ------------------------------------------- */
 $header_H_pc: 64px;
+$header_H_sp: 48px;
 
 // for business
 $default_contents_W: 1044px;

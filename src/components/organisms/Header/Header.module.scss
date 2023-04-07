@@ -16,6 +16,13 @@
     padding: 0 $spacing_8x;
   }
 
+  @include header-mb() {
+    position: fixed;
+    top: 0;
+    height: $header_H_sp;
+    padding: 0;
+  }
+
   @include screen($breakpoints_header, map-get($breakpoints, xl)) {
     padding: 0 $spacing_4x;
   }
@@ -25,6 +32,102 @@
       color: $color_white;
       background-color: $color_gray_1000;
       border-bottom: none;
+
+      @include header-mb() {
+        border-bottom: 1px solid $color_gray_500;
+      }
+
+      .header_menu {
+        background-color: $color_gray_1000;
+      }
+
+      .header_menuButton {
+        background-color: $color_gray_1000;
+        border: 1px solid $color_gray_1000;
+        border-right: 1px solid $color_gray_500;
+        border-bottom: 1px solid $color_gray_500;
+      }
+
+      & span {
+        background-color: $color_white;
+        &::before {
+          background-color: $color_white;
+        }
+        &::after {
+          background-color: $color_white;
+        }
+      }
+    }
+  }
+
+  &_menuButton span,
+  &_menuButton span::before,
+  &_menuButton span::after {
+    position: absolute;
+    display: block;
+    width: 18px;
+    height: 2px;
+    content: "";
+    background-color: $color_gray_900;
+    border-radius: 2px;
+  }
+
+  &_menuButton span::before {
+    bottom: 6px;
+    transition: transform 0.5s;
+  }
+  &_menuButton span::after {
+    top: 6px;
+    transition: transform 0.5s;
+  }
+
+  &_menuButton {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $header_H_sp;
+    height: $header_H_sp;
+    cursor: pointer;
+    background-color: $color_white;
+    border: 1px solid $color_light_blue_200;
+    border-top: none;
+
+    @include header-pc {
+      display: none;
+    }
+
+    &.is_open {
+      background: $color_gray_900;
+      border: 0;
+    }
+    &.is_open span {
+      background-color: transparent;
+      &::before,
+      &::after {
+        top: 25%;
+      }
+      &::before {
+        transform: rotate(45deg);
+      }
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  &_logo {
+    @include header-pc() {
+      display: contents;
+    }
+    @include header-mb() {
+      display: inline-block;
+      height: 100%;
+      margin-left: $header_H_sp;
+      transform: scale(0.8);
     }
   }
 
@@ -32,6 +135,16 @@
     @include header-pc() {
       display: flex;
       align-items: center;
+    }
+
+    @include header-mb() {
+      position: fixed;
+      top: $header_H_sp;
+      left: -320px;
+      width: 320px;
+      height: calc(100% - #{$header_H_sp});
+      background-color: $color_white;
+      transition: all 0.8s;
     }
   }
 
@@ -50,6 +163,11 @@
 
       @include header-pc() {
         margin-right: $spacing_4x;
+      }
+
+      @include screen($breakpoints_header, map-get($breakpoints, xl)) {
+        @include fz($font_size_13);
+        margin-right: $spacing_2x;
       }
       & .__right_border {
         margin-right: $spacing_4x;

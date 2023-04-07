@@ -20,9 +20,26 @@ export default function Header({ bgColor }: { bgColor: string }) {
 
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
 
+  const [navigation, setNavigation] = useState({ isHumbergerOpen: false });
+
+  const onClickHumbergerMenu = () => {
+    setNavigation({
+      ...navigation,
+      isHumbergerOpen: !navigation.isHumbergerOpen,
+    });
+    console.log("🚀 ~ file: Header.tsx:30 ~ navigation.isHumbergerOpen:", navigation.isHumbergerOpen);
+  };
+
   return (
     <header className={`${styles.header} ${bgColorClass}`}>
-      <AppLogo iconColor={iconColor} size="small" direction="vertical" />
+      <Link className={styles.header_logo} href="./">
+        <AppLogo iconColor={iconColor} size="small" direction="vertical" />
+      </Link>
+      <div onClick={onClickHumbergerMenu}>
+        <label className={`${styles.header_menuButton} ${navigation.isHumbergerOpen ? styles.is_open : ""}`}>
+          <span />
+        </label>
+      </div>
       <div className={styles.header_menu}>
         <nav className={styles.header_nav}>
           <div className={styles.header_nav_item}>
