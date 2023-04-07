@@ -14,4 +14,11 @@
     }
     // doing
   }
+  &._underline {
+    text-decoration: underline;
+    transition: all 0.5s;
+    &:hover {
+      opacity: 0.75;
+    }
+  }
 }

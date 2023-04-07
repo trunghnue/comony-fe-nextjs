@@ -9,13 +9,16 @@ import { useEffect, useState } from "react";
 import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
 import Heading from "@/components/atoms/Heading/Heading";
 import NewsItem from "@/components/molecules/NewsItem/NewsItem";
-import { i18n } from "next-i18next";
+import { i18n, useTranslation } from "next-i18next";
+import LinkText from "@/components/atoms/LinkText/LinkText";
 
 interface Props {}
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { t } = useTranslation("top");
+
   const [newsList, setNewsList] = useState<I_Get_News_Id_Response_Data[]>([]);
 
   const fetchNews = async () => {
@@ -76,9 +79,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
                   />
                 ))}
             </div>
-            <div className={styles.newsList_footer}>
-              <p>More</p>
-            </div>
+            <LinkText color="white" link="/news" underline value={t("newsListLink")} fontSize="standard"></LinkText>
           </div>
         </SectionContainer>
       </div>
