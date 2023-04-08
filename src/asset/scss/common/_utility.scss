@@ -21,3 +21,12 @@
     display: block !important;
   }
 }
+
+.is-header-pc {
+  @include header-pc {
+    display: block !important;
+  }
+  @include header-mb {
+    display: none !important;
+  }
+}

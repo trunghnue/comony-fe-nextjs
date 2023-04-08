@@ -46,15 +46,19 @@
         border: 1px solid $color_gray_1000;
         border-right: 1px solid $color_gray_500;
         border-bottom: 1px solid $color_gray_500;
-      }
-
-      & span {
-        background-color: $color_white;
-        &::before {
-          background-color: $color_white;
+        &.is_open {
+          span {
+            background-color: transparent;
+          }
         }
-        &::after {
+        & span {
           background-color: $color_white;
+          &::before {
+            background-color: $color_white;
+          }
+          &::after {
+            background-color: $color_white;
+          }
         }
       }
     }
@@ -147,6 +151,11 @@
       background-color: $color_white;
       transition: all 0.8s;
     }
+
+    &.is_open {
+      left: 0;
+      transition: all 0.8s;
+    }
   }
 
   &_nav {
@@ -164,6 +173,11 @@
 
       @include header-pc() {
         margin-right: $spacing_4x;
+      }
+
+      @include header-mb() {
+        @include fz($font_size_15);
+        border-bottom: 1px solid $color_gray_500;
       }
 
       @include screen($breakpoints_header, map-get($breakpoints, xl)) {
@@ -188,6 +202,10 @@
     &_link {
       &:hover {
         color: $color_yellow;
+      }
+      @include header-mb() {
+        display: block;
+        padding: $spacing_4x;
       }
     }
   }

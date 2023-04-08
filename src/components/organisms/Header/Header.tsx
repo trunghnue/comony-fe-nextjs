@@ -40,7 +40,7 @@ export default function Header({ bgColor }: { bgColor: string }) {
           <span />
         </label>
       </div>
-      <div className={styles.header_menu}>
+      <div className={`${styles.header_menu} ${navigation.isHumbergerOpen ? styles.is_open : ""}`}>
         <nav className={styles.header_nav}>
           <div className={styles.header_nav_item}>
             <Link className={styles.header_nav_link} href="/spaces">
@@ -67,8 +67,10 @@ export default function Header({ bgColor }: { bgColor: string }) {
               {t("header.appDl")}
             </Link>
           </div>
+
+          {/* Language Menu in pc */}
           <div
-            className={`${styles.header_nav_item} ${styles.is_header_pc}`}
+            className={`${styles.header_nav_item} is-header-pc`}
             onMouseOver={() => setIsLanguageMenuOpen(true)}
             onMouseOut={() => setIsLanguageMenuOpen(false)}
           >
@@ -110,6 +112,8 @@ export default function Header({ bgColor }: { bgColor: string }) {
               </div>
             </div>
           </div>
+
+          {/* Language Menu in mobile */}
         </nav>
         <div>
           <div className={styles.header_button}>
