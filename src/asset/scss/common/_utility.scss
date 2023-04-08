@@ -30,3 +30,11 @@
     display: none !important;
   }
 }
+.is-header-mb {
+  @include header-pc {
+    display: none !important;
+  }
+  @include header-mb {
+    display: block !important;
+  }
+}

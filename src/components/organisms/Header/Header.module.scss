@@ -156,6 +156,24 @@
       left: 0;
       transition: all 0.8s;
     }
+
+    &_overlay {
+      position: absolute;
+      top: $header_H_sp;
+      left: 0;
+      z-index: -1;
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.3);
+
+      &.is_open {
+        @include header-mb() {
+          display: block;
+          transition: 0.5s;
+        }
+      }
+    }
   }
 
   &_nav {
@@ -206,6 +224,28 @@
       @include header-mb() {
         display: block;
         padding: $spacing_4x;
+      }
+    }
+    &_lang {
+      @include header-mb() {
+        position: absolute;
+        bottom: 0;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border-top: 1px solid $color_gray_500;
+      }
+      ._active {
+        color: $color_yellow;
+      }
+      a {
+        width: 50%;
+        text-align: center;
+        padding: $spacing_4x;
+        &:first-child {
+          border-right: 1px solid $color_gray_500;
+        }
       }
     }
   }

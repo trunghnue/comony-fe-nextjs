@@ -5,7 +5,7 @@ import Link from "next/link";
 import IconBase from "@/components/atoms/IconBase/IconBase";
 import { icons } from "@/constants/icons";
 import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
-import { useTranslation } from "next-i18next";
+import { i18n, useTranslation } from "next-i18next";
 
 export default function Header({ bgColor }: { bgColor: string }) {
   const { t } = useTranslation("common");
@@ -40,6 +40,7 @@ export default function Header({ bgColor }: { bgColor: string }) {
           <span />
         </label>
       </div>
+      <div className={`${styles.header_menu_overlay} ${navigation.isHumbergerOpen ? styles.is_open : ""}`}></div>
       <div className={`${styles.header_menu} ${navigation.isHumbergerOpen ? styles.is_open : ""}`}>
         <nav className={styles.header_nav}>
           <div className={styles.header_nav_item}>
@@ -114,6 +115,14 @@ export default function Header({ bgColor }: { bgColor: string }) {
           </div>
 
           {/* Language Menu in mobile */}
+          <div className={`${styles.header_nav_lang} is-header-mb`}>
+            <Link className={i18n?.language === "en" ? styles._active : ""} href="/" locale="en">
+              English
+            </Link>
+            <Link className={i18n?.language === "ja" ? styles._active : ""} href="/" locale="ja">
+              日本語
+            </Link>
+          </div>
         </nav>
         <div>
           <div className={styles.header_button}>
