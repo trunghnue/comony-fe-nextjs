@@ -1,5 +1,5 @@
 import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./MainVisualVideo2.module.scss";
 import TextMainVisual from "./TextMainVisual";
 import { useTranslation } from "next-i18next";
@@ -10,6 +10,18 @@ import CircleLively from "@/components/atoms/CircleLively/CircleLively";
 
 export default function MainVisualVideo2() {
   const { t } = useTranslation("top");
+
+  useEffect(() => {
+    const bannerLeft = document.querySelector(`.${styles.mainVisual_inner_bannerLeft}`);
+    const bannerCenter = document.querySelector(`.${styles.mainVisual_inner_bannerCenter}`);
+    const bannerRight = document.querySelector(`.${styles.mainVisual_inner_bannerRight}`);
+    setTimeout(() => {
+      bannerLeft?.classList.add(`${styles.mainVisual_inner_bannerLeft__animated}`);
+      bannerCenter?.classList.add(`${styles.mainVisual_inner_bannerCenter__animated}`);
+      bannerRight?.classList.add(`${styles.mainVisual_inner_bannerRight__animated}`);
+    });
+  }, []);
+
   return (
     <div className={styles.mainVisual}>
       <div className={styles.mainVisual_background}></div>

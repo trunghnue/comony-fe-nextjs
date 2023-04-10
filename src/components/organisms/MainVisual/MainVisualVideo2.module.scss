@@ -3,8 +3,16 @@
   width: 100%;
   overflow-y: visible;
   background-color: $color_gray_400;
+
   @include pc() {
     height: 147.9rem;
+  }
+
+  @include mb() {
+    height: 127.3rem;
+    :lang(en) & {
+      height: 150rem;
+    }
   }
 
   &_inner {
@@ -23,22 +31,46 @@
     &_bannerRight {
       position: absolute;
       top: calc(100% - 950px);
-      height: 70rem;
       width: 59rem;
       right: 0;
       color: #fff;
       background: $color_black_gradien_opacity;
       padding: $spacing_14x $spacing_14x $spacing_24x;
+      opacity: 0;
+
+      @include max-screen(map-get($breakpoints, xs)) {
+        width: calc(100% - #{$spacing_4x});
+        max-width: 36em;
+        padding: $spacing_10x $spacing_8x $spacing_9x;
+      }
+
+      @include ipad() {
+        width: 95%;
+        padding: $spacing_13x $spacing_9x $spacing_14x;
+      }
+
+      @include mb() {
+        top: calc(100% - 653px);
+        :lang(en) & {
+          top: calc(100% - 800px);
+        }
+      }
+
+      &__animated {
+        transition: transform 0.1s ease-out 0s;
+        transform: translate(0, 50px);
+        animation: bottomToTop 1.5s both;
+      }
       &_inner {
         max-width: 41.5rem;
-        display: flex;
-        flex-direction: column;
       }
     }
     &_logo {
       margin-bottom: $spacing_10x;
       justify-content: center;
       animation: bottomToTop2 1.5s both;
+      width: 90%;
+      opacity: 0;
     }
     &_description {
       margin: 0 0 $spacing_14x;
@@ -69,6 +101,13 @@
     max-width: 1180px;
     margin: 0 auto;
     margin-left: 6.4%;
+
+    @include mb() {
+      top: $spacing_5x;
+      left: 0;
+      margin: 0 auto;
+      @include fz($font_size_30);
+    }
   }
 
   &_background {
@@ -101,6 +140,16 @@
       transform: translate(-50%, -50%);
       object-fit: cover;
     }
+  }
+}
+
+@keyframes bottomToTop {
+  0% {
+    transform: translate(0, 50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
   }
 }
 

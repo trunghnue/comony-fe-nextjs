@@ -21,7 +21,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className={`${inLoaded ? styles._loaded : ""} ${styles.initial_loading} `} />
       <div className={styles.contents}>
         <Header bgColor="black" />
-        <main>{children}</main>
+        {children}
         <h1>Button to top</h1>
         <h1>Footer</h1>
       </div>

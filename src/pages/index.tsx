@@ -11,6 +11,7 @@ import Heading from "@/components/atoms/Heading/Heading";
 import NewsItem from "@/components/molecules/NewsItem/NewsItem";
 import { i18n, useTranslation } from "next-i18next";
 import LinkText from "@/components/atoms/LinkText/LinkText";
+import DefaultLayout from "@/components/organisms/Layout/DefaultLayout";
 
 interface Props {}
 
@@ -61,28 +62,30 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
 
   return (
     <Layout>
-      <MainVisualVideo2 />
-      <div className="animatedDirection -bottomToTop">
-        <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
-          <div className={styles.newsList}>
-            <Heading level="2" align="left" fontWeight="700" headings={[{ text: "News", color: "white", spBreak: false }]} />
-            <div className={styles.newsList_contents}>
-              {newsList.length > 0 &&
-                newsList.map((item) => (
-                  <NewsItem
-                    className={styles.newsList_item}
-                    id={item.id}
-                    key={item.id}
-                    urlLink={item.newsUrl}
-                    content={i18n?.language === "en" ? item.titleEn : item.title}
-                    dateItem={item.publishedAt}
-                  />
-                ))}
+      <DefaultLayout>
+        <MainVisualVideo2 />
+        <div className="animatedDirection -bottomToTop">
+          <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
+            <div className={styles.newsList}>
+              <Heading level="2" align="left" fontWeight="700" headings={[{ text: "News", color: "white", spBreak: false }]} />
+              <div className={styles.newsList_contents}>
+                {newsList.length > 0 &&
+                  newsList.map((item) => (
+                    <NewsItem
+                      className={styles.newsList_item}
+                      id={item.id}
+                      key={item.id}
+                      urlLink={item.newsUrl}
+                      content={i18n?.language === "en" ? item.titleEn : item.title}
+                      dateItem={item.publishedAt}
+                    />
+                  ))}
+              </div>
+              <LinkText color="white" link="/news" underline value={t("newsListLink")} fontSize="standard"></LinkText>
             </div>
-            <LinkText color="white" link="/news" underline value={t("newsListLink")} fontSize="standard"></LinkText>
-          </div>
-        </SectionContainer>
-      </div>
+          </SectionContainer>
+        </div>
+      </DefaultLayout>
     </Layout>
   );
 }
