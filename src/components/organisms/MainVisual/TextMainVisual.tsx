@@ -15,7 +15,7 @@ export default function TextMainVisual({
   color = "white",
   id = "",
   isVertical = false,
-  position = "left",
+  position = "",
   tag = "p",
   title = "",
   type = "default",
