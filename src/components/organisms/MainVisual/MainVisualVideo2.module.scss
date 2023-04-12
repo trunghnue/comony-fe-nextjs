@@ -38,15 +38,10 @@
       padding: $spacing_14x $spacing_14x $spacing_24x;
       opacity: 0;
 
-      @include max-screen(map-get($breakpoints, xs)) {
-        width: calc(100% - #{$spacing_4x});
-        max-width: 36em;
-        padding: $spacing_10x $spacing_8x $spacing_9x;
-      }
-
-      @include ipad() {
-        width: 95%;
-        padding: $spacing_13x $spacing_9x $spacing_14x;
+      &__animated {
+        transition: transform 0.1s ease-out 0s;
+        transform: translate(0, 50px);
+        animation: bottomToTop 1.5s both;
       }
 
       @include mb() {
@@ -56,11 +51,38 @@
         }
       }
 
-      &__animated {
-        transition: transform 0.1s ease-out 0s;
-        transform: translate(0, 50px);
-        animation: bottomToTop 1.5s both;
+      @include screen(map-get($breakpoints, lg), map-get($breakpoints, xl)) {
+        width: 52rem;
       }
+
+      @include screen(map-get($breakpoints, md), map-get($breakpoints, lg)) {
+        width: 45rem;
+
+        :lang(en) & {
+          top: calc(100% - 1015px);
+        }
+      }
+
+      //sreen xs -> md
+      @include ipad() {
+        width: 95%;
+        padding: $spacing_13x $spacing_9x $spacing_14x;
+      }
+
+      @include max-screen(map-get($breakpoints, xs)) {
+        width: calc(100% - #{$spacing_4x});
+        max-width: 36rem;
+        padding: $spacing_10x $spacing_8x $spacing_9x;
+      }
+
+      @include max-screen(map-get($breakpoints, xxs)) {
+        top: calc(100% - 720px);
+
+        :lang(en) & {
+          top: calc(100% - 865px);
+        }
+      }
+
       &_inner {
         max-width: 41.5rem;
       }
