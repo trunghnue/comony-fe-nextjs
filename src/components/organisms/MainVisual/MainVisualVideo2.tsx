@@ -53,7 +53,7 @@ export default function MainVisualVideo2() {
             </div>
           </div>
         </div>
-        <CircleLively />
+        <CircleLively visibleAnimated className={styles.mainVisual_inner_circleLively} />
         <CTAButton
           className={styles.mainVisual_inner_button}
           type="default"
@@ -65,7 +65,7 @@ export default function MainVisualVideo2() {
         />
       </div>
       <div className={styles.mainVisual_video}>
-        <video controls src={"/video/mainvisual-movie.mp4"} poster="/images/mainvisual-poster.webp" playsInline autoPlay loop muted />
+        {/* <video controls src={"/video/mainvisual-movie.mp4"} poster="/images/mainvisual-poster.webp" playsInline autoPlay loop muted /> */}
       </div>
     </div>
   );

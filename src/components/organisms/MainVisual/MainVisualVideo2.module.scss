@@ -92,6 +92,22 @@
       position: absolute;
       bottom: 0;
     }
+    &_circleLively {
+      position: absolute;
+      top: 50%;
+      left: -11.4rem;
+      z-index: 3;
+      transform: translateY(28rem);
+
+      @include mb() {
+        left: -5rem;
+        transform: translateY(-16.5rem);
+      }
+
+      @include screen(map-get($breakpoints, md), map-get($breakpoints, xl)) {
+        top: 45%;
+      }
+    }
   }
   &_heading {
     position: relative;

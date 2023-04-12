@@ -1,44 +1,33 @@
 .circleLively {
-  position: absolute;
-  bottom: 5%;
-  left: -6rem;
-  width: 40rem;
-  height: 40rem;
+  &.__animated {
+    svg {
+      animation: rotate 10s infinite;
+    }
+  }
   &_svg {
-    animation: rotate 10s infinite;
+    transition: transform 1.3s;
+    will-change: transform;
+    &._type {
+      &__default {
+        width: 480px;
+        height: 480px;
+
+        @include mb() {
+          width: 174px;
+          height: 174px;
+        }
+      }
+    }
   }
 }
 @keyframes rotate {
   0% {
-    transform: rotate(0deg) scale(1);
+    transform: rotateZ(0deg) scale(1);
   }
   70% {
-    transform: rotate(-180deg) scale(1.5);
+    transform: rotateZ(-180deg) scale(0.75);
   }
   100% {
-    transform: rotate(-1turn) scale(1);
-  }
-}
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-
-@keyframes scale {
-  0% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-    -webkit-transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
+    transform: rotateZ(-360deg) scale(1);
   }
 }
