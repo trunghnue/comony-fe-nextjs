@@ -99,15 +99,10 @@
       line-height: 1.75;
     }
     &_appDownload {
-      & .appDownload_pc {
-        display: flex;
-        justify-content: space-evenly;
-        margin-bottom: $spacing_2x;
-      }
-      & .appDownload_link {
-        display: flex;
-        justify-content: center;
-        text-decoration: underline;
+      margin-left: -$spacing_1x;
+
+      @include mb() {
+        margin-left: 0;
       }
     }
     &_button {

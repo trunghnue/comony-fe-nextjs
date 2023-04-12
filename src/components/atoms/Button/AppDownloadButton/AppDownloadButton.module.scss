@@ -1,18 +1,73 @@
-.appDownload_button {
-  background-color: $color_gray_1000;
-  border-radius: $spacing_2x;
-  border: 1px solid $color_white;
-  &_inner {
+.appDownload {
+  &_pc {
     display: flex;
-    align-items: center;
-    padding: 2px 13px;
+    justify-content: center;
+
+    @include mb() {
+      flex-flow: wrap;
+      margin-bottom: $spacing_1x;
+      text-align: center;
+    }
   }
-  &_img {
-    margin-right: $spacing_1x;
-  }
-  &_label {
-    font-weight: $font_weight_bold;
+  // custom desktop button download
+  &_button {
+    display: block;
+    margin: 0 $spacing_1x;
+    color: $color_white;
     text-align: center;
-    @include fz($font_size_14);
+    background-color: $color_gray_1000;
+    border: 1px solid $color_gray_500;
+    border-radius: $appDownLoadButton_BorderRadius;
+
+    @include mb() {
+      margin-bottom: $spacing_1x;
+    }
+
+    &_inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    &_label {
+      flex: 1;
+      font-weight: $font_weight_medium;
+      word-break: keep-all;
+    }
+
+    // Button Size
+    &._size {
+      &__small {
+        min-width: 16.8rem;
+        padding: 0.08rem $spacing_3x;
+
+        @include fz($font_size_13);
+
+        img {
+          width: auto;
+          height: 25px;
+          margin-right: $spacing_1x;
+        }
+      }
+
+      &__medium {
+        min-width: 26rem;
+        padding: $spacing_1x $spacing_4x;
+
+        @include fz($font_size_16);
+
+        img {
+          width: auto;
+          height: 32px;
+          margin-right: $spacing_1x;
+        }
+      }
+    }
+  }
+  &_link {
+    display: block;
+    margin-top: $spacing_2x;
+    text-align: center;
   }
 }

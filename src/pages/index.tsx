@@ -93,6 +93,6 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
 // or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "en", ["common", "top"])),
+    ...(await serverSideTranslations(locale ?? "en", ["common", "top", "downloads"])),
   },
 });

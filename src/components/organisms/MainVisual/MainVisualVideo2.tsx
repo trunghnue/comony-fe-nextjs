@@ -44,12 +44,8 @@ export default function MainVisualVideo2() {
             </div>
             <div className={styles.mainVisual_inner_appDownload}>
               <div className={styles.appDownload_pc}>
-                <AppDownloadButton os="mac" />
-                <AppDownloadButton os="windows" />
+                <AppDownloadButton className={styles.mainVisual_inner_appDownload} />
               </div>
-              <Link href="./downloads" className={styles.appDownload_link}>
-                ※ System Requirements
-              </Link>
             </div>
           </div>
         </div>
