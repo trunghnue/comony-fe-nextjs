@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
+import React from "react";
 import styles from "./CTAButton.module.scss";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
-interface I_ButtonProps {
+interface Props {
   className?: string;
   type?: string;
   label?: string;
@@ -30,28 +31,28 @@ export default function CTAButton({
   size = "medium",
   textChangeHover = false,
   type = "default",
-}: I_ButtonProps) {
-  const classes = useMemo(() => {
-    return `${type && styles[`_type__${type}`]} ${size && styles[`_size__${size}`]} ${disabled ? styles._disabled : ""} ${
-      textChangeHover ? styles._textChanged : ""
-    }`;
-  }, [type, size, disabled, textChangeHover]);
+}: Props) {
+  const { t } = useTranslation("top");
+  const classes = [
+    className,
+    styles[`_type__${type}`],
+    styles[`_size__${size}`],
+    disabled && styles._disabled,
+    textChangeHover && styles._textChanged,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  const iconClasses = useMemo(() => {
-    return `${iconColor && `_iconColor__${iconColor}`}`;
-  }, [iconColor]);
-  const Component: React.ElementType = externalLink ? "a" : link !== "" ? Link : "button";
+  const iconClasses = styles[`_iconColor__${iconColor}`];
+
+  // const Component: React.ElementType = externalLink ? "a" : link !== "" ? Link : "button";
 
   return (
-    <Component
-      href={link}
-      target={externalLink ? "_blank" : ""}
-      className={`${className} ${classes} ${classNameForGa && styles[classNameForGa]} ${styles.CTAButton}`}
-    >
-      <span className={`${styles.CTAButton_label} ${labelMb ? "is-pc" : ""}`}>{label}</span>
+    <Link className={`${styles.CTAButton} ${classes}`} href={link} target={externalLink ? "_blank" : ""}>
+      <span className={`${styles.CTAButton_label} ${labelMb && "is-pc"}`}>{label}</span>
       {labelMb && <span className={`${styles.CTAButton_label} is-sp`}>{labelMb}</span>}
-      {textChangeHover && <span className={`${styles.CTAButton_label} ${styles.is_pc}`}>buttonTextChange</span>}
-      {icon && <span className={`${styles.CTAButton_icon} ${styles[iconClasses]}`} />}
-    </Component>
+      {textChangeHover && <span className={`${styles.CTAButton_label} is_pc`}>{t("buttonTextChange")}</span>}
+      {icon && <span className={`${styles.CTAButton_icon} ${iconClasses}`} />}
+    </Link>
   );
 }

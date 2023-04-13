@@ -106,8 +106,14 @@
       }
     }
     &_button {
-      position: absolute;
+      position: absolute !important;
       bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -7.2rem);
+
+      @include mb() {
+        transform: translate(-50%, -4rem);
+      }
     }
     &_circleLively {
       position: absolute;

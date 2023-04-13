@@ -152,6 +152,12 @@
         padding: $spacing_3x;
         @include fz($font_size_15);
       }
+
+      @include mb() {
+        @include fz($font_size_12);
+        padding: $spacing_6x;
+        // padding: $spacing_1x $spacing_2x;
+      }
     }
     &__medium {
       @include pc() {
@@ -159,6 +165,12 @@
         height: 9.2rem;
         padding: $spacing_9x $spacing_6x;
         @include fz($font_size_24);
+      }
+      @include mb() {
+        @include fz($font_size_18);
+        min-width: 30rem;
+        height: 6.4rem;
+        padding: $spacing_6x;
       }
     }
   }

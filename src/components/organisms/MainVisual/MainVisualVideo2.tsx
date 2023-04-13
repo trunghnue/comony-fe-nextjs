@@ -53,8 +53,8 @@ export default function MainVisualVideo2() {
         <CTAButton
           className={styles.mainVisual_inner_button}
           type="default"
-          label="Go to the gallery page"
-          labelMb="space gallery"
+          label={t("mainVisual.button") || ""}
+          labelMb={t("mainVisual.button_mb") || ""}
           icon
           iconColor="black"
           link="/spaces"
