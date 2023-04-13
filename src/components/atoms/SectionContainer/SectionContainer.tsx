@@ -26,27 +26,22 @@ export default function SectionContainer({
 }: SectionContainerProps) {
   const classes = useMemo(() => {
     return [
+      className,
       styles[`_bgColor__${bgColor}`],
       styles[`_borderTopColor__${borderTopColor}`],
       styles[`_position__${position}`],
       styles[`_wrapSize__${wrapSize}`],
-      fullWidth ? styles["__fullWidth"] : "",
-    ].join(" ");
-  }, [bgColor, borderTopColor, fullWidth, position, wrapSize]);
-
-  const sizeClass = useMemo(() => {
-    return styles[`_containerSize__${containerSize}`];
-  }, [containerSize]);
-
-  const colClasses = useMemo(() => {
-    return styles[`_col__${columns}`];
-  }, [columns]);
+      fullWidth ?? styles["__fullWidth"],
+    ]
+      .filter(Boolean)
+      .join(" ");
+  }, [className, bgColor, borderTopColor, position, wrapSize, fullWidth]);
 
   return (
-    <section className={`${styles.section} ${classes} ${className}`}>
-      <div className={`${styles.section_inner} ${sizeClass}`}>
+    <section className={`${styles.section} ${classes}`}>
+      <div className={`${styles.section_inner} ${styles[`_containerSize__${containerSize}`]}`}>
         <div className={styles.section_content}>
-          <div className={`${styles.section_column} ${colClasses}`}>{children}</div>
+          <div className={`${styles.section_column} ${styles[`_col__${columns}`]}`}>{children}</div>
         </div>
       </div>
     </section>

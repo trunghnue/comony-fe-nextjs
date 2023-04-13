@@ -205,6 +205,10 @@
       & .__right_border {
         margin-right: $spacing_4x;
 
+        @include header-mb() {
+          margin-right: 0;
+        }
+
         &::after {
           position: absolute;
           top: 50%;
@@ -214,6 +218,10 @@
           content: "";
           background-color: $color_gray_lighten1;
           transform: translateY(-50%);
+
+          @include header-mb() {
+            display: none;
+          }
         }
       }
     }

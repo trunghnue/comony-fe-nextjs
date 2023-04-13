@@ -1,22 +1,16 @@
-import AppLogo from "@/components/atoms/AppLogo/AppLogo";
-import { useMemo, useState } from "react";
-import styles from "./Header.module.scss";
+import { useState } from "react";
 import Link from "next/link";
-import IconBase from "@/components/atoms/IconBase/IconBase";
-import { icons } from "@/constants/icons";
-import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
 import { i18n, useTranslation } from "next-i18next";
+import { icons } from "@/constants/icons";
+import AppLogo from "@/components/atoms/AppLogo/AppLogo";
+import IconBase from "@/components/atoms/IconBase/IconBase";
+import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
+import styles from "./Header.module.scss";
 
 export default function Header({ bgColor }: { bgColor: string }) {
   const { t } = useTranslation("common");
 
-  const iconColor = useMemo(() => {
-    return bgColor === "white" ? "black" : "white";
-  }, [bgColor]);
-
-  const bgColorClass = useMemo(() => {
-    return `${bgColor && styles[`_bgColor__${bgColor}`]}`;
-  }, [bgColor]);
+  const iconColor = bgColor === "white" ? "black" : "white";
 
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
 
@@ -27,11 +21,10 @@ export default function Header({ bgColor }: { bgColor: string }) {
       ...navigation,
       isHumbergerOpen: !navigation.isHumbergerOpen,
     });
-    console.log("🚀 ~ file: Header.tsx:30 ~ navigation.isHumbergerOpen:", navigation.isHumbergerOpen);
   };
 
   return (
-    <header className={`${styles.header} ${bgColorClass}`}>
+    <header className={`${styles.header} ${styles[`_bgColor__${bgColor}`]}`}>
       <Link className={styles.header_logo} href="./">
         <AppLogo iconColor={iconColor} size="small" direction="vertical" />
       </Link>
@@ -100,7 +93,7 @@ export default function Header({ bgColor }: { bgColor: string }) {
                 iconHoverColor={bgColor === "black" ? "#fff" : "#2b5ba9"}
               />
             </button>
-            <div className={`${styles.header_dropdown} ${isLanguageMenuOpen ? styles.is_open : ""}  ${bgColorClass}`}>
+            <div className={`${styles.header_dropdown} ${isLanguageMenuOpen ? styles.is_open : ""}  ${styles[`_bgColor__${bgColor}`]}`}>
               <div className={styles.header_dropdown_item}>
                 <Link href="/" locale="ja">
                   日本語

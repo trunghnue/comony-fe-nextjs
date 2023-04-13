@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from "./CTAButton.module.scss";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
@@ -33,18 +33,11 @@ export default function CTAButton({
   type = "default",
 }: Props) {
   const { t } = useTranslation("top");
-  const classes = [
-    className,
-    styles[`_type__${type}`],
-    styles[`_size__${size}`],
-    disabled && styles._disabled,
-    textChangeHover && styles._textChanged,
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  const iconClasses = styles[`_iconColor__${iconColor}`];
-
+  const classes = useMemo(() => {
+    return [className, styles[`_type__${type}`], styles[`_size__${size}`], disabled && styles._disabled, textChangeHover && styles._textChanged]
+      .filter(Boolean)
+      .join(" ");
+  }, [className, type, size, disabled, textChangeHover]);
   // const Component: React.ElementType = externalLink ? "a" : link !== "" ? Link : "button";
 
   return (
@@ -52,7 +45,7 @@ export default function CTAButton({
       <span className={`${styles.CTAButton_label} ${labelMb && "is-pc"}`}>{label}</span>
       {labelMb && <span className={`${styles.CTAButton_label} is-sp`}>{labelMb}</span>}
       {textChangeHover && <span className={`${styles.CTAButton_label} is_pc`}>{t("buttonTextChange")}</span>}
-      {icon && <span className={`${styles.CTAButton_icon} ${iconClasses}`} />}
+      {icon && <span className={`${styles.CTAButton_icon} ${styles[`_iconColor__${iconColor}`]}`} />}
     </Link>
   );
 }

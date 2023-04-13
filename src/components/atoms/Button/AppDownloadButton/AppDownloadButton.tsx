@@ -12,13 +12,27 @@ interface Props {
   size?: "small" | "medium";
 }
 
+interface AppButtonProps {
+  size: string;
+  href: string;
+  iconSrc: string;
+  appName: string;
+  downloadText: string;
+}
+
+const AppButton = ({ size, href, iconSrc, appName, downloadText }: AppButtonProps) => (
+  <Link className={`${styles.appDownload_button} ${styles[`_size__${size}`]}`} href={href}>
+    <div className={styles.appDownload_button_inner}>
+      <Image src={iconSrc} alt={`${appName} App`} width="18" height="19" />
+      <div className={styles.appDownload_button_label}>
+        {appName} <br /> {downloadText}
+      </div>
+    </div>
+  </Link>
+);
+
 export default function AppDownloadButton({ className = "", size = "small" }: Props) {
   const { t } = useTranslation(["downloads", "top"]);
-
-  const classes = useMemo(() => {
-    return styles[`_size__${size}`];
-  }, [size]);
-
   const appConstants = useMemo(() => constants, []);
   const appInstallerPath = (pctype: string) => {
     const extensions = pctype === "win" ? "exe" : "pkg";
@@ -28,26 +42,24 @@ export default function AppDownloadButton({ className = "", size = "small" }: Pr
 
   return (
     <div className={styles.appDownload}>
-      <div className={`${className} ${styles.appDownload_pc}`}>
+      <div className={`${styles.appDownload_pc} ${className}`}>
         {/* Mac Button  */}
-        <Link className={`${styles.appDownload_button} ${classes}`} href={appInstallerPath("mac")}>
-          <div className={styles.appDownload_button_inner}>
-            <Image src="/images/icon/icon-mac-home.svg" alt="Mac App" width="18" height="19"></Image>
-            <div className={styles.appDownload_button_label}>
-              {t("downloads.osApp") || ""} <br /> {t("downloads.dl") || ""}
-            </div>
-          </div>
-        </Link>
+        <AppButton
+          size={size}
+          href={appInstallerPath("mac")}
+          iconSrc="/images/icon/icon-mac-home.svg"
+          appName={t("downloads.osApp")}
+          downloadText={t("downloads.dl")}
+        />
 
         {/* Window Button */}
-        <Link className={`${styles.appDownload_button} ${classes}`} href={appInstallerPath("win")}>
-          <div className={styles.appDownload_button_inner}>
-            <Image src="/images/icon/icon-windows-home.svg" alt="Mac App" width="18" height="19"></Image>
-            <div className={styles.appDownload_button_label}>
-              {t("downloads.winApp") || ""} <br /> {t("downloads.dl") || ""}
-            </div>
-          </div>
-        </Link>
+        <AppButton
+          size={size}
+          href={appInstallerPath("win")}
+          iconSrc="/images/icon/icon-windows-home.svg"
+          appName={t("downloads.winApp")}
+          downloadText={t("downloads.dl")}
+        />
       </div>
 
       {/* Link Text */}

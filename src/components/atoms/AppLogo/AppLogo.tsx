@@ -12,10 +12,8 @@ interface Props {
 
 export default function AppLogo({ size = "medium", direction = "horizontal", iconColor = "#222", className = "" }: Props) {
   const classes = useMemo(() => {
-    return `${size && styles[`_size__${size}`]} ${direction && styles[`_direction__${direction}`]} ${
-      iconColor && styles[`_iconColor__${iconColor}`]
-    }`;
-  }, [size, direction, iconColor]);
+    return [className, styles[`_size__${size}`], styles[`_direction__${direction}`], styles[`_iconColor__${iconColor}`]].filter(Boolean).join(" ");
+  }, [className, size, direction, iconColor]);
 
   const markSize = useMemo((): string => {
     if (size === "xsmall") {
@@ -57,7 +55,7 @@ export default function AppLogo({ size = "medium", direction = "horizontal", ico
   }, [size]);
 
   return (
-    <div className={`${className} ${styles.appLogo} ${classes}`}>
+    <div className={`${styles.appLogo} ${classes}`}>
       <IconBase
         className={styles.appLogo_mark}
         iconName="logo"

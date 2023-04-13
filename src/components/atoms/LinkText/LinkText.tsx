@@ -13,11 +13,11 @@ interface LinkTextProps {
 
 export default function LinkText({ className = "", value, link = "", color = "black", underline = false, fontSize = "small" }: LinkTextProps) {
   const classes = useMemo(() => {
-    return [styles[`_color__${color}`], styles[`_fontSize__${fontSize}`], underline && styles._underline].join(" ");
-  }, [color, fontSize, underline]);
+    return [className, styles[`_color__${color}`], styles[`_fontSize__${fontSize}`], underline && styles._underline].filter(Boolean).join(" ");
+  }, [className, color, fontSize, underline]);
 
   return (
-    <Link className={`${className} ${classes} ${styles.link}`} href={link}>
+    <Link className={`${styles.link} ${classes}`} href={link}>
       {value}
     </Link>
   );

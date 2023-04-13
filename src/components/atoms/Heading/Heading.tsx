@@ -18,10 +18,6 @@ interface HeadingProps {
 export default function Heading({ align = "center", level = "1", headings, fontWeight = "400" }: HeadingProps) {
   const Component: React.ElementType = `h${level}`;
 
-  const classes = useMemo(() => {
-    return styles[`_lv__${level}`];
-  }, [level]);
-
   const styless = useMemo(() => {
     return {
       fontWeight: fontWeight,
@@ -29,7 +25,7 @@ export default function Heading({ align = "center", level = "1", headings, fontW
     };
   }, [fontWeight, align]);
   return (
-    <Component className={`${styles.heading} ${classes}`} style={styless}>
+    <Component className={`${styles.heading} ${styles[`_lv__${level}`]}`} style={styless}>
       {headings.map((heading, index) => {
         return (
           //   <span
@@ -37,7 +33,7 @@ export default function Heading({ align = "center", level = "1", headings, fontW
           //     className={[styles[`_fontColor__${heading.color}`], heading.spBreak ? styles["-spBreak"] : ""].join(" ")}
           //     dangerouslySetInnerHTML={{ __html: heading.text }}
           //   />
-          <span key={index} className={[styles[`_fontColor__${heading.color}`], heading.spBreak ? styles["-spBreak"] : ""].join(" ")}>
+          <span key={index} className={[styles[`_fontColor__${heading.color}`], heading.spBreak && styles["-spBreak"]].filter(Boolean).join(" ")}>
             {heading.text}{" "}
           </span>
         );

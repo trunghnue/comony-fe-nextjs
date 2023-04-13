@@ -20,15 +20,13 @@ export default function TextMainVisual({
   title = "",
   type = "default",
 }: TextMainVisualProps) {
-  const [classes, setClasses] = useState({});
+  const classes = useMemo(() => {
+    return [styles[`_type__${type}`], styles[`_position__${position}`], styles[`_color__${color}`], isVertical && styles["__vertical"]]
+      .filter(Boolean)
+      .join(" ");
+  }, [color, isVertical, position, type]);
 
   useEffect(() => {
-    const computedClasses = `${type && styles[`_type__${type}`]} ${position && styles[`_position__${position}`]} ${
-      color && styles[`_color__${color}`]
-    } ${isVertical ? styles.__vertical : ""}`;
-
-    setClasses(computedClasses);
-
     const html = document.querySelector<HTMLElement>(`#${id}`);
     const animationDelay = 20;
 
