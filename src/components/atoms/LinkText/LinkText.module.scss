@@ -1,10 +1,23 @@
 .link {
   &._color {
+    &__black {
+      color: $font_color_base;
+    }
     &__white {
       color: $color_white;
     }
   }
   &._fontSize {
+    &__small {
+      @include fz($font_size_13);
+    }
+    &__medium {
+      @include fz($font_size_14);
+
+      @include mb() {
+        @include fz($font_size_12);
+      }
+    }
     &__standard {
       @include fz($font_size_16);
 

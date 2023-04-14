@@ -8,7 +8,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./MainVisualVideo2.module.scss";
 
 export default function MainVisualVideo2() {
-  console.log("🚀 ~ file: MainVisualVideo2.tsx:11 ~ MainVisualVideo2:");
+  // console.log("🚀 ~ file: MainVisualVideo2.tsx:11 ~ MainVisualVideo2:");
   const { t } = useTranslation("top");
 
   const bannerRightRef = useRef<HTMLDivElement>(null);
@@ -37,11 +37,7 @@ export default function MainVisualVideo2() {
               <br />
               <TextMainVisual id="description3" type="default" position="left" color="white" title={t("mainVisual.description6") || ""} />
             </div>
-            <div className={styles.mainVisual_inner_appDownload}>
-              <div className={styles.appDownload_pc}>
-                <AppDownloadButton className={styles.mainVisual_inner_appDownload} />
-              </div>
-            </div>
+            <AppDownloadButton className={styles.mainVisual_inner_appDownload} />
           </div>
         </div>
         <CircleLively visibleAnimated className={styles.mainVisual_inner_circleLively} />

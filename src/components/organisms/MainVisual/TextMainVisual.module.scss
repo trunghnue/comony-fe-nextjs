@@ -46,10 +46,16 @@
       }
     }
     &__title {
-      margin: 0 0 $spacing_12x;
+      margin: 0;
+      margin-bottom: $spacing_12x;
       font-weight: $font_weight_bold;
       word-break: break-word;
       @include fz($font_size_24);
+
+      @include mb() {
+        @include fz($font_size_18);
+        margin-bottom: $spacing_6x;
+      }
     }
     &__default {
       display: inline;
@@ -57,11 +63,11 @@
       overflow: hidden;
       font-weight: $font_weight_normal;
       word-break: break-word;
+
       @include fz($font_size_16);
 
-      span {
-        word-break: break-world;
-        animation: opacityDrop 2s both;
+      @include mb() {
+        @include fz($font_size_12);
       }
     }
   }

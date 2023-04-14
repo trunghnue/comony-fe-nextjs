@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import LinkText from "../../LinkText/LinkText";
-import { isMobile } from "react-device-detect";
 import constants from "@/constants";
+import Device from "../../Device";
 
 interface Props {
   className?: string;
@@ -41,8 +41,8 @@ export default function AppDownloadButton({ className = "", size = "small" }: Pr
   };
 
   return (
-    <div className={styles.appDownload}>
-      <div className={`${styles.appDownload_pc} ${className}`}>
+    <div className={`${className}`}>
+      <div className={`${styles.appDownload_pc}`}>
         {/* Mac Button  */}
         <AppButton
           size={size}
@@ -63,14 +63,39 @@ export default function AppDownloadButton({ className = "", size = "small" }: Pr
       </div>
 
       {/* Link Text */}
-      <LinkText
+      {/* <LinkText
         className={styles.appDownload_link}
         color="white"
         link="./downloads"
         underline
-        value={isMobile ? t("mainVisual.linkTextSp", { ns: "top" }) : t("mainVisual.linkText", { ns: "top" })}
+        value={t("mainVisual.linkText", { ns: "top" })}
         fontSize="medium"
-      />
+      /> */}
+      <Device>
+        {({ isMobile }) => {
+          if (isMobile)
+            return (
+              <LinkText
+                className={styles.appDownload_link}
+                color="white"
+                link="./downloads"
+                underline
+                value={t("mainVisual.linkTextSp", { ns: "top" })}
+                fontSize="medium"
+              />
+            );
+          return (
+            <LinkText
+              className={styles.appDownload_link}
+              color="white"
+              link="./downloads"
+              underline
+              value={t("mainVisual.linkText", { ns: "top" })}
+              fontSize="medium"
+            />
+          );
+        }}
+      </Device>
     </div>
   );
 }
