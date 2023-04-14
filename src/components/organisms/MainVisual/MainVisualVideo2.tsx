@@ -1,25 +1,19 @@
 import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
-import React, { useEffect, useRef } from "react";
-import styles from "./MainVisualVideo2.module.scss";
 import TextMainVisual from "./TextMainVisual";
-import { useTranslation } from "next-i18next";
 import AppLogo from "@/components/atoms/AppLogo/AppLogo";
-import Link from "next/link";
 import AppDownloadButton from "@/components/atoms/Button/AppDownloadButton/AppDownloadButton";
 import CircleLively from "@/components/atoms/CircleLively/CircleLively";
+import { useTranslation } from "next-i18next";
+import React, { useEffect, useRef } from "react";
+import styles from "./MainVisualVideo2.module.scss";
 
 export default function MainVisualVideo2() {
   const { t } = useTranslation("top");
 
+  const bannerRightRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const bannerLeft = document.querySelector(`.${styles.mainVisual_inner_bannerLeft}`);
-    const bannerCenter = document.querySelector(`.${styles.mainVisual_inner_bannerCenter}`);
-    const bannerRight = document.querySelector(`.${styles.mainVisual_inner_bannerRight}`);
-    setTimeout(() => {
-      bannerLeft?.classList.add(`${styles.mainVisual_inner_bannerLeft__animated}`);
-      bannerCenter?.classList.add(`${styles.mainVisual_inner_bannerCenter__animated}`);
-      bannerRight?.classList.add(`${styles.mainVisual_inner_bannerRight__animated}`);
-    });
+    const bannerRight = bannerRightRef.current;
+    bannerRight?.classList.add(styles.mainVisual_inner_bannerRight__animated);
   }, []);
 
   return (
@@ -31,7 +25,7 @@ export default function MainVisualVideo2() {
           <TextMainVisual id="title2" isVertical type="heading" title={t("mainVisual.title2") || ""} />
           <TextMainVisual id="subTitle" isVertical type="subTitle" title={t("mainVisual.subTitle") || ""} />
         </div>
-        <div className={styles.mainVisual_inner_bannerRight}>
+        <div className={styles.mainVisual_inner_bannerRight} ref={bannerRightRef}>
           <div className={styles.mainVisual_inner_bannerRight_inner}>
             <AppLogo className={styles.mainVisual_inner_logo} iconColor="#ffffff" size="medium" direction="vertical" />
             <TextMainVisual id="title3" type="title" title={t("mainVisual.title3") || ""} position="center" />

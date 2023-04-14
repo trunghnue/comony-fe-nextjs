@@ -18,46 +18,60 @@ interface Props {}
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
+  // console.log("🚀 ~ file: index.tsx:21 ~ Home:");
   const { t } = useTranslation("top");
 
   const [newsList, setNewsList] = useState<I_Get_News_Id_Response_Data[]>([]);
 
-  const fetchNews = async () => {
-    const params: I_Newslist = {
-      direction: "DESC",
-      limit: 3,
-      page: 1,
-      sort: "publishedAt",
-    };
-
-    const headers = {
-      "x-comony-api": "true",
-      "x-api-key": "OiIxNTJDNjZBMS1EOTRBLTQ5QjItQUVGQi03QjE3QTlEQkFERjUifQ",
-    };
-
-    try {
-      const queryParams = Object.entries(params)
-        .reduce((acc, [key, value]) => {
-          return `${acc}&${key}=${value}`;
-        }, "")
-        .slice(1); // to get string: direction=DESC&limit=3&page=1&sort=publishedAt
-
-      const response = await fetch(`https://api.comony.net/news?${new URLSearchParams(queryParams)}`, {
-        headers,
-      });
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const res = await response.json();
-      // console.log("🚀 ~ file: index.tsx:44 ~ res:", res);
-      setNewsList(res.data.list);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
   useEffect(() => {
+    const controller = new AbortController();
+    // console.log("🚀 ~ file: index.tsx:28 ~ controller:", controller);
+    const signal = controller.signal;
+
+    const fetchNews = async () => {
+      const params: I_Newslist = {
+        direction: "DESC",
+        limit: 3,
+        page: 1,
+        sort: "publishedAt",
+      };
+
+      const headers = {
+        "x-comony-api": "true",
+        "x-api-key": "OiIxNTJDNjZBMS1EOTRBLTQ5QjItQUVGQi03QjE3QTlEQkFERjUifQ",
+      };
+
+      try {
+        const queryParams = Object.entries(params)
+          .reduce((acc, [key, value]) => {
+            return `${acc}&${key}=${value}`;
+          }, "")
+          .slice(1); // to get string: direction=DESC&limit=3&page=1&sort=publishedAt
+
+        const response = await fetch(`https://api.comony.net/news?${new URLSearchParams(queryParams)}`, {
+          headers,
+          signal,
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const res = await response.json();
+        setNewsList(res.data.list);
+      } catch (error: any) {
+        if (error.name !== "AbortError") {
+          console.error("Error fetching data:", error);
+        }
+      }
+    };
+
     fetchNews();
+
+    return () => {
+      controller.abort();
+      // console.log("🚀 ~ file: index.tsx:74 ~ controller.abort()");
+    };
   }, []);
 
   return (

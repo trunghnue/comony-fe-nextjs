@@ -3,6 +3,7 @@ import styles from "./layout.module.scss";
 import Header from "./organisms/Header/Header";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  // console.log("🚀 ~ file: layout.tsx:6 ~ Layout:");
   const [inLoaded, setInLoaded] = useState(false);
 
   // cách dùng use effect

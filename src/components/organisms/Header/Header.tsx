@@ -8,6 +8,7 @@ import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
 import styles from "./Header.module.scss";
 
 export default function Header({ bgColor }: { bgColor: string }) {
+  // console.log("🚀 ~ file: Header.tsx:11 ~ Header:");
   const { t } = useTranslation("common");
 
   const iconColor = bgColor === "white" ? "black" : "white";
