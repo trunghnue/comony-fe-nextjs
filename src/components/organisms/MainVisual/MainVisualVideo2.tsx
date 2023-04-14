@@ -8,6 +8,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./MainVisualVideo2.module.scss";
 
 export default function MainVisualVideo2() {
+  console.log("🚀 ~ file: MainVisualVideo2.tsx:11 ~ MainVisualVideo2:");
   const { t } = useTranslation("top");
 
   const bannerRightRef = useRef<HTMLDivElement>(null);
