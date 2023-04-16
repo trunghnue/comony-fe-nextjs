@@ -1,7 +1,28 @@
+// slide from bottom to top animation
+@keyframes mymoveTop {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 .animatedDirection {
   &.-bottomToTop {
     .imageBoxAnimated {
       transform: translateY(100px);
+    }
+
+    &--animated {
+      .imageBoxAnimated {
+        animation: mymoveTop 1s;
+        animation-fill-mode: both;
+        animation-timing-function: ease-out;
+      }
     }
   }
 }
