@@ -18,25 +18,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
   console.log("🚀 ~ file: index.tsx:21 ~ Home:");
-  return (
-    <Layout>
-      <DefaultLayout>
-        <MainVisualVideo2 />
-        <ArchitectBanner />
-        <div className="animatedDirection -bottomToTop">
-          <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
-            <NewsList />
-          </SectionContainer>
-        </div>
-      </DefaultLayout>
-    </Layout>
-  );
-}
-
-const ArchitectBanner = () => {
-  const containerRef = useRef(null);
+  const architectBannerRef = useRef<HTMLDivElement>(null);
+  const newsListRef = useRef<HTMLDivElement>(null);
   const { visibilityChangedArrows } = handleScroll();
-
   useEffect(() => {
     const handleVisibilityChange = (entries: IntersectionObserverEntry[]) => {
       const isVisible = entries[0].isIntersecting;
@@ -46,8 +30,11 @@ const ArchitectBanner = () => {
       }
     };
     const observer = new IntersectionObserver(handleVisibilityChange);
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
+    if (architectBannerRef.current) {
+      observer.observe(architectBannerRef.current);
+    }
+    if (newsListRef.current) {
+      observer.observe(newsListRef.current);
     }
     return () => {
       observer.disconnect();
@@ -56,24 +43,40 @@ const ArchitectBanner = () => {
   }, []);
 
   return (
+    <Layout>
+      <DefaultLayout>
+        <MainVisualVideo2 />
+        <div className="animatedDirection -bottomToTop" ref={architectBannerRef}>
+          <ArchitectBanner />
+        </div>
+        <div className="animatedDirection -bottomToTop" ref={newsListRef}>
+          <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
+            <NewsList />
+          </SectionContainer>
+        </div>
+      </DefaultLayout>
+    </Layout>
+  );
+}
+
+function ArchitectBanner() {
+  return (
     <div>
-      <div className="animatedDirection -bottomToTop" ref={containerRef}>
-        <section className={`${styles.architect} imageBoxAnimated`}>
-          <Link href="/release/architect-seminar">
-            <Image className={`${styles.architect_image} is-pc`} src="/images/architect/top-banner.webp" alt="top banner" width={1440} height={139} />
-            <Image
-              className={`${styles.architect_image} is-sp`}
-              src="/images/architect/top-banner_sp.webp"
-              alt="top banner sp"
-              width={375}
-              height={139}
-            />
-          </Link>
-        </section>
-      </div>
+      <section className={`${styles.architect} imageBoxAnimated`}>
+        <Link href="/release/architect-seminar">
+          <Image className={`${styles.architect_image} is-pc`} src="/images/architect/top-banner.webp" alt="top banner" width={1440} height={139} />
+          <Image
+            className={`${styles.architect_image} is-sp`}
+            src="/images/architect/top-banner_sp.webp"
+            alt="top banner sp"
+            width={375}
+            height={139}
+          />
+        </Link>
+      </section>
     </div>
   );
-};
+}
 
 // or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
