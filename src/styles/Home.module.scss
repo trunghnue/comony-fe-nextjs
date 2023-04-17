@@ -19,3 +19,15 @@
     height: 100%;
   }
 }
+
+.heading {
+  &._position {
+    &__right {
+      padding: $spacing_41x 0 0 calc((100% - #{$default_contents_W}) / 2 - #{$spacing_30x});
+
+      @include mb() {
+        padding: $spacing_20x 0 0 0;
+      }
+    }
+  }
+}

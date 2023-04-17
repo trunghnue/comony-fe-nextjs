@@ -36,6 +36,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <MainVisualVideo2 />
         <ArchitectBanner />
         <NewList />
+        <HeadingBlock />
       </DefaultLayout>
     </Layout>
   );
@@ -158,6 +159,14 @@ function NewList() {
           <LinkText color="white" link="/news" underline value={t("newsListLink")} fontSize="standard"></LinkText>
         </div>
       </SectionContainer>
+    </div>
+  );
+}
+
+function HeadingBlock() {
+  return (
+    <div className="animatedDirection -right">
+      <section className={styles.heading_position__right}>SubHeadingBlock</section>
     </div>
   );
 }
