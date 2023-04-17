@@ -1,3 +1,17 @@
+.newsList {
+  &_contents {
+    margin: $spacing_8x auto $spacing_14x;
+    @include mb() {
+      margin: $spacing_8x auto;
+    }
+  }
+  &_item {
+    &:not(:last-child) {
+      margin-bottom: $spacing_6x;
+    }
+  }
+}
+
 .architect {
   width: 100%;
   &_image {
