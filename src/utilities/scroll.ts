@@ -6,12 +6,21 @@ export function handleScroll() {
       if (!itemsClass) {
         return;
       }
-
-      if (itemsClass.contains("-bottomToTop") && !itemsClass.contains("-bottomToTop--animated")) {
-        elm?.classList.add("-bottomToTop--animated");
+      if (itemsClass.contains("-right") && !itemsClass.contains("-right--animated")) {
+        elm.classList.add("-right--animated");
+      } else if (itemsClass.contains("-bottomToTop") && !itemsClass.contains("-bottomToTop--animated")) {
+        elm.classList.add("-bottomToTop--animated");
       }
     }
   };
 
-  return { visibilityChangedArrows };
+  const maskTxtAnimation = (isVisible: boolean, entry: IntersectionObserverEntry, delay = 0) => {
+    if (isVisible) {
+      setTimeout(() => {
+        entry.target.classList.add("show-mask");
+      }, delay);
+    }
+  };
+
+  return { visibilityChangedArrows, maskTxtAnimation };
 }

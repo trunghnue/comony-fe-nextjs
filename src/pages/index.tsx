@@ -15,10 +15,11 @@ import NewsItem from "@/components/molecules/NewsItem/NewsItem";
 import { i18n, useTranslation } from "next-i18next";
 import LinkText from "@/components/atoms/LinkText/LinkText";
 import { I_Get_News_Id_Response_Data, I_Newslist } from "@/types/schema/news";
+import { SubHeadingBlock } from "@/components/molecules/SubHeadingBlock/SubHeadingBlock";
 
 interface Props {}
 const inter = Inter({ subsets: ["latin"] });
-const { visibilityChangedArrows } = handleScroll();
+const { visibilityChangedArrows, maskTxtAnimation } = handleScroll();
 const handleVisibilityChange = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
   const isVisible = entries[0].isIntersecting;
   if (isVisible) {
@@ -36,7 +37,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <MainVisualVideo2 />
         <ArchitectBanner />
         <NewList />
-        <HeadingBlock />
+        <Video />
       </DefaultLayout>
     </Layout>
   );
@@ -163,10 +164,31 @@ function NewList() {
   );
 }
 
-function HeadingBlock() {
+function Video() {
+  const { t } = useTranslation("top");
+  const videoRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries, observer));
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div className="animatedDirection -right">
-      <section className={styles.heading_position__right}>SubHeadingBlock</section>
+    <div className="animatedDirection -right" ref={videoRef}>
+      <section className={`heading ${styles._position__right}`}>
+        <SubHeadingBlock
+          title={{ line1: t("video.title1"), line2: t("video.title2") || "" }}
+          description={t("video.description") || ""}
+          onVisibilityChanged={maskTxtAnimation}
+        />
+      </section>
     </div>
   );
 }

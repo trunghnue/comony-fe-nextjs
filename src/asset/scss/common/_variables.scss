@@ -58,8 +58,15 @@ $color_light_blue_100: #f7f7fd;
 $color_light_blue_200: #dfe6f0;
 
 // Gradiention
+$color_yellow_gradient: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000;
 $color_black_gradient: linear-gradient(90deg, #100f09 0%, #2b2e33 100%);
+$color_black_gradien_opacity: linear-gradient(90deg, rgba(#100f09, 0.9) 0%, rgba(#2b2e33, 0.9) 100%);
+$color_black_gradient_2: linear-gradient(90deg, #090b10 0%, #2b2e33 100%);
+$color_black_gradient_3: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
 $color_white_gradient: linear-gradient(108.46deg, #fff 1.35%, #faf9f3 85.13%);
+$color_blue_gradient: linear-gradient(179.48deg, #b3cede 3.48%, #d7cdbf 92.91%);
+$color_white_gradient_2: linear-gradient(181.9deg, rgba(255, 255, 255, 0) -3.93%, #fff 85.61%);
+$color_black_gradient_4: linear-gradient(90deg, rgba(16, 15, 9, 0.6) 0%, rgba(43, 46, 51, 0.6) 100%);
 
 /* -----------------------------------------
       Font Weight

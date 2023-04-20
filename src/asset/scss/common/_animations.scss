@@ -1,3 +1,11 @@
+// text animation for SubHeadingBlock
+.mask-elem div,
+.mask-elem p {
+  width: auto;
+  display: inline;
+  overflow: hidden;
+  position: relative;
+}
 // slide from bottom to top animation
 @keyframes mymoveTop {
   0% {
