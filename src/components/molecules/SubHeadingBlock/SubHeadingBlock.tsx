@@ -9,13 +9,7 @@ interface SubHeadingBlockProps {
   onVisibilityChanged: (isVisible: boolean, entry: IntersectionObserverEntry, delay?: number) => void;
 }
 
-export const SubHeadingBlock: React.FC<SubHeadingBlockProps> = ({
-  bgColor = "white",
-  position = "left",
-  title,
-  description = "",
-  onVisibilityChanged,
-}) => {
+export const SubHeadingBlock = ({ bgColor = "white", position = "left", title, description = "", onVisibilityChanged }: SubHeadingBlockProps) => {
   const classes = useMemo(() => {
     return [styles[`_bgColor__${bgColor}`], styles[`_position__${position}`]].join(" ");
   }, [bgColor, position]);
@@ -23,7 +17,6 @@ export const SubHeadingBlock: React.FC<SubHeadingBlockProps> = ({
   const visibilityChanged = useCallback(
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       const isVisible = entries[0].isIntersecting;
-      console.log("🚀 ~ file: SubHeadingBlock.tsx:13 ~ isVisible:", isVisible);
       if (isVisible) {
         onVisibilityChanged(isVisible, entries[0], 600);
         observer.unobserve(entries[0].target);
@@ -43,8 +36,7 @@ export const SubHeadingBlock: React.FC<SubHeadingBlockProps> = ({
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [visibilityChanged]);
 
   return (
     <div className={`${styles.subHeadingBlock} ${classes}`}>

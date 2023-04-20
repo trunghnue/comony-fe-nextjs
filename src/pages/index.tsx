@@ -8,7 +8,7 @@ import DefaultLayout from "@/components/organisms/Layout/DefaultLayout";
 import styles from "../styles/Home.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { handleScroll } from "@/utilities/scroll";
 import Heading from "@/components/atoms/Heading/Heading";
 import NewsItem from "@/components/molecules/NewsItem/NewsItem";
@@ -20,11 +20,11 @@ import { SubHeadingBlock } from "@/components/molecules/SubHeadingBlock/SubHeadi
 interface Props {}
 const inter = Inter({ subsets: ["latin"] });
 const { visibilityChangedArrows, maskTxtAnimation } = handleScroll();
-const handleVisibilityChange = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-  const isVisible = entries[0].isIntersecting;
+const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
+  const isVisible = entry.isIntersecting;
   if (isVisible) {
-    visibilityChangedArrows(isVisible, entries[0]);
-    observer.unobserve(entries[0].target);
+    visibilityChangedArrows(isVisible, entry);
+    observer.unobserve(entry.target);
   }
 };
 
@@ -43,11 +43,11 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
   );
 }
 
-function ArchitectBanner() {
+const ArchitectBanner = (): JSX.Element => {
   const architectBannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries, observer));
+    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
 
     if (architectBannerRef.current) {
       observer.observe(architectBannerRef.current);
@@ -55,7 +55,6 @@ function ArchitectBanner() {
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -74,15 +73,15 @@ function ArchitectBanner() {
       </section>
     </div>
   );
-}
+};
 
-function NewList() {
+const NewList = (): JSX.Element => {
   const { t } = useTranslation("top");
   const [newsList, setNewsList] = useState<I_Get_News_Id_Response_Data[]>([]);
   const newListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries, observer), {
+    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer), {
       rootMargin: "50px",
     });
 
@@ -136,7 +135,6 @@ function NewList() {
       controller.abort();
       observer.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -162,14 +160,14 @@ function NewList() {
       </SectionContainer>
     </div>
   );
-}
+};
 
-function Video() {
+const Video = (): JSX.Element => {
   const { t } = useTranslation("top");
   const videoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries, observer));
+    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
 
     if (videoRef.current) {
       observer.observe(videoRef.current);
@@ -177,7 +175,6 @@ function Video() {
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -191,7 +188,7 @@ function Video() {
       </section>
     </div>
   );
-}
+};
 
 // or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
