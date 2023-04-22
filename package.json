@@ -24,6 +24,7 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@types/youtube": "^0.0.47",
     "sass": "^1.58.3"
   }
 }

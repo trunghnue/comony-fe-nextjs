@@ -1,0 +1,23 @@
+.youtube_container {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+
+  .button {
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    width: 100px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  iframe {
+    width: 300%;
+    height: 100%;
+    margin-left: -100%;
+    pointer-events: none;
+  }
+}

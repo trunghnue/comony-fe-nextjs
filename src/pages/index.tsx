@@ -3,7 +3,7 @@ import Layout from "@/components/layout";
 import MainVisualVideo2 from "@/components/organisms/MainVisual/MainVisualVideo2";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
+import { SectionContainer } from "@/components/atoms/SectionContainer/SectionContainer";
 import DefaultLayout from "@/components/organisms/Layout/DefaultLayout";
 import styles from "../styles/Home.module.scss";
 import Link from "next/link";
@@ -16,6 +16,7 @@ import { i18n, useTranslation } from "next-i18next";
 import LinkText from "@/components/atoms/LinkText/LinkText";
 import { I_Get_News_Id_Response_Data, I_Newslist } from "@/types/schema/news";
 import { SubHeadingBlock } from "@/components/molecules/SubHeadingBlock/SubHeadingBlock";
+import { Video } from "@/components/atoms/Video/Video";
 
 interface Props {}
 const inter = Inter({ subsets: ["latin"] });
@@ -37,7 +38,8 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <MainVisualVideo2 />
         <ArchitectBanner />
         <NewList />
-        <Video />
+        <HeadingBlock />
+        <VideoYoutube />
       </DefaultLayout>
     </Layout>
   );
@@ -162,15 +164,15 @@ const NewList = (): JSX.Element => {
   );
 };
 
-const Video = (): JSX.Element => {
+const HeadingBlock = (): JSX.Element => {
   const { t } = useTranslation("top");
-  const videoRef = useRef<HTMLDivElement>(null);
+  const headingBlockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    if (headingBlockRef.current) {
+      observer.observe(headingBlockRef.current);
     }
     return () => {
       observer.disconnect();
@@ -178,7 +180,7 @@ const Video = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="animatedDirection -right" ref={videoRef}>
+    <div className="animatedDirection -right" ref={headingBlockRef}>
       <section className={`heading ${styles._position__right}`}>
         <SubHeadingBlock
           title={{ line1: t("video.title1"), line2: t("video.title2") || "" }}
@@ -190,7 +192,30 @@ const Video = (): JSX.Element => {
   );
 };
 
-// or getServerSideProps: GetServerSideProps<Props> = async ({ locale })
+const VideoYoutube = (): JSX.Element => {
+  const divRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer), {
+      rootMargin: "50px",
+    });
+
+    if (divRef.current) {
+      observer.observe(divRef.current);
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+  return (
+    <div className="animatedDirection -bottomToTop" ref={divRef}>
+      <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
+        <Video width="100%" height="auto" src="https://www.youtube.com/embed/KiDb39pXl1s" />
+      </SectionContainer>
+    </div>
+  );
+};
+
 export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? "en", ["common", "top", "downloads"])),

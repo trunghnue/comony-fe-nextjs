@@ -13,7 +13,7 @@ interface SectionContainerProps {
   className?: string;
 }
 
-export default function SectionContainer({
+export const SectionContainer = ({
   columns = "1",
   containerSize = "lg",
   position = "center",
@@ -23,7 +23,7 @@ export default function SectionContainer({
   fullWidth = false,
   children,
   className = "",
-}: SectionContainerProps) {
+}: SectionContainerProps) => {
   const classes = useMemo(() => {
     return [
       className,
@@ -46,4 +46,4 @@ export default function SectionContainer({
       </div>
     </section>
   );
-}
+};
