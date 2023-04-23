@@ -17,6 +17,7 @@ import LinkText from "@/components/atoms/LinkText/LinkText";
 import { I_Get_News_Id_Response_Data, I_Newslist } from "@/types/schema/news";
 import { SubHeadingBlock } from "@/components/molecules/SubHeadingBlock/SubHeadingBlock";
 import { Video } from "@/components/atoms/Video/Video";
+import { AnimatedBackground } from "@/components/atoms/AnimatedBackground/AnimatedBackground";
 
 interface Props {}
 const inter = Inter({ subsets: ["latin"] });
@@ -37,9 +38,11 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
       <DefaultLayout>
         <MainVisualVideo2 />
         <ArchitectBanner />
-        <NewList />
-        <HeadingBlock />
-        <VideoYoutube />
+        <AnimatedBackground>
+          <NewList />
+          <HeadingBlock />
+          <VideoYoutube />
+        </AnimatedBackground>
       </DefaultLayout>
     </Layout>
   );
