@@ -46,11 +46,11 @@ export const AnimatedBackground = ({ children }: AnimatedBackgroundProps) => {
         style={{ transform: `translate3d(0px, -${particleSmall}px, 0px)` }}
       />
       <div
-        className={`${styles.animatedBackground_particle} ${styles.animatedBackground_particleMedium} is-pc`}
+        className={`${styles.animatedBackground_particle} ${styles.animatedBackground_particleMedium}`}
         style={{ transform: `translate3d(0px, -${particleMedium}px, 0px)` }}
       />
       <div
-        className={`${styles.animatedBackground_particle} ${styles.animatedBackground_particleLarge} is-pc`}
+        className={`${styles.animatedBackground_particle} ${styles.animatedBackground_particleLarge}`}
         style={{ transform: `translate3d(0px, -${particleLarge}px, 0px)` }}
       />
       <div className={styles.animatedBackground_content}>{children}</div>

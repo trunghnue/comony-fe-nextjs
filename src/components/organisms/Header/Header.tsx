@@ -10,17 +10,19 @@ import styles from "./Header.module.scss";
 export default function Header({ bgColor }: { bgColor: string }) {
   // console.log("🚀 ~ file: Header.tsx:11 ~ Header:");
   const { t } = useTranslation("common");
-
   const iconColor = bgColor === "white" ? "black" : "white";
-
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
-
   const [navigation, setNavigation] = useState({ isHumbergerOpen: false });
-
   const onClickHumbergerMenu = () => {
     setNavigation({
       ...navigation,
       isHumbergerOpen: !navigation.isHumbergerOpen,
+    });
+  };
+  const onCloseHumbergerMenu = () => {
+    setNavigation({
+      ...navigation,
+      isHumbergerOpen: false,
     });
   };
 
@@ -110,10 +112,10 @@ export default function Header({ bgColor }: { bgColor: string }) {
 
           {/* Language Menu in mobile */}
           <div className={`${styles.header_nav_lang} is-header-mb`}>
-            <Link className={i18n?.language === "en" ? styles._active : ""} href="/" locale="en">
+            <Link className={i18n?.language === "en" ? styles._active : ""} href="/" locale="en" onClick={onCloseHumbergerMenu}>
               English
             </Link>
-            <Link className={i18n?.language === "ja" ? styles._active : ""} href="/" locale="ja">
+            <Link className={i18n?.language === "ja" ? styles._active : ""} href="/" locale="ja" onClick={onCloseHumbergerMenu}>
               日本語
             </Link>
           </div>

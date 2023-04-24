@@ -19,7 +19,8 @@
   "video": {
     "description": "comony is an architectural metaverse platform that can be easily visited by architecture creators, architecture fans, and anyone with a \"passion\" for space. So, let your imagination soar and dive into the world of comony!",
     "text": "",
-    "title1": "comony's <span style='padding: 0; background: linear-gradient(to right, yellow, orange); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>architectural metaverse </span><br class='is-pc'/>",
+    "title1a": "comony's",
+    "title1b": "architectural metaverse",
     "title2": "that can only be experienced here"
   }
 }

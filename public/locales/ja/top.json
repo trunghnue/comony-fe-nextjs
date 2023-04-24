@@ -19,7 +19,8 @@
   "video": {
     "description": "comonyは建築クリエイターの方はもちろん、建築ファンの方々や空間に対する\"こだわり\"を持った全ての人が気軽に訪れることができる建築メタバースプラットフォームです。さあ、想像を膨らまして、comonyの世界に飛びこんで見ましょう！",
     "text": "",
-    "title1": "ここでしか体験できないcomonyの <br class=\"is-pc\"/>",
-    "title2": "<span style='padding: 0; background: linear-gradient(to right, yellow, orange); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>>建築メタバース</span>"
+    "title1a": "ここでしか体験できないcomonyの",
+    "title1b": "",
+    "title2": "建築メタバース"
   }
 }

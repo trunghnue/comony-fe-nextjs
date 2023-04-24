@@ -186,7 +186,11 @@ const HeadingBlock = (): JSX.Element => {
     <div className="animatedDirection -right" ref={headingBlockRef}>
       <section className={`heading ${styles._position__right}`}>
         <SubHeadingBlock
-          title={{ line1: t("video.title1"), line2: t("video.title2") || "" }}
+          title={{
+            line1a: t("video.title1a"),
+            line1b: t("video.title1b"),
+            line2: { text: t("video.title2") || "", isYellow: i18n?.language === "en" ? false : true },
+          }}
           description={t("video.description") || ""}
           onVisibilityChanged={maskTxtAnimation}
         />
