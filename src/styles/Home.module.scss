@@ -28,4 +28,11 @@
       padding: $spacing_20x 0 0 0;
     }
   }
+  &__left {
+    padding: $spacing_41x calc((100% - #{$default_contents_W}) / 2 - #{$spacing_30x}) 0 0;
+
+    @include mb() {
+      padding: $spacing_20x 0 0 0;
+    }
+  }
 }

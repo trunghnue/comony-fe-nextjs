@@ -8,6 +8,8 @@ export function handleScroll() {
       }
       if (itemsClass.contains("-right") && !itemsClass.contains("-right--animated")) {
         elm.classList.add("-right--animated");
+      } else if (itemsClass.contains("-left") && !itemsClass.contains("-left--animated")) {
+        elm.classList.add("-left--animated");
       } else if (itemsClass.contains("-bottomToTop") && !itemsClass.contains("-bottomToTop--animated")) {
         elm.classList.add("-bottomToTop--animated");
       }

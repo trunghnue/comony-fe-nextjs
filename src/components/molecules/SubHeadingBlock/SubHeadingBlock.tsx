@@ -4,7 +4,7 @@ import styles from "./SubHeadingBlock.module.scss";
 interface SubHeadingBlockProps {
   bgColor?: "white" | "white_gradient";
   position?: "left" | "right";
-  title?: { line1a: string; line1b: string; line2?: { text: string; isYellow: boolean } };
+  title?: { line1a: string; line1b?: string; line2?: { text: string; isYellow: boolean } };
   description?: string;
   onVisibilityChanged: (isVisible: boolean, entry: IntersectionObserverEntry, delay?: number) => void;
 }

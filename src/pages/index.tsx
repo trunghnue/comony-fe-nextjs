@@ -42,6 +42,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
           <NewList />
           <HeadingBlock />
           <VideoYoutube />
+          <CommitmentsBlock />
         </AnimatedBackground>
       </DefaultLayout>
     </Layout>
@@ -188,7 +189,7 @@ const HeadingBlock = (): JSX.Element => {
         <SubHeadingBlock
           title={{
             line1a: t("video.title1a"),
-            line1b: t("video.title1b"),
+            line1b: t("video.title1b") || "",
             line2: { text: t("video.title2") || "", isYellow: i18n?.language === "en" ? false : true },
           }}
           description={t("video.description") || ""}
@@ -219,6 +220,38 @@ const VideoYoutube = (): JSX.Element => {
       <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
         <Video width="100%" height="auto" src="https://www.youtube.com/embed/KiDb39pXl1s" />
       </SectionContainer>
+    </div>
+  );
+};
+
+const CommitmentsBlock = (): JSX.Element => {
+  const { t } = useTranslation("top");
+  const commitmentBlockRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
+
+    if (commitmentBlockRef.current) {
+      observer.observe(commitmentBlockRef.current);
+    }
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <div className="animatedDirection -left" ref={commitmentBlockRef}>
+      <section className={`heading ${styles._position__left}`}>
+        <SubHeadingBlock
+          position="left"
+          title={{
+            line1a: t("commitments.title1"),
+            line2: { text: t("commitments.title2") || "", isYellow: true },
+          }}
+          description={t("commitments.description") || ""}
+          onVisibilityChanged={maskTxtAnimation}
+        />
+      </section>
     </div>
   );
 };

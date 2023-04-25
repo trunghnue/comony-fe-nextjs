@@ -92,6 +92,17 @@
   }
 }
 
+@keyframes mymoveLeft {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .animatedDirection {
   &.-right {
     .heading {
@@ -100,6 +111,21 @@
     &--animated {
       .heading {
         animation: mymoveRight 1s;
+        animation-fill-mode: both;
+        animation-timing-function: ease-out;
+        will-change: transform opacity;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+    }
+  }
+  &.-left {
+    .heading {
+      transform: translateX(-100%);
+    }
+    &--animated {
+      .heading {
+        animation: mymoveLeft 1s;
         animation-fill-mode: both;
         animation-timing-function: ease-out;
         will-change: transform opacity;
