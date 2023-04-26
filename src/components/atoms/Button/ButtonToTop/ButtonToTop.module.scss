@@ -1,0 +1,20 @@
+.buttonToTop {
+  position: sticky;
+  z-index: 999;
+  opacity: 1;
+
+  button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 51px;
+    height: 51px;
+    cursor: pointer;
+    background-color: $color_yellow_new;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
