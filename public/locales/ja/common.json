@@ -15,5 +15,35 @@
 
     "tryNow": "ログインする",
     "workSpaceLogin": "にログイン中"
+  },
+  "footer": {
+    "action": "バーチャルの世界に入り込もう",
+    "contact": "お問い合わせ",
+    "first": {
+      "link1": "/downloads",
+      "link2": "/spaces",
+      "link3": "/business",
+      "link4": "/creator",
+      "name1": "アプリダウンロード",
+      "name2": "空間ギャラリー",
+      "name3": "ビジネスでご使用の方",
+      "name4": "クリエイターの方",
+      "title": "comonyについて"
+    },
+    "login": "ログイン",
+    "second": {
+      "link1": "/news",
+      "link2": "/faq",
+      "link3": "/contact",
+      "link4": "/terms-of-service",
+      "link5": "/privacy-policy",
+      "name1": "お知らせ",
+      "name2": "よくある質問",
+      "name3": "お問い合わせ",
+      "name4": "サービス利用規約",
+      "name5": "プライバシーポリシー",
+      "title": "サポート・お問い合わせ"
+    },
+    "signup": "新規登録"
   }
 }

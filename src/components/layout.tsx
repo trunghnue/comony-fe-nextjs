@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./layout.module.scss";
 import Header from "./organisms/Header/Header";
 import ButtonToTop from "./atoms/Button/ButtonToTop/ButtonToTop";
+import Footer from "./organisms/Footer/Footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   // console.log("🚀 ~ file: layout.tsx:6 ~ Layout:");
@@ -25,7 +26,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Header bgColor="black" />
         {children}
         <ButtonToTop />
-        <h1>Footer</h1>
+        <Footer />
       </div>
     </div>
   );

@@ -27,14 +27,20 @@ $breakpoints_header: 924px;
       Color
 ------------------------------------------- */
 
-//static pages
+// static pages
 $font_color_base: #222;
-$color_black: #222;
 $color_primary: #f69a08;
 $color_secondary: #215ed7;
-$color_darkblue: #0d3584;
+$color_notice: #db0505;
+$color_notice_lighten1: #ffefef;
+$color_black: #222;
+$color_gray: #aaa;
+$color_gray_darken1: #999;
+$color_gray_darken2: #555;
 $color_gray_lighten1: #ccc;
+$color_gray_lighten2: #e5e5e5;
 $color_gray_lighten3: #f8f8f8;
+$color_darkblue: #0d3584;
 
 // Gray
 $color_white: #fff;

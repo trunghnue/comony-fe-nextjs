@@ -16,5 +16,35 @@
     "spaceList": "Space Gallery",
     "tryNow": "Sign in",
     "workSpaceLogin": "Logging in"
+  },
+  "footer": {
+    "action": "Enjoy our service!",
+    "contact": "Contact",
+    "first": {
+      "link1": "/downloads",
+      "link2": "/spaces",
+      "link3": "/business",
+      "link4": "/creator",
+      "name1": "Download App",
+      "name2": "Space Gallery",
+      "name3": "For Business",
+      "name4": "For Creator",
+      "title": "About comony"
+    },
+    "login": "Sign in",
+    "second": {
+      "link1": "/news",
+      "link2": "/faq",
+      "link3": "/contact",
+      "link4": "/terms-of-service",
+      "link5": "/privacy-policy",
+      "name1": "News Topics",
+      "name2": "FAQ",
+      "name3": "Contact",
+      "name4": "Terms of Service",
+      "name5": "Privacy Policy",
+      "title": "Support"
+    },
+    "signup": "Sign up"
   }
 }
