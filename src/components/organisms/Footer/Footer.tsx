@@ -5,7 +5,7 @@ import AppLogo from "@/components/atoms/AppLogo/AppLogo";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const { t } = useTranslation("common");
 
   return (

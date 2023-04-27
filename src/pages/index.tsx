@@ -8,7 +8,7 @@ import DefaultLayout from "@/components/organisms/Layout/DefaultLayout";
 import styles from "../styles/Home.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useTransition } from "react";
 import { handleScroll } from "@/utilities/scroll";
 import Heading from "@/components/atoms/Heading/Heading";
 import NewsItem from "@/components/molecules/NewsItem/NewsItem";
@@ -18,6 +18,7 @@ import { I_Get_News_Id_Response_Data, I_Newslist } from "@/types/schema/news";
 import { SubHeadingBlock } from "@/components/molecules/SubHeadingBlock/SubHeadingBlock";
 import { Video } from "@/components/atoms/Video/Video";
 import { AnimatedBackground } from "@/components/atoms/AnimatedBackground/AnimatedBackground";
+import ImageBox from "@/components/organisms/ImageBox/ImageBox";
 
 interface Props {}
 const inter = Inter({ subsets: ["latin"] });
@@ -43,13 +44,14 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
           <HeadingBlock />
           <VideoYoutube />
           <CommitmentsBlock />
+          <ImageBox1 />
         </AnimatedBackground>
       </DefaultLayout>
     </Layout>
   );
 }
 
-const ArchitectBanner = (): JSX.Element => {
+const ArchitectBanner = () => {
   const architectBannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -81,7 +83,7 @@ const ArchitectBanner = (): JSX.Element => {
   );
 };
 
-const NewList = (): JSX.Element => {
+const NewList = () => {
   const { t } = useTranslation("top");
   const [newsList, setNewsList] = useState<I_Get_News_Id_Response_Data[]>([]);
   const newListRef = useRef<HTMLDivElement>(null);
@@ -168,7 +170,7 @@ const NewList = (): JSX.Element => {
   );
 };
 
-const HeadingBlock = (): JSX.Element => {
+const HeadingBlock = () => {
   const { t } = useTranslation("top");
   const headingBlockRef = useRef<HTMLDivElement>(null);
 
@@ -200,7 +202,7 @@ const HeadingBlock = (): JSX.Element => {
   );
 };
 
-const VideoYoutube = (): JSX.Element => {
+const VideoYoutube = () => {
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer), {
@@ -224,7 +226,7 @@ const VideoYoutube = (): JSX.Element => {
   );
 };
 
-const CommitmentsBlock = (): JSX.Element => {
+const CommitmentsBlock = () => {
   const { t } = useTranslation("top");
   const commitmentBlockRef = useRef<HTMLDivElement>(null);
 
@@ -252,6 +254,25 @@ const CommitmentsBlock = (): JSX.Element => {
           onVisibilityChanged={maskTxtAnimation}
         />
       </section>
+    </div>
+  );
+};
+
+const ImageBox1 = () => {
+  const { t } = useTranslation("top");
+  return (
+    <div className={styles.imageBoxTop}>
+      <div className="animatedDirection - bottomToTop">
+        <ImageBox
+          id="image-box-1"
+          className="imageBoxAnimated"
+          position="right"
+          src="/images/imageBox01.webp"
+          number="1"
+          title={t("commitments.boxTitle1") || ""}
+          description={t("commitments.boxDescription1") || ""}
+        />
+      </div>
     </div>
   );
 };

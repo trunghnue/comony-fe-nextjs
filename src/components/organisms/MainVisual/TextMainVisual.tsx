@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import styles from "./TextMainVisual.module.scss";
 
 interface TextMainVisualProps {
+  className?: string;
   tag?: string;
   type?: string;
   id?: string;
@@ -12,6 +13,7 @@ interface TextMainVisualProps {
 }
 
 export default function TextMainVisual({
+  className = "",
   color = "white",
   id = "",
   isVertical = false,
@@ -39,7 +41,7 @@ export default function TextMainVisual({
       if (!["subTitle", "title"].includes(type)) {
         Array.from(html.children).forEach((element, index: number) => {
           if (element instanceof HTMLElement) {
-            element.style["animation-delay"] = `${animationDelay * index}ms`;
+            (element.style as any)["animation-delay"] = `${animationDelay * index}ms`;
           }
         });
       }
@@ -48,6 +50,6 @@ export default function TextMainVisual({
 
   return React.createElement(tag, {
     id,
-    className: `${styles.textMainVisual} ${classes}`,
+    className: ` ${className} ${styles.textMainVisual} ${classes}`,
   });
 }

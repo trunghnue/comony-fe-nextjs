@@ -2,6 +2,23 @@
 		Media-query Mixin
 ********************************************/
 
+// $breakpoints: (
+// Extra small screen / Fold screen
+// xxs: 280px,
+// Extra small screen / phone
+// xs: 414px,
+// Small screen / phone
+// sm: 640px,
+// Medium screen / tablet
+// md: 768px,
+// lg: 1044px,
+// xl: 1120px,
+// Large screen / desktop
+// xxl: 1280px,
+// Extra screen / desktop
+// xxxl: 1368px
+// ) !default;
+
 @mixin max-screen($breakpoints_min) {
   @media screen and (max-width: $breakpoints_min) {
     @content;
