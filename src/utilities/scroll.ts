@@ -24,5 +24,12 @@ export function handleScroll() {
     }
   };
 
-  return { visibilityChangedArrows, maskTxtAnimation };
+  const handleScaleImage = (isVisible: boolean, element: HTMLDivElement) => {
+    console.log("🚀 ~ file: scroll.ts:32 ~ handleScaleImage:");
+    if (isVisible && element) {
+      element.classList.add("imageBox_wrapper_animated");
+    }
+  };
+
+  return { visibilityChangedArrows, maskTxtAnimation, handleScaleImage };
 }

@@ -70,6 +70,10 @@
         @include fz($font_size_12);
       }
     }
+    &__imageBoxTitle {
+      overflow: hidden;
+      word-break: break-word;
+    }
   }
 
   &._position {

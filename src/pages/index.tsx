@@ -22,7 +22,7 @@ import ImageBox from "@/components/organisms/ImageBox/ImageBox";
 
 interface Props {}
 const inter = Inter({ subsets: ["latin"] });
-const { visibilityChangedArrows, maskTxtAnimation } = handleScroll();
+const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleScroll();
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
   const isVisible = entry.isIntersecting;
   if (isVisible) {
@@ -233,9 +233,8 @@ const CommitmentsBlock = () => {
   useEffect(() => {
     const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
 
-    if (commitmentBlockRef.current) {
-      observer.observe(commitmentBlockRef.current);
-    }
+    commitmentBlockRef.current && observer.observe(commitmentBlockRef.current);
+
     return () => {
       observer.disconnect();
     };
@@ -260,9 +259,20 @@ const CommitmentsBlock = () => {
 
 const ImageBox1 = () => {
   const { t } = useTranslation("top");
+  const imageBoxRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
+
+    imageBoxRef.current && observer.observe(imageBoxRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
   return (
     <div className={styles.imageBoxTop}>
-      <div className="animatedDirection - bottomToTop">
+      <div className="animatedDirection -bottomToTop" ref={imageBoxRef}>
         <ImageBox
           id="image-box-1"
           className="imageBoxAnimated"
@@ -271,6 +281,7 @@ const ImageBox1 = () => {
           number="1"
           title={t("commitments.boxTitle1") || ""}
           description={t("commitments.boxDescription1") || ""}
+          onVisibilityChanged={handleScaleImage}
         />
       </div>
     </div>
