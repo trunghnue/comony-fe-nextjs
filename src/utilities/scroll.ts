@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export function handleScroll() {
   const visibilityChangedArrows = (isVisible: boolean, entry: IntersectionObserverEntry) => {
     if (isVisible) {
@@ -24,10 +26,10 @@ export function handleScroll() {
     }
   };
 
-  const handleScaleImage = (isVisible: boolean, element: HTMLDivElement) => {
-    console.log("🚀 ~ file: scroll.ts:32 ~ handleScaleImage:");
-    if (isVisible && element) {
-      element.classList.add("imageBox_wrapper_animated");
+  const handleScaleImage = (isVisible: boolean, id: string, styles: any) => {
+    if (isVisible) {
+      const image = document.querySelector(`#${id}`);
+      image?.classList.add(styles.imageBox_wrapper_animated);
     }
   };
 

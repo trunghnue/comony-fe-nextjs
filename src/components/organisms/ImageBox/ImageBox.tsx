@@ -11,7 +11,7 @@ interface I_ImageBoxProps {
   title?: string;
   position?: "left" | "right";
   description?: string;
-  onVisibilityChanged: (isVisible: boolean, element: HTMLDivElement) => void;
+  onVisibilityChanged: (isVisible: boolean, id: string, styles: any) => void;
 }
 
 const ImageBox: React.FC<I_ImageBoxProps> = ({
@@ -34,22 +34,23 @@ const ImageBox: React.FC<I_ImageBoxProps> = ({
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const isVisible = entries[0].isIntersecting;
-      console.log("🚀 ~ file: ImageBox.tsx:37 ~ isVisible:", isVisible);
       if (isVisible && imageBoxWrapperRef.current) {
-        onVisibilityChanged(isVisible, imageBoxWrapperRef.current);
+        onVisibilityChanged(isVisible, id, styles);
         observer.unobserve(entries[0].target);
       }
     });
 
+    imageBoxWrapperRef.current && observer.observe(imageBoxWrapperRef.current);
+
     return () => {
       observer.disconnect();
     };
-  }, [onVisibilityChanged]);
+  }, [id, onVisibilityChanged]);
 
   return (
     <section className={`${styles.imageBox} ${className}`}>
       <div className={styles.imageBox_wrapper} ref={imageBoxWrapperRef}>
-        {src && <Image src={src} alt={title} width={1440} height={996} />}
+        {src && <Image id={id} src={src} alt={title} width={1440} height={996} />}
       </div>
       <div className={`${styles.slideItems} ${styles[`_${position}Side`]}`}>
         {visibleImageBoxContent && (
