@@ -26,7 +26,7 @@ const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleSc
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
   const isVisible = entry.isIntersecting;
   if (isVisible) {
-    visibilityChangedArrows(isVisible, entry);
+    visibilityChangedArrows(entry);
     observer.unobserve(entry.target);
   }
 };
@@ -55,13 +55,14 @@ const ArchitectBanner = () => {
   const architectBannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
+    const architectBannerObserver: IntersectionObserver = new IntersectionObserver((entries) =>
+      handleVisibilityChange(entries[0], architectBannerObserver)
+    );
 
-    if (architectBannerRef.current) {
-      observer.observe(architectBannerRef.current);
-    }
+    architectBannerRef.current && architectBannerObserver.observe(architectBannerRef.current);
+
     return () => {
-      observer.disconnect();
+      architectBannerObserver.disconnect();
     };
   }, []);
 
@@ -89,13 +90,11 @@ const NewList = () => {
   const newListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer), {
+    const newListObserver: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], newListObserver), {
       rootMargin: "50px",
     });
 
-    if (newListRef.current) {
-      observer.observe(newListRef.current);
-    }
+    newListRef.current && newListObserver.observe(newListRef.current);
 
     const controller = new AbortController();
     const signal = controller.signal;
@@ -141,7 +140,7 @@ const NewList = () => {
 
     return () => {
       controller.abort();
-      observer.disconnect();
+      newListObserver.disconnect();
     };
   }, []);
 
@@ -175,13 +174,14 @@ const HeadingBlock = () => {
   const headingBlockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
+    const headingBlockObserver: IntersectionObserver = new IntersectionObserver((entries) =>
+      handleVisibilityChange(entries[0], headingBlockObserver)
+    );
 
-    if (headingBlockRef.current) {
-      observer.observe(headingBlockRef.current);
-    }
+    headingBlockRef.current && headingBlockObserver.observe(headingBlockRef.current);
+
     return () => {
-      observer.disconnect();
+      headingBlockObserver.disconnect();
     };
   }, []);
 
@@ -203,22 +203,23 @@ const HeadingBlock = () => {
 };
 
 const VideoYoutube = () => {
-  const divRef = useRef<HTMLDivElement>(null);
+  const videoYoutubeRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer), {
-      rootMargin: "50px",
-    });
+    const videoYoutubeObserver: IntersectionObserver = new IntersectionObserver(
+      (entries) => handleVisibilityChange(entries[0], videoYoutubeObserver),
+      {
+        rootMargin: "50px",
+      }
+    );
 
-    if (divRef.current) {
-      observer.observe(divRef.current);
-    }
+    videoYoutubeRef.current && videoYoutubeObserver.observe(videoYoutubeRef.current);
 
     return () => {
-      observer.disconnect();
+      videoYoutubeObserver.disconnect();
     };
   }, []);
   return (
-    <div className="animatedDirection -bottomToTop" ref={divRef}>
+    <div className="animatedDirection -bottomToTop" ref={videoYoutubeRef}>
       <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
         <Video width="100%" height="auto" src="https://www.youtube.com/embed/KiDb39pXl1s" />
       </SectionContainer>
@@ -231,12 +232,14 @@ const CommitmentsBlock = () => {
   const commitmentBlockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
+    const commitmentBlockObserver: IntersectionObserver = new IntersectionObserver((entries) =>
+      handleVisibilityChange(entries[0], commitmentBlockObserver)
+    );
 
-    commitmentBlockRef.current && observer.observe(commitmentBlockRef.current);
+    commitmentBlockRef.current && commitmentBlockObserver.observe(commitmentBlockRef.current);
 
     return () => {
-      observer.disconnect();
+      commitmentBlockObserver.disconnect();
     };
   }, []);
 
@@ -259,20 +262,20 @@ const CommitmentsBlock = () => {
 
 const ImageBox1 = () => {
   const { t } = useTranslation("top");
-  const imageBoxRef = useRef<HTMLDivElement>(null);
+  const imageBox1Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], observer));
+    const imageBox1_Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox1_Observer));
 
-    imageBoxRef.current && observer.observe(imageBoxRef.current);
+    imageBox1Ref.current && imageBox1_Observer.observe(imageBox1Ref.current);
 
     return () => {
-      observer.disconnect();
+      imageBox1_Observer.disconnect();
     };
   }, []);
   return (
     <div className={styles.imageBoxTop}>
-      <div className="animatedDirection -bottomToTop" ref={imageBoxRef}>
+      <div className="animatedDirection -bottomToTop" ref={imageBox1Ref}>
         <ImageBox
           id="image-box-1"
           className="imageBoxAnimated"

@@ -6,7 +6,7 @@ interface SubHeadingBlockProps {
   position?: "left" | "right";
   title?: { line1a: string; line1b?: string; line2?: { text: string; isYellow: boolean } };
   description?: string;
-  onVisibilityChanged: (isVisible: boolean, entry: IntersectionObserverEntry, delay?: number) => void;
+  onVisibilityChanged: (entry: IntersectionObserverEntry, delay?: number) => void;
 }
 
 export const SubHeadingBlock = ({ bgColor = "white", position = "left", title, description = "", onVisibilityChanged }: SubHeadingBlockProps) => {
@@ -18,7 +18,7 @@ export const SubHeadingBlock = ({ bgColor = "white", position = "left", title, d
     (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
       const isVisible = entries[0].isIntersecting;
       if (isVisible) {
-        onVisibilityChanged(isVisible, entries[0], 600);
+        onVisibilityChanged(entries[0], 600);
         observer.unobserve(entries[0].target);
       }
     },
