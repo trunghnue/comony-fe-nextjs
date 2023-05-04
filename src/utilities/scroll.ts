@@ -26,12 +26,18 @@ export function handleScroll() {
     }
   };
 
-  const handleScaleImage = (isVisible: boolean, id: string, styles: any) => {
-    if (isVisible) {
-      const image = document.querySelector(`#${id}`);
-      image?.classList.add(styles.imageBox_wrapper_animated);
+  const handleScaleImage = (id: string, styles: any) => {
+    const image = document.querySelector(`#${id}`);
+    image?.classList.add(styles.imageBox_wrapper_animated);
+  };
+
+  // --------- ImageBox content animation ----------
+  const visibilityChangedImageBoxContent = (entry: IntersectionObserverEntry, styles: any) => {
+    const elm = entry.target || document;
+    if (elm?.classList.contains(styles.slideItems)) {
+      elm.classList.add(styles.__animated);
     }
   };
 
-  return { visibilityChangedArrows, maskTxtAnimation, handleScaleImage };
+  return { visibilityChangedArrows, maskTxtAnimation, handleScaleImage, visibilityChangedImageBoxContent };
 }

@@ -1,7 +1,8 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./ImageBox.module.scss";
 import Image from "next/image";
 import TextMainVisual from "../MainVisual/TextMainVisual";
+import { handleScroll } from "@/utilities/scroll";
 
 interface I_ImageBoxProps {
   className: string;
@@ -11,7 +12,7 @@ interface I_ImageBoxProps {
   title?: string;
   position?: "left" | "right";
   description?: string;
-  onVisibilityChanged: (isVisible: boolean, id: string, styles: any) => void;
+  onVisibilityChanged: (id: string, styles: any) => void;
 }
 
 const ImageBox: React.FC<I_ImageBoxProps> = ({
@@ -27,32 +28,47 @@ const ImageBox: React.FC<I_ImageBoxProps> = ({
   const classes = useMemo(() => {
     return [styles[`_position__${position}`], !number && styles._hasNumber].filter(Boolean).join(" ");
   }, [number, position]);
-  const visibleImageBoxContent = true;
-  const visibleText = true;
+  const [visibleImageBoxContent, setVisibleImageBoxContent] = useState<boolean>(false);
+  const [visibleText, setVisibleText] = useState<boolean>(false);
   const imageBoxWrapperRef = useRef<HTMLDivElement>(null);
+  const slideItemsRef = useRef<HTMLDivElement>(null);
+  const { visibilityChangedImageBoxContent } = handleScroll();
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
+    const imageBoxWrapperObserver = new IntersectionObserver((entries) => {
       const isVisible = entries[0].isIntersecting;
-      if (isVisible && imageBoxWrapperRef.current) {
-        onVisibilityChanged(isVisible, id, styles);
-        observer.unobserve(entries[0].target);
+      if (isVisible) {
+        onVisibilityChanged(id, styles);
+        imageBoxWrapperObserver.unobserve(entries[0].target);
       }
     });
 
-    imageBoxWrapperRef.current && observer.observe(imageBoxWrapperRef.current);
+    imageBoxWrapperRef.current && imageBoxWrapperObserver.observe(imageBoxWrapperRef.current);
+
+    const slideItemsObserver = new IntersectionObserver((entries) => {
+      const isVisible = entries[0].isIntersecting;
+      if (isVisible) {
+        setVisibleImageBoxContent(true);
+        setVisibleText(true);
+        visibilityChangedImageBoxContent(entries[0], styles);
+        slideItemsObserver.unobserve(entries[0].target);
+      }
+    });
+
+    slideItemsRef.current && slideItemsObserver.observe(slideItemsRef.current);
 
     return () => {
-      observer.disconnect();
+      imageBoxWrapperObserver.disconnect();
+      slideItemsObserver.disconnect();
     };
-  }, [id, onVisibilityChanged]);
+  }, [id, onVisibilityChanged, visibilityChangedImageBoxContent]);
 
   return (
     <section className={`${styles.imageBox} ${className}`}>
       <div className={styles.imageBox_wrapper} ref={imageBoxWrapperRef}>
         {src && <Image id={id} src={src} alt={title} width={1440} height={996} />}
       </div>
-      <div className={`${styles.slideItems} ${styles[`_${position}Side`]}`}>
+      <div className={`${styles.slideItems} ${styles[`_${position}Side`]}`} ref={slideItemsRef}>
         {visibleImageBoxContent && (
           <div className={`${styles.imageBox_content} ${styles.box} ${classes}`}>
             <div className={styles.imageBox_first}>

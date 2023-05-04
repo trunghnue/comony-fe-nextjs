@@ -73,6 +73,11 @@
     &__imageBoxTitle {
       overflow: hidden;
       word-break: break-word;
+
+      span {
+        word-break: break-word;
+        animation: opacityDrop 0.75s both;
+      }
     }
   }
 

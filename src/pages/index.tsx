@@ -5,7 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { SectionContainer } from "@/components/atoms/SectionContainer/SectionContainer";
 import DefaultLayout from "@/components/organisms/Layout/DefaultLayout";
-import styles from "../styles/Home.module.scss";
+import styles from "./index.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useEffect, useRef, useState, useTransition } from "react";
