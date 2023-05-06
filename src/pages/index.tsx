@@ -1,5 +1,3 @@
-import { Inter } from "next/font/google";
-import Layout from "@/components/layout";
 import MainVisualVideo2 from "@/components/organisms/MainVisual/MainVisualVideo2";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -8,7 +6,7 @@ import DefaultLayout from "@/components/organisms/Layout/DefaultLayout";
 import styles from "./index.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useEffect, useRef, useState, useTransition } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { handleScroll } from "@/utilities/scroll";
 import Heading from "@/components/atoms/Heading/Heading";
 import NewsItem from "@/components/molecules/NewsItem/NewsItem";
@@ -20,8 +18,6 @@ import { Video } from "@/components/atoms/Video/Video";
 import { AnimatedBackground } from "@/components/atoms/AnimatedBackground/AnimatedBackground";
 import ImageBox from "@/components/organisms/ImageBox/ImageBox";
 
-interface Props {}
-const inter = Inter({ subsets: ["latin"] });
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleScroll();
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
   const isVisible = entry.isIntersecting;
@@ -32,22 +28,20 @@ const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: Inte
 };
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log("🚀 ~ file: index.tsx:21 ~ Home:");
+  // console.log("🚀 ~ file: index.tsx:21 ~ Home _ props: ", _props);
 
   return (
-    <Layout>
-      <DefaultLayout>
-        <MainVisualVideo2 />
-        <ArchitectBanner />
-        <AnimatedBackground>
-          <NewList />
-          <HeadingBlock />
-          <VideoYoutube />
-          <CommitmentsBlock />
-          <ImageBox1 />
-        </AnimatedBackground>
-      </DefaultLayout>
-    </Layout>
+    <DefaultLayout>
+      <MainVisualVideo2 />
+      <ArchitectBanner />
+      <AnimatedBackground>
+        <NewsList />
+        <HeadingBlock />
+        <VideoYoutube />
+        <CommitmentsBlock />
+        <ImageBox1 />
+      </AnimatedBackground>
+    </DefaultLayout>
   );
 }
 
@@ -84,7 +78,7 @@ const ArchitectBanner = () => {
   );
 };
 
-const NewList = () => {
+const NewsList = () => {
   const { t } = useTranslation("top");
   const [newsList, setNewsList] = useState<I_Get_News_Id_Response_Data[]>([]);
   const newListRef = useRef<HTMLDivElement>(null);
@@ -291,7 +285,7 @@ const ImageBox1 = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? "en", ["common", "top", "downloads"])),
   },

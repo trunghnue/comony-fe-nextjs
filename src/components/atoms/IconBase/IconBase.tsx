@@ -18,6 +18,13 @@ interface Props {
   width?: string;
 }
 
+interface PathItem {
+  value?: string;
+  fill?: string;
+  fillRule?: "nonzero" | "evenodd" | "inherit" | undefined;
+  clipRule?: string;
+}
+
 export default function IconBase({
   className = "",
   favoriteIcon = false,
@@ -63,7 +70,7 @@ export default function IconBase({
         <g data-name={iconName} transform={transform} fill={isHover ? iconHoverColor : iconColor}>
           {isArray(path) ? (
             <>
-              {path.map((item, index) => {
+              {path.map((item: PathItem, index) => {
                 return <path key={index} d={item.value} fill={item.fill} fillRule={item.fillRule} clipRule={item.clipRule} />;
               })}
             </>
