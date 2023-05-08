@@ -1,0 +1,28 @@
+.squareLively {
+  &_svg {
+    transition: transform 1.3s;
+    will-change: transform;
+
+    &._type {
+      &__default {
+        width: 440px;
+        height: 440px;
+
+        @include mb() {
+          width: 174px;
+          height: 174px;
+        }
+
+        @include screen(map-get($breakpoints, md), map-get($breakpoints, lg)) {
+          width: 200px;
+          height: 200px;
+        }
+
+        @include screen(map-get($breakpoints, lg), map-get($breakpoints, xxxl)) {
+          width: 300px;
+          height: 300px;
+        }
+      }
+    }
+  }
+}

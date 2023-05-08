@@ -2,7 +2,7 @@ import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
 import TextMainVisual from "./TextMainVisual";
 import AppLogo from "@/components/atoms/AppLogo/AppLogo";
 import AppDownloadButton from "@/components/atoms/Button/AppDownloadButton/AppDownloadButton";
-import CircleLively from "@/components/atoms/CircleLively/CircleLively";
+import CircleLively from "@/components/atoms/LivelyIcon/CircleLively/CircleLively";
 import { useTranslation } from "next-i18next";
 import React, { useEffect, useRef } from "react";
 import styles from "./MainVisualVideo2.module.scss";

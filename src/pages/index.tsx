@@ -17,6 +17,7 @@ import { SubHeadingBlock } from "@/components/molecules/SubHeadingBlock/SubHeadi
 import { Video } from "@/components/atoms/Video/Video";
 import { AnimatedBackground } from "@/components/atoms/AnimatedBackground/AnimatedBackground";
 import ImageBox from "@/components/organisms/ImageBox/ImageBox";
+import SquareLively from "@/components/atoms/LivelyIcon/SquareLively/SquareLively";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleScroll();
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
@@ -281,6 +282,7 @@ const ImageBox1 = () => {
           onVisibilityChanged={handleScaleImage}
         />
       </div>
+      <SquareLively className={styles.imageBoxTop_squareIcon} />
     </div>
   );
 };

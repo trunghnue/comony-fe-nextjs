@@ -39,4 +39,27 @@
 
 .imageBoxTop {
   position: relative;
+
+  &_squareIcon {
+    position: absolute;
+    top: 440px;
+    right: -122px;
+    z-index: 1;
+    transform: rotate(-22.25deg);
+
+    @include mb() {
+      top: 36px;
+      right: -42px;
+    }
+
+    @include screen(map-get($breakpoints, md), map-get($breakpoints, lg)) {
+      top: 36px;
+      right: -48px;
+    }
+
+    @include screen(map-get($breakpoints, lg), map-get($breakpoints, xxxl)) {
+      top: 67px;
+      right: -75px;
+    }
+  }
 }
