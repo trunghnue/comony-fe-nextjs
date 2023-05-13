@@ -1,0 +1,128 @@
+$shooting-time: 1000ms;
+
+.flashLively {
+  position: relative;
+  width: 640px;
+  height: 320px;
+  opacity: 0.85;
+  transform: rotateZ(-45deg);
+
+  @include mb() {
+    width: 240px;
+    height: 360px;
+  }
+
+  &.__animated {
+    div {
+      width: 0;
+      animation: tail $shooting-time ease-in-out infinite both, shooting $shooting-time ease-in-out infinite both;
+
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          // $delay: random(9999) + 0ms;
+          top: calc(50% - #{$i * 120px});
+          left: calc(50% - #{$i * 10px});
+          opacity: 0.7;
+          animation-delay: $i * 3000ms;
+
+          &::before,
+          &::after {
+            animation-delay: $i * 2000ms;
+          }
+        }
+      }
+
+      &:nth-child(4) {
+        top: -35%;
+        left: 75%;
+        animation-delay: 500ms;
+
+        &::before,
+        &::after {
+          animation-delay: 100ms;
+        }
+      }
+
+      &:nth-child(5) {
+        top: -10%;
+        left: 92%;
+        animation-delay: 300ms;
+
+        &::before,
+        &::after {
+          animation-delay: 100ms;
+        }
+      }
+    }
+  }
+
+  &_shootingStar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    border-color: $color-white;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0 0 5px 1px $color_white, 0 0 5px 1px $color_white inset;
+
+    &__dashed {
+      border: 0;
+      border-top: 5px dotted $color_white;
+      box-shadow: none;
+    }
+
+    &__line {
+      border-width: 1px;
+      box-shadow: none;
+
+      &.-dotted {
+        border-width: 2px;
+
+        &::after,
+        &::before {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          font-size: 30px;
+          color: $color_white;
+          content: "・";
+        }
+
+        &::after {
+          right: 0;
+          bottom: 20px;
+        }
+
+        &::before {
+          right: -10px;
+          bottom: 20px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes tail {
+  0% {
+    width: 0;
+  }
+
+  30% {
+    width: 200px;
+  }
+
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes shooting {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(450px);
+  }
+}

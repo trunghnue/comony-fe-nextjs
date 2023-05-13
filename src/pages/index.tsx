@@ -18,6 +18,7 @@ import { Video } from "@/components/atoms/Video/Video";
 import { AnimatedBackground } from "@/components/atoms/AnimatedBackground/AnimatedBackground";
 import ImageBox from "@/components/organisms/ImageBox/ImageBox";
 import SquareLively from "@/components/atoms/LivelyIcon/SquareLively/SquareLively";
+import FlashLively from "@/components/atoms/LivelyIcon/FlashLively/FlashLively";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleScroll();
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
@@ -41,6 +42,8 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <VideoYoutube />
         <CommitmentsBlock />
         <ImageBox1 />
+        <ImageBox2 />
+        <ImageBox3 />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -227,8 +230,9 @@ const CommitmentsBlock = () => {
   const commitmentBlockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const commitmentBlockObserver: IntersectionObserver = new IntersectionObserver((entries) =>
-      handleVisibilityChange(entries[0], commitmentBlockObserver)
+    const commitmentBlockObserver: IntersectionObserver = new IntersectionObserver(
+      (entries) => handleVisibilityChange(entries[0], commitmentBlockObserver),
+      { rootMargin: "50px" }
     );
 
     commitmentBlockRef.current && commitmentBlockObserver.observe(commitmentBlockRef.current);
@@ -260,7 +264,9 @@ const ImageBox1 = () => {
   const imageBox1Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox1_Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox1_Observer));
+    const imageBox1_Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox1_Observer), {
+      rootMargin: "50px",
+    });
 
     imageBox1Ref.current && imageBox1_Observer.observe(imageBox1Ref.current);
 
@@ -283,6 +289,73 @@ const ImageBox1 = () => {
         />
       </div>
       <SquareLively className={styles.imageBoxTop_squareIcon} />
+    </div>
+  );
+};
+
+const ImageBox2 = () => {
+  const { t } = useTranslation("top");
+  const imageBox2Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const imageBox2_Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox2_Observer), {
+      rootMargin: "50px",
+    });
+
+    imageBox2Ref.current && imageBox2_Observer.observe(imageBox2Ref.current);
+
+    return () => {
+      imageBox2_Observer.disconnect();
+    };
+  }, []);
+  return (
+    <div className="animatedDirection -bottomToTop" ref={imageBox2Ref}>
+      <ImageBox
+        id="image-box-2"
+        className="imageBoxAnimated"
+        position="right"
+        src="/images/imageBox02.webp"
+        number="2"
+        title={t("commitments.boxTitle2") || ""}
+        description={t("commitments.boxDescription2") || ""}
+        onVisibilityChanged={handleScaleImage}
+      />
+    </div>
+  );
+};
+
+const ImageBox3 = () => {
+  const { t } = useTranslation("top");
+  const imageBox3Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const imageBox3_Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox3_Observer), {
+      rootMargin: "50px",
+    });
+
+    imageBox3Ref.current && imageBox3_Observer.observe(imageBox3Ref.current);
+
+    return () => {
+      imageBox3_Observer.disconnect();
+    };
+  }, []);
+  return (
+    <div className={styles.imageBoxBottom}>
+      <div className="animatedDirection -bottomToTop" ref={imageBox3Ref}>
+        <ImageBox
+          id="image-box-3"
+          className="imageBoxAnimated"
+          position="right"
+          src="/images/imageBox03.webp"
+          number="3"
+          title={t("commitments.boxTitle3") || ""}
+          description={t("commitments.boxDescription3") || ""}
+          onVisibilityChanged={handleScaleImage}
+        />
+      </div>
+      <div className={styles.imageBoxBottom_flashIcon}>
+        <FlashLively />
+      </div>
     </div>
   );
 };

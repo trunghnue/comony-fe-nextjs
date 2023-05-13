@@ -63,3 +63,20 @@
     }
   }
 }
+
+.imageBoxBottom {
+  position: relative;
+  overflow: hidden;
+
+  &_flashIcon {
+    position: absolute;
+    top: 40%;
+    left: -180px;
+    z-index: 1;
+    // overflow: hidden;
+
+    @include mb() {
+      top: 30%;
+    }
+  }
+}
