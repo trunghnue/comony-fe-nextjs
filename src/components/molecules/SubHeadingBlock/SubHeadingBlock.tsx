@@ -4,7 +4,7 @@ import styles from "./SubHeadingBlock.module.scss";
 interface SubHeadingBlockProps {
   bgColor?: "white" | "white_gradient";
   position?: "left" | "right";
-  title?: { line1a: string; line1b?: string; line2?: { text: string; isYellow: boolean } };
+  title: { line1: string; line2?: string };
   description?: string;
   onVisibilityChanged: (entry: IntersectionObserverEntry, delay?: number) => void;
 }
@@ -43,23 +43,9 @@ export const SubHeadingBlock = ({ bgColor = "white", position = "left", title, d
       <div className={styles.subHeadingBlock_wrapper}>
         <div className={`${styles.subHeadingBlock_title} mask-elem`} ref={titleRef}>
           <div>
-            <span>
-              {title?.line1a} {title?.line1b && <span className={styles._yellow}>{title?.line1b} </span>}
-            </span>
-            <br />
+            <span dangerouslySetInnerHTML={{ __html: title?.line1 || "" }} />
           </div>
-          {title?.line2 &&
-            (title.line2.isYellow ? (
-              <div>
-                <span>
-                  <span className={styles._yellow}>{title.line2.text}</span>
-                </span>
-              </div>
-            ) : (
-              <div>
-                <span>{title.line2.text}</span>
-              </div>
-            ))}
+          <div>{title?.line2 && <span dangerouslySetInnerHTML={{ __html: title?.line2 || "" }} />}</div>
         </div>
         {description && <div className={styles.subHeadingBlock_description}>{description}</div>}
       </div>

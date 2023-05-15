@@ -39,13 +39,14 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
       <ArchitectBanner />
       <AnimatedBackground>
         <NewsList />
-        <HeadingBlock />
+        <HeadingBlock1 />
         <VideoYoutube />
-        <CommitmentsBlock />
+        <HeadingBlock2 />
         <ImageBox1 />
         <ImageBox2 />
         <ImageBox3 />
         <AppDownload />
+        <HeadingBlock3 />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -169,7 +170,7 @@ const NewsList = () => {
   );
 };
 
-const HeadingBlock = () => {
+const HeadingBlock1 = () => {
   const { t } = useTranslation("top");
   const headingBlockRef = useRef<HTMLDivElement>(null);
 
@@ -190,9 +191,8 @@ const HeadingBlock = () => {
       <section className={`heading ${styles._position__right}`}>
         <SubHeadingBlock
           title={{
-            line1a: t("video.title1a"),
-            line1b: t("video.title1b") || "",
-            line2: { text: t("video.title2") || "", isYellow: i18n?.language === "en" ? false : true },
+            line1: t("video.title1"),
+            line2: t("video.title2") || "",
           }}
           description={t("video.description") || ""}
           onVisibilityChanged={maskTxtAnimation}
@@ -227,7 +227,7 @@ const VideoYoutube = () => {
   );
 };
 
-const CommitmentsBlock = () => {
+const HeadingBlock2 = () => {
   const { t } = useTranslation("top");
   const commitmentBlockRef = useRef<HTMLDivElement>(null);
 
@@ -250,8 +250,8 @@ const CommitmentsBlock = () => {
         <SubHeadingBlock
           position="left"
           title={{
-            line1a: t("commitments.title1"),
-            line2: { text: t("commitments.title2") || "", isYellow: true },
+            line1: t("commitments.title1"),
+            line2: t("commitments.title2") || "",
           }}
           description={t("commitments.description") || ""}
           onVisibilityChanged={maskTxtAnimation}
@@ -379,6 +379,17 @@ const AppDownload = () => {
   return (
     <div className="animatedDirection -bottomToTop" ref={appDownloadRef}>
       <AppDownloadCTABanner className="imageBoxAnimated" image="CTABanner.webp" text={t("appDownloadCTABanner.title") || ""} />
+    </div>
+  );
+};
+
+const HeadingBlock3 = () => {
+  const { t } = useTranslation("top");
+  return (
+    <div className="animatedDirection -right">
+      <section className={`${styles.heading} ${styles._position__right}`}>
+        <SubHeadingBlock title={{ line1: t("gallery.title1"), line2: t("gallery.title2") || "" }} onVisibilityChanged={maskTxtAnimation} />
+      </section>
     </div>
   );
 };

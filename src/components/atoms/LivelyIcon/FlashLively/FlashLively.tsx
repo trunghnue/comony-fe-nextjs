@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./FlashLively.module.scss";
 
-const FlashLively = () => {
+const FlashLively: React.FC = () => {
   return (
     <div className={`${styles.flashLively} ${styles.__animated}`}>
       <div className={`${styles.flashLively_shootingStar} ${styles.flashLively_shootingStar__dashed}`} />

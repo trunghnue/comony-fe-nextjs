@@ -19,9 +19,8 @@
   "video": {
     "description": "comonyは建築クリエイターの方はもちろん、建築ファンの方々や空間に対する\"こだわり\"を持った全ての人が気軽に訪れることができる建築メタバースプラットフォームです。さあ、想像を膨らまして、comonyの世界に飛びこんで見ましょう！",
     "text": "",
-    "title1a": "ここでしか体験できないcomonyの",
-    "title1b": "",
-    "title2": "建築メタバース"
+    "title1": "ここでしか体験できないcomonyの <br class=\"is-pc\"/>",
+    "title2": "<span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>建築メタバース</span>"
   },
   "commitments": {
     "boxDescription1": "実在する建築やアンビルトな建築、有名建築家の空間だけでなく、スポットライトが当たって来なかった素晴らしい作品も、これまで建てることが不可能だった建築や遠いけどいつかは行ってみたい憧れの建築も、誰でも気軽に訪れることができる夢のような世界。空間にこだわるすべての人に送る建築メタバースでは、それぞれの思いを平等に届けるギャラリーを提供します。",
@@ -31,12 +30,17 @@
     "boxTitle2": "誰でも瞬時に世界へ作品を公開、体験を可能にするあなただけのデジタルアトリエ",
     "boxTitle3": "住宅関連業界をはじめとしたビジネスシーンにも最適なプラットフォーム",
     "description": "comonyにおける主役は空間です。空間作りを追求すること、より良い空間を届けること、空間をきっかけに新しい価値を生み出すことに対して、私たちは常にこだわりを持ち続けています。これらを大事にする上で必要な特徴や機能を備えることで、comonyは「空間のことを一番理解できるプラットフォーム」を目指します。",
-    "title1": "comonyが大事にしている",
-    "title2": "3つのこだわり"
+    "title1": "comonyが大事にしている<br/>",
+    "title2": "<span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>3つのこだわり</span>"
   },
   "appDownloadCTABanner": {
     "button": "空間ギャラリーへ",
     "button_mb": "空間ギャラリーへ",
     "title": "建築メタバースプラットフォーム"
+  },
+  "gallery": {
+    "description": "クリエイターやタイアップ企業など作り手の皆様によってアップされ続けるこだわりの空間と弊社のアーティストによって制作される空間が日々どんどんアップロードされていきます。<br/>いろんな空間に入ってお気に入りの建築空間を探してみてください。",
+    "title1": "作り手のこだわりが詰まった<br/>",
+    "title2": "comonyの<span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>空間ギャラリー</span>"
   }
 }

@@ -19,8 +19,7 @@
   "video": {
     "description": "comony is an architectural metaverse platform that can be easily visited by architecture creators, architecture fans, and anyone with a \"passion\" for space. So, let your imagination soar and dive into the world of comony!",
     "text": "",
-    "title1a": "comony's",
-    "title1b": "architectural metaverse",
+    "title1": "comony's <span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>architectural metaverse </span><br class='is-pc'/>",
     "title2": "that can only be experienced here"
   },
   "commitments": {
@@ -31,12 +30,17 @@
     "boxTitle2": "Your own digital atelier that allows anyone to instantly showcase and experience your work to the world",
     "boxTitle3": "Ideal platform for the housing-related industry and other business scenes",
     "description": "What comony features the most is space. We have always maintained our commitment to the pursuit of space creation, the delivery of better spaces, and the creation of new value through space. By providing the features and functions necessary to take care of these, comony aims to be \"the platform with the best understanding of space\"",
-    "title1": "comony's",
-    "title2": "three most important commitments"
+    "title1": "comony's  <br/>",
+    "title2": "<span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>three most important commitments</span>"
   },
   "appDownloadCTABanner": {
     "button": "Go to the gallery page",
     "button_mb": "space gallery",
     "title": "Architectural Metaverse Platform"
+  },
+  "gallery": {
+    "description": "The spaces that are being uploaded by creators and tie-up companies, and the spaces created by our artists are being uploaded more and more everyday. <br/>Please enter various spaces and find your favorite architectural space.",
+    "title1": "The creator's commitment is shown<br/>",
+    "title2": "to <span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>the space gallery</span> in comony"
   }
 }
