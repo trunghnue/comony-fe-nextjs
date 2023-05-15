@@ -19,6 +19,7 @@ import { AnimatedBackground } from "@/components/atoms/AnimatedBackground/Animat
 import ImageBox from "@/components/organisms/ImageBox/ImageBox";
 import SquareLively from "@/components/atoms/LivelyIcon/SquareLively/SquareLively";
 import FlashLively from "@/components/atoms/LivelyIcon/FlashLively/FlashLively";
+import AppDownloadCTABanner from "@/components/organisms/CTABanner/AppDownloadCTABanner";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleScroll();
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
@@ -44,6 +45,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <ImageBox1 />
         <ImageBox2 />
         <ImageBox3 />
+        <AppDownload />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -264,14 +266,14 @@ const ImageBox1 = () => {
   const imageBox1Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox1_Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox1_Observer), {
+    const imageBox1Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox1Observer), {
       rootMargin: "50px",
     });
 
-    imageBox1Ref.current && imageBox1_Observer.observe(imageBox1Ref.current);
+    imageBox1Ref.current && imageBox1Observer.observe(imageBox1Ref.current);
 
     return () => {
-      imageBox1_Observer.disconnect();
+      imageBox1Observer.disconnect();
     };
   }, []);
   return (
@@ -298,14 +300,14 @@ const ImageBox2 = () => {
   const imageBox2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox2_Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox2_Observer), {
+    const imageBox2Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox2Observer), {
       rootMargin: "50px",
     });
 
-    imageBox2Ref.current && imageBox2_Observer.observe(imageBox2Ref.current);
+    imageBox2Ref.current && imageBox2Observer.observe(imageBox2Ref.current);
 
     return () => {
-      imageBox2_Observer.disconnect();
+      imageBox2Observer.disconnect();
     };
   }, []);
   return (
@@ -329,14 +331,14 @@ const ImageBox3 = () => {
   const imageBox3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox3_Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox3_Observer), {
+    const imageBox3Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox3Observer), {
       rootMargin: "50px",
     });
 
-    imageBox3Ref.current && imageBox3_Observer.observe(imageBox3Ref.current);
+    imageBox3Ref.current && imageBox3Observer.observe(imageBox3Ref.current);
 
     return () => {
-      imageBox3_Observer.disconnect();
+      imageBox3Observer.disconnect();
     };
   }, []);
   return (
@@ -356,6 +358,27 @@ const ImageBox3 = () => {
       <div className={styles.imageBoxBottom_flashIcon}>
         <FlashLively />
       </div>
+    </div>
+  );
+};
+
+const AppDownload = () => {
+  const { t } = useTranslation("top");
+  const appDownloadRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const appDownloadObserver = new IntersectionObserver(
+      (entries) => {
+        handleVisibilityChange(entries[0], appDownloadObserver);
+      },
+      { rootMargin: "50px" }
+    );
+    appDownloadRef.current && appDownloadObserver.observe(appDownloadRef.current);
+
+    return () => appDownloadObserver.disconnect();
+  }, []);
+  return (
+    <div className="animatedDirection -bottomToTop" ref={appDownloadRef}>
+      <AppDownloadCTABanner className="imageBoxAnimated" image="CTABanner.webp" text={t("appDownloadCTABanner.title") || ""} />
     </div>
   );
 };

@@ -1,0 +1,53 @@
+.appDownloadCTABanner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: $color_white;
+  text-align: center;
+
+  &.__hasText {
+    padding: $spacing_16x 0 $spacing_24x 0;
+
+    @include mb() {
+      padding: $spacing_14x $spacing_4x $spacing_14x;
+    }
+  }
+
+  &_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &_inner {
+    z-index: 2;
+    margin-bottom: $spacing_10x;
+  }
+
+  &_text {
+    padding: $spacing_10x 0;
+    margin: 0;
+    font-weight: $font_weight_bold;
+    line-height: 24px;
+    color: $color_white;
+
+    @include fz($font_size_24);
+
+    @include mb() {
+      padding-bottom: $spacing_8x;
+
+      @include fz($font_size_18);
+    }
+  }
+
+  &_button {
+    z-index: 2;
+  }
+}
