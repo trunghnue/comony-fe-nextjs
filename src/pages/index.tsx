@@ -21,7 +21,6 @@ import SquareLively from "@/components/atoms/LivelyIcon/SquareLively/SquareLivel
 import FlashLively from "@/components/atoms/LivelyIcon/FlashLively/FlashLively";
 import AppDownloadCTABanner from "@/components/organisms/CTABanner/AppDownloadCTABanner";
 import GallerySlider from "@/components/organisms/GallerySlider/GallerySlider";
-import getConfig from "next/config";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleScroll();
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
@@ -31,6 +30,9 @@ const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: Inte
     observer.unobserve(entry.target);
   }
 };
+const headers = new Headers();
+headers.set(process.env.NEXT_PUBLIC_API_KEY_NAME!, process.env.NEXT_PUBLIC_API_KEY_VALUE!);
+headers.set(process.env.NEXT_PUBLIC_FRONT_SERVER_KEY_NAME!, process.env.NEXT_PUBLIC_FRONT_SERVER_KEY_VALUE!);
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
   // console.log("🚀 ~ file: index.tsx:21 ~ Home _ props: ", _props);
@@ -110,11 +112,6 @@ const NewsList = () => {
         sort: "publishedAt",
       };
 
-      const headers = {
-        "x-comony-api": "true",
-        "x-api-key": "OiIxNTJDNjZBMS1EOTRBLTQ5QjItQUVGQi03QjE3QTlEQkFERjUifQ",
-      };
-
       try {
         const queryParams = Object.entries(params)
           .reduce((acc, [key, value]) => {
@@ -126,6 +123,7 @@ const NewsList = () => {
           headers,
           signal,
         });
+        console.log("🚀 ~ file: index.tsx:125 ~ headers:", headers);
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -420,16 +418,10 @@ const HeadingBlock3 = () => {
 };
 
 const Gallery = () => {
-  console.log("process.env: ", process.env);
+  console.log("process.env: ", process.env.NEXT_PUBLIC_API_URL);
   useEffect(() => {
     const fetchSpacelist = async () => {
-      const headers = {
-        "x-comony-api": "true",
-        "x-api-key": "OiIxNTJDNjZBMS1EOTRBLTQ5QjItQUVGQi03QjE3QTlEQkFERjUifQ",
-      };
-      const { publicRuntimeConfig } = getConfig();
-      console.log("🚀 ~ file: index.tsx:431 ~ publicRuntimeConfig:", publicRuntimeConfig);
-      const response = await fetch(`${publicRuntimeConfig.apiURL}/spaces`, { headers });
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/spaces`, { headers });
       const data = await response.json();
       console.log("🚀 ~ file: index.tsx:432 ~ data:", data);
     };
