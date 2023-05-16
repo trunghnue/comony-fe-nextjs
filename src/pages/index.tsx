@@ -20,6 +20,8 @@ import ImageBox from "@/components/organisms/ImageBox/ImageBox";
 import SquareLively from "@/components/atoms/LivelyIcon/SquareLively/SquareLively";
 import FlashLively from "@/components/atoms/LivelyIcon/FlashLively/FlashLively";
 import AppDownloadCTABanner from "@/components/organisms/CTABanner/AppDownloadCTABanner";
+import GallerySlider from "@/components/organisms/GallerySlider/GallerySlider";
+import getConfig from "next/config";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleScroll();
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
@@ -47,6 +49,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <ImageBox3 />
         <AppDownload />
         <HeadingBlock3 />
+        <Gallery />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -412,6 +415,32 @@ const HeadingBlock3 = () => {
           onVisibilityChanged={maskTxtAnimation}
         />
       </section>
+    </div>
+  );
+};
+
+const Gallery = () => {
+  console.log("process.env: ", process.env);
+  useEffect(() => {
+    const fetchSpacelist = async () => {
+      const headers = {
+        "x-comony-api": "true",
+        "x-api-key": "OiIxNTJDNjZBMS1EOTRBLTQ5QjItQUVGQi03QjE3QTlEQkFERjUifQ",
+      };
+      const { publicRuntimeConfig } = getConfig();
+      console.log("🚀 ~ file: index.tsx:431 ~ publicRuntimeConfig:", publicRuntimeConfig);
+      const response = await fetch(`${publicRuntimeConfig.apiURL}/spaces`, { headers });
+      const data = await response.json();
+      console.log("🚀 ~ file: index.tsx:432 ~ data:", data);
+    };
+
+    fetchSpacelist();
+  }, []);
+  return (
+    <div className="animatedDirection -bottomToTop">
+      <SectionContainer className={`${styles.gallery} imagedBoxAnimated`} bgColor="black-gradient" columns="1" fullWidth containerSize="full">
+        <GallerySlider />
+      </SectionContainer>
     </div>
   );
 };
