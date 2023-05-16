@@ -315,7 +315,7 @@ const ImageBox2 = () => {
       <ImageBox
         id="image-box-2"
         className="imageBoxAnimated"
-        position="right"
+        position="left"
         src="/images/imageBox02.webp"
         number="2"
         title={t("commitments.boxTitle2") || ""}
@@ -374,7 +374,9 @@ const AppDownload = () => {
     );
     appDownloadRef.current && appDownloadObserver.observe(appDownloadRef.current);
 
-    return () => appDownloadObserver.disconnect();
+    return () => {
+      appDownloadObserver.disconnect();
+    };
   }, []);
   return (
     <div className="animatedDirection -bottomToTop" ref={appDownloadRef}>
@@ -385,10 +387,30 @@ const AppDownload = () => {
 
 const HeadingBlock3 = () => {
   const { t } = useTranslation("top");
+  const headingBlock3Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const headingBlock3Observer = new IntersectionObserver(
+      (entries) => {
+        handleVisibilityChange(entries[0], headingBlock3Observer);
+      },
+      { rootMargin: "50px" }
+    );
+
+    headingBlock3Ref.current && headingBlock3Observer.observe(headingBlock3Ref.current);
+
+    return () => {
+      headingBlock3Observer.disconnect();
+    };
+  }, []);
   return (
-    <div className="animatedDirection -right">
-      <section className={`${styles.heading} ${styles._position__right}`}>
-        <SubHeadingBlock title={{ line1: t("gallery.title1"), line2: t("gallery.title2") || "" }} onVisibilityChanged={maskTxtAnimation} />
+    <div className="animatedDirection -right" ref={headingBlock3Ref}>
+      <section className={`heading ${styles._position__right}`}>
+        <SubHeadingBlock
+          title={{ line1: t("gallery.title1"), line2: t("gallery.title2") || "" }}
+          description={t("gallery.description") || ""}
+          onVisibilityChanged={maskTxtAnimation}
+        />
       </section>
     </div>
   );

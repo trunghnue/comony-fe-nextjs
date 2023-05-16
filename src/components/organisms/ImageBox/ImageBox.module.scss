@@ -1,6 +1,7 @@
 @import "../../../styles/common/animations";
 .imageBox {
   position: relative;
+  overflow: hidden;
 
   &_wrapper {
     width: 100%;
@@ -47,6 +48,19 @@
 
         @include mb() {
           padding: $spacing_4x $spacing_4x $spacing_14x $spacing_4x;
+        }
+      }
+
+      &__left {
+        left: 0;
+        padding: $spacing_8x $spacing_14x $spacing_24x calc((100% - #{$default_contents_W}) / 2);
+
+        @include screen(map-get($breakpoints, md), map-get($breakpoints, xl)) {
+          padding: $spacing_7x $spacing_7x $spacing_7x $spacing_20x;
+        }
+
+        @include mb() {
+          padding: $spacing_4x$spacing_4x $spacing_14x $spacing_4x;
         }
       }
     }

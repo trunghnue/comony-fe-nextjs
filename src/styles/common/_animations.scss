@@ -113,7 +113,7 @@
         animation: mymoveRight 1s;
         animation-fill-mode: both;
         animation-timing-function: ease-out;
-        will-change: transform opacity;
+        will-change: transform, opacity;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
       }
@@ -128,7 +128,7 @@
         animation: mymoveLeft 1s;
         animation-fill-mode: both;
         animation-timing-function: ease-out;
-        will-change: transform opacity;
+        will-change: transform, opacity;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
       }

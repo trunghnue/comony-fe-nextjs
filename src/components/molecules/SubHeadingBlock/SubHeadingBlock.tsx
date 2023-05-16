@@ -47,7 +47,7 @@ export const SubHeadingBlock = ({ bgColor = "white", position = "left", title, d
           </div>
           <div>{title?.line2 && <span dangerouslySetInnerHTML={{ __html: title?.line2 || "" }} />}</div>
         </div>
-        {description && <div className={styles.subHeadingBlock_description}>{description}</div>}
+        {description && <div className={styles.subHeadingBlock_description} dangerouslySetInnerHTML={{ __html: description }} />}
       </div>
     </div>
   );
