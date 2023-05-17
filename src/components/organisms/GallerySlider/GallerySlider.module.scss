@@ -1,0 +1,28 @@
+.gallerySlider {
+  overflow: hidden;
+  &_wrapper {
+    position: relative;
+    width: 5740px;
+    height: 448px;
+  }
+  &_first {
+    animation: bannermove 60s linear infinite;
+  }
+  &_reverse {
+    animation: bannermove 60s linear infinite;
+    animation-direction: reverse;
+  }
+  &_item {
+    display: inline-flex;
+    padding: $spacing_1x $spacing_3x;
+  }
+}
+
+@keyframes bannermove {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -5744px;
+  }
+}

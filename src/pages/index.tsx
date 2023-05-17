@@ -489,9 +489,11 @@ const Gallery = () => {
         fullWidth
         containerSize="full"
       >
-        {spaceList.length > 0 && <GallerySlider sliders={spaceList.slice(0, 5)} />}
-        {spaceList.length > 0 && <GallerySlider sliders={spaceList.slice(5, 10)} />}
-        {spaceList.length > 0 && <GallerySlider sliders={spaceList.slice(10)} />}
+        {spaceList.length > 0 && <GallerySlider className={styles.gallery_top} sliders={spaceList.slice(0, 5)} />}
+        {spaceList.length > 0 && (
+          <GallerySlider className={styles.gallery_center} sliders={spaceList.slice(5, 10)} reverse />
+        )}
+        {spaceList.length > 0 && <GallerySlider className={styles.gallery_bottom} sliders={spaceList.slice(10)} />}
       </SectionContainer>
     </div>
   );

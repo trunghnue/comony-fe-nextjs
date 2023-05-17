@@ -80,3 +80,14 @@
     }
   }
 }
+.gallery {
+  &_top {
+    margin-bottom: $spacing_6x;
+  }
+  &_center {
+    margin-bottom: $spacing_6x;
+  }
+  &_bottom {
+    margin-bottom: $spacing_14x;
+  }
+}
