@@ -21,6 +21,8 @@ import SquareLively from "@/components/atoms/LivelyIcon/SquareLively/SquareLivel
 import FlashLively from "@/components/atoms/LivelyIcon/FlashLively/FlashLively";
 import AppDownloadCTABanner from "@/components/organisms/CTABanner/AppDownloadCTABanner";
 import GallerySlider from "@/components/organisms/GallerySlider/GallerySlider";
+import { I_SpaceListDTO, I_SpaceListRequest } from "@/types/schema/spaces";
+import { publishedStatusId } from "@/constants/spaces";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleScroll();
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
@@ -33,6 +35,14 @@ const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: Inte
 const headers = new Headers();
 headers.set(process.env.NEXT_PUBLIC_API_KEY_NAME!, process.env.NEXT_PUBLIC_API_KEY_VALUE!);
 headers.set(process.env.NEXT_PUBLIC_FRONT_SERVER_KEY_NAME!, process.env.NEXT_PUBLIC_FRONT_SERVER_KEY_VALUE!);
+const formatParams = (params: any) => {
+  // to get string: direction=DESC&limit=3&page=1&sort=publishedAt
+  return Object.entries(params)
+    .reduce((acc, [key, value]) => {
+      return `${acc}&${key}=${value}`;
+    }, "")
+    .slice(1);
+};
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
   // console.log("🚀 ~ file: index.tsx:21 ~ Home _ props: ", _props);
@@ -76,7 +86,13 @@ const ArchitectBanner = () => {
     <div className="animatedDirection -bottomToTop" ref={architectBannerRef}>
       <section className={`${styles.architect} imageBoxAnimated`}>
         <Link href="/release/architect-seminar">
-          <Image className={`${styles.architect_image} is-pc`} src="/images/architect/top-banner.webp" alt="top banner" width={1440} height={139} />
+          <Image
+            className={`${styles.architect_image} is-pc`}
+            src="/images/architect/top-banner.webp"
+            alt="top banner"
+            width={1440}
+            height={139}
+          />
           <Image
             className={`${styles.architect_image} is-sp`}
             src="/images/architect/top-banner_sp.webp"
@@ -96,9 +112,12 @@ const NewsList = () => {
   const newListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const newListObserver: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], newListObserver), {
-      rootMargin: "50px",
-    });
+    const newListObserver: IntersectionObserver = new IntersectionObserver(
+      (entries) => handleVisibilityChange(entries[0], newListObserver),
+      {
+        rootMargin: "50px",
+      }
+    );
 
     newListRef.current && newListObserver.observe(newListRef.current);
 
@@ -113,17 +132,11 @@ const NewsList = () => {
       };
 
       try {
-        const queryParams = Object.entries(params)
-          .reduce((acc, [key, value]) => {
-            return `${acc}&${key}=${value}`;
-          }, "")
-          .slice(1); // to get string: direction=DESC&limit=3&page=1&sort=publishedAt
-
+        const queryParams = formatParams(params);
         const response = await fetch(`https://api.comony.net/news?${new URLSearchParams(queryParams)}`, {
           headers,
           signal,
         });
-        console.log("🚀 ~ file: index.tsx:125 ~ headers:", headers);
 
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -150,7 +163,12 @@ const NewsList = () => {
     <div className="animatedDirection -bottomToTop" ref={newListRef}>
       <SectionContainer className="imageBoxAnimated" bgColor="black-gradient">
         <div className={styles.newsList}>
-          <Heading level="2" align="left" fontWeight="700" headings={[{ text: "News", color: "white", spBreak: false }]} />
+          <Heading
+            level="2"
+            align="left"
+            fontWeight="700"
+            headings={[{ text: "News", color: "white", spBreak: false }]}
+          />
           <div className={styles.newsList_contents}>
             {newsList.length > 0 &&
               newsList.map((item) => (
@@ -267,9 +285,12 @@ const ImageBox1 = () => {
   const imageBox1Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox1Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox1Observer), {
-      rootMargin: "50px",
-    });
+    const imageBox1Observer: IntersectionObserver = new IntersectionObserver(
+      (entries) => handleVisibilityChange(entries[0], imageBox1Observer),
+      {
+        rootMargin: "50px",
+      }
+    );
 
     imageBox1Ref.current && imageBox1Observer.observe(imageBox1Ref.current);
 
@@ -301,9 +322,12 @@ const ImageBox2 = () => {
   const imageBox2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox2Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox2Observer), {
-      rootMargin: "50px",
-    });
+    const imageBox2Observer: IntersectionObserver = new IntersectionObserver(
+      (entries) => handleVisibilityChange(entries[0], imageBox2Observer),
+      {
+        rootMargin: "50px",
+      }
+    );
 
     imageBox2Ref.current && imageBox2Observer.observe(imageBox2Ref.current);
 
@@ -332,9 +356,12 @@ const ImageBox3 = () => {
   const imageBox3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox3Observer: IntersectionObserver = new IntersectionObserver((entries) => handleVisibilityChange(entries[0], imageBox3Observer), {
-      rootMargin: "50px",
-    });
+    const imageBox3Observer: IntersectionObserver = new IntersectionObserver(
+      (entries) => handleVisibilityChange(entries[0], imageBox3Observer),
+      {
+        rootMargin: "50px",
+      }
+    );
 
     imageBox3Ref.current && imageBox3Observer.observe(imageBox3Ref.current);
 
@@ -381,7 +408,11 @@ const AppDownload = () => {
   }, []);
   return (
     <div className="animatedDirection -bottomToTop" ref={appDownloadRef}>
-      <AppDownloadCTABanner className="imageBoxAnimated" image="CTABanner.webp" text={t("appDownloadCTABanner.title") || ""} />
+      <AppDownloadCTABanner
+        className="imageBoxAnimated"
+        image="CTABanner.webp"
+        text={t("appDownloadCTABanner.title") || ""}
+      />
     </div>
   );
 };
@@ -419,19 +450,48 @@ const HeadingBlock3 = () => {
 
 const Gallery = () => {
   console.log("process.env: ", process.env.NEXT_PUBLIC_API_URL);
+  const [spaceList, setSpaceList] = useState<I_SpaceListDTO[]>([]);
   useEffect(() => {
+    const spacesParams: I_SpaceListRequest = {
+      direction: "DESC",
+      isRandom: 1,
+      limit: 15,
+      page: 0,
+      publishedStatus: publishedStatusId.OPEN,
+    };
     const fetchSpacelist = async () => {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/spaces`, { headers });
-      const data = await response.json();
-      console.log("🚀 ~ file: index.tsx:432 ~ data:", data);
+      try {
+        const queryParams = formatParams(spacesParams);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/spaces?${new URLSearchParams(queryParams)}`, {
+          headers,
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const res = await response.json();
+        // console.log("🚀 ~ file: index.tsx:432 ~ data:", res);
+        setSpaceList(res.data.list);
+      } catch (error) {
+        throw error;
+      }
     };
 
     fetchSpacelist();
   }, []);
   return (
     <div className="animatedDirection -bottomToTop">
-      <SectionContainer className={`${styles.gallery} imagedBoxAnimated`} bgColor="black-gradient" columns="1" fullWidth containerSize="full">
-        <GallerySlider />
+      <SectionContainer
+        className={`${styles.gallery} imagedBoxAnimated`}
+        bgColor="black-gradient"
+        columns="1"
+        fullWidth
+        containerSize="full"
+      >
+        {spaceList.length > 0 && <GallerySlider sliders={spaceList.slice(0, 5)} />}
+        {spaceList.length > 0 && <GallerySlider sliders={spaceList.slice(5, 10)} />}
+        {spaceList.length > 0 && <GallerySlider sliders={spaceList.slice(10)} />}
       </SectionContainer>
     </div>
   );

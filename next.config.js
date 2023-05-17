@@ -8,6 +8,14 @@ const nextConfig = {
     prependData: `@import "./src/styles/style-resources.scss";`,
   },
   i18n,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "comony.net",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
