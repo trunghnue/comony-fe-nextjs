@@ -42,5 +42,6 @@
     "description": "クリエイターやタイアップ企業など作り手の皆様によってアップされ続けるこだわりの空間と弊社のアーティストによって制作される空間が日々どんどんアップロードされていきます。<br/>いろんな空間に入ってお気に入りの建築空間を探してみてください。",
     "title1": "作り手のこだわりが詰まった<br/>",
     "title2": "comonyの<span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>空間ギャラリー</span>"
-  }
+  },
+  "spaceListLink": "空間をもっと見る"
 }

@@ -449,8 +449,8 @@ const HeadingBlock3 = () => {
 };
 
 const Gallery = () => {
-  console.log("process.env: ", process.env.NEXT_PUBLIC_API_URL);
   const [spaceList, setSpaceList] = useState<I_SpaceListDTO[]>([]);
+  const { t } = useTranslation("top");
   useEffect(() => {
     const spacesParams: I_SpaceListRequest = {
       direction: "DESC",
@@ -489,11 +489,21 @@ const Gallery = () => {
         fullWidth
         containerSize="full"
       >
-        {spaceList.length > 0 && <GallerySlider className={styles.gallery_top} sliders={spaceList.slice(0, 5)} />}
         {spaceList.length > 0 && (
-          <GallerySlider className={styles.gallery_center} sliders={spaceList.slice(5, 10)} reverse />
+          <GallerySlider id="gallery_top" className={styles.gallery_top} sliders={spaceList.slice(0, 5)} />
         )}
-        {spaceList.length > 0 && <GallerySlider className={styles.gallery_bottom} sliders={spaceList.slice(10)} />}
+        {spaceList.length > 0 && (
+          <GallerySlider
+            id="gallery_center"
+            className={styles.gallery_center}
+            sliders={spaceList.slice(5, 10)}
+            reverse
+          />
+        )}
+        {spaceList.length > 0 && (
+          <GallerySlider id="gallery_bottom" className={styles.gallery_bottom} sliders={spaceList.slice(10)} />
+        )}
+        <LinkText color="white" link="./spaces" underline value={t("spaceListLink")} fontSize="standard" />
       </SectionContainer>
     </div>
   );

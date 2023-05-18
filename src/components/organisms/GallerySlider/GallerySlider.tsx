@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import styles from "./GallerySlider.module.scss";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,6 +25,18 @@ const GallerySlider: React.FC<GallerySliderProps> = ({ className = "", id = "", 
       return [...sliders, ...sliders];
     }
   }, [sliders]);
+
+  useEffect(() => {
+    const slider = document.getElementById(id);
+    // console.log("🚀 ~ file: GallerySlider.tsx:31 ~ slider:", slider);
+    const link = document.getElementsByClassName(styles.gallerySlider_item);
+    // console.log("🚀 ~ file: GallerySlider.tsx:33 ~ link:", link);
+
+    // mouseEvents
+    slider?.addEventListener("mousedown", (e) => {
+      console.log("🚀 ~ file: GallerySlider.tsx:37 ~ e:", e);
+    });
+  }, [id]);
 
   return (
     <div className={`${className} ${styles.gallerySlider}`}>

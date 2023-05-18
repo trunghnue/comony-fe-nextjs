@@ -81,13 +81,33 @@
   }
 }
 .gallery {
+  padding: $spacing_14x 0 $spacing_20x;
+
+  @include mb() {
+    padding: $spacing_6x 0 $spacing_14x;
+  }
+
   &_top {
     margin-bottom: $spacing_6x;
+
+    @include mb() {
+      margin-bottom: $spacing_4x;
+    }
   }
+
   &_center {
     margin-bottom: $spacing_6x;
+
+    @include mb() {
+      margin-bottom: $spacing_4x;
+    }
   }
+
   &_bottom {
     margin-bottom: $spacing_14x;
+
+    @include mb() {
+      margin-bottom: $spacing_8x;
+    }
   }
 }

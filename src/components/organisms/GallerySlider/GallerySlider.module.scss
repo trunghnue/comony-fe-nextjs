@@ -4,17 +4,38 @@
     position: relative;
     width: 5740px;
     height: 448px;
+
+    @include mb() {
+      width: 2530px;
+      height: 197px;
+    }
   }
   &_first {
     animation: bannermove 60s linear infinite;
+    will-change: margin-left;
+
+    @include mb() {
+      animation: bannermovemb 60s linear infinite;
+    }
   }
   &_reverse {
     animation: bannermove 60s linear infinite;
     animation-direction: reverse;
+
+    @include mb() {
+      animation: bannermovemb 60s linear infinite;
+      animation-direction: reverse;
+    }
   }
   &_item {
     display: inline-flex;
     padding: $spacing_1x $spacing_3x;
+
+    @include mb() {
+      width: 253px;
+      height: 197px;
+      padding: 0 $spacing_2x;
+    }
   }
 }
 
@@ -24,5 +45,15 @@
   }
   100% {
     margin-left: -5744px;
+  }
+}
+
+@keyframes bannermovemb {
+  0% {
+    margin-left: 0;
+  }
+
+  100% {
+    margin-left: -2528px;
   }
 }

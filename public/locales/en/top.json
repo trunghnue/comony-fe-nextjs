@@ -42,5 +42,6 @@
     "description": "The spaces that are being uploaded by creators and tie-up companies, and the spaces created by our artists are being uploaded more and more everyday. <br/>Please enter various spaces and find your favorite architectural space.",
     "title1": "The creator's commitment is shown<br/>",
     "title2": "to <span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>the space gallery</span> in comony"
-  }
+  },
+  "spaceListLink": "Find more"
 }
