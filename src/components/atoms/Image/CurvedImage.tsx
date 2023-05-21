@@ -9,9 +9,11 @@ interface I_CurvedImageProps {
 }
 
 const CurvedImage: React.FC<I_CurvedImageProps> = ({ path, alt, type = "default" }) => {
+  const classes = styles["_type__" + type];
   return (
-    <div className={styles.curvedImage}>
-      <Image src={path} alt={alt} width={574} height={448} />
+    <div className={`${classes} ${styles.curvedImage}`}>
+      <Image className={styles.curvedImage_image} src={path} alt={alt} width={574} height={448} />
+      <div className={styles.curvedImage_skelton}></div>
     </div>
   );
 };

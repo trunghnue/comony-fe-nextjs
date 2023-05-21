@@ -1,5 +1,59 @@
+// .curvedImage {
+//   width: 100%;
+//   mask-image: url("/images/mask-curved.png");
+//   mask-size: 100% 100%;
+// }
 .curvedImage {
   width: 100%;
+  overflow: hidden;
+
+  -webkit-mask-image: url("/images/mask-curved.png");
   mask-image: url("/images/mask-curved.png");
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+
+  &_image {
+    position: relative;
+    opacity: 1;
+    transition: 0.5s all;
+  }
+
+  &.-type {
+    &--gallery {
+      @include aspect-ratio(920, 652);
+    }
+  }
+
+  &_skelton {
+    position: absolute;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      lighten($color_gray_lighten1, 7%),
+      $color_gray_lighten1,
+      lighten($color_gray_lighten1, 7%)
+    );
+    background-position: left;
+    background-size: 200%;
+    opacity: 0;
+    animation: load 1s ease-out 0s infinite normal;
+  }
+
+  // &_show {
+  //   opacity: 1;
+  // }
+
+  img {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    object-fit: cover;
+  }
 }

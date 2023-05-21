@@ -4,6 +4,9 @@
     position: relative;
     width: 5740px;
     height: 448px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
 
     @include mb() {
       width: 2530px;
@@ -12,6 +15,7 @@
   }
   &_first {
     animation: bannermove 60s linear infinite;
+    backface-visibility: hidden;
     will-change: margin-left;
 
     @include mb() {
@@ -20,6 +24,7 @@
   }
   &_reverse {
     animation: bannermove 60s linear infinite;
+    backface-visibility: hidden;
     animation-direction: reverse;
 
     @include mb() {
@@ -29,7 +34,13 @@
   }
   &_item {
     display: inline-flex;
+    width: 574px;
+    height: 448px;
     padding: $spacing_1x $spacing_3x;
+
+    &.prevent {
+      pointer-events: none;
+    }
 
     @include mb() {
       width: 253px;
