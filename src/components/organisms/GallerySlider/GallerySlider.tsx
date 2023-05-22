@@ -59,9 +59,9 @@ const GallerySlider: React.FC<GallerySliderProps> = ({ className = "", id = "", 
       isDown = true;
       const pageX = e.pageX;
       startX = pageX - slider!.offsetLeft;
-      console.log("🚀 ~ file: GallerySlider.tsx:62 ~ slider!.offsetLeft:", slider!.offsetLeft);
+      // console.log("🚀 ~ file: GallerySlider.tsx:62 ~ slider!.offsetLeft:", slider!.offsetLeft);
       scrollLeft = slider!.scrollLeft;
-      console.log("🚀 ~ file: GallerySlider.tsx:63 ~ scrollLeft:", scrollLeft);
+      // console.log("🚀 ~ file: GallerySlider.tsx:63 ~ scrollLeft:", scrollLeft);
     };
 
     const handleMouseLeave = () => {
@@ -79,11 +79,11 @@ const GallerySlider: React.FC<GallerySliderProps> = ({ className = "", id = "", 
       }
       e.preventDefault();
       const x = e.pageX - slider!.offsetLeft;
-      // console.log("🚀 ~ file: GallerySlider.tsx:82 ~ e.pageX:", e.pageX);
+      // // console.log("🚀 ~ file: GallerySlider.tsx:82 ~ e.pageX:", e.pageX);
       const deviation = x - startX;
-      console.log("🚀 ~ file: GallerySlider.tsx:85 ~ deviation:", deviation);
+      // console.log("🚀 ~ file: GallerySlider.tsx:85 ~ deviation:", deviation);
       slider!.scrollLeft = scrollLeft - deviation;
-      console.log("🚀 ~ file: GallerySlider.tsx:87 ~ slider!.scrollLeft:", slider!.scrollLeft);
+      // console.log("🚀 ~ file: GallerySlider.tsx:87 ~ slider!.scrollLeft:", slider!.scrollLeft);
       preventClick(link);
     };
 
