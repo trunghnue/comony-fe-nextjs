@@ -25,6 +25,17 @@
         padding: 0 $spacing_8x;
       }
     }
+    &__right {
+      padding-left: calc(((100% - #{$default_contents_W}) / 2) + (100% - #{$default_contents_W}) / 2 - 120px);
+
+      @include mb() {
+        padding: 0 $spacing_4x;
+      }
+
+      @include screen(map-get($breakpoints, md), map-get($breakpoints, xxl)) {
+        padding: 0 $spacing_8x;
+      }
+    }
   }
 
   &_wrapper {

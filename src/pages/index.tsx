@@ -62,6 +62,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <AppDownload />
         <HeadingBlock3 />
         <Gallery />
+        <HeadingBlock4 />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -523,6 +524,36 @@ const Gallery = () => {
         )}
         <LinkText color="white" link="./spaces" underline value={t("spaceListLink")} fontSize="standard" />
       </SectionContainer>
+    </div>
+  );
+};
+
+const HeadingBlock4 = () => {
+  const { t } = useTranslation("top");
+  const headingBlock4Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const headingBlock4Observer: IntersectionObserver = new IntersectionObserver(
+      (entries) => handleVisibilityChange(entries[0], headingBlock4Observer),
+      { rootMargin: "50px" }
+    );
+
+    headingBlock4Ref.current && headingBlock4Observer.observe(headingBlock4Ref.current);
+
+    return () => {
+      headingBlock4Observer.disconnect();
+    };
+  }, []);
+  return (
+    <div className="animatedDirection -left" ref={headingBlock4Ref}>
+      <section className={`heading ${styles._position__left}`}>
+        <SubHeadingBlock
+          position="right"
+          title={{ line1: t("creatorsTop.title1"), line2: t("creatorsTop.title2") || "" }}
+          description={t("creatorsTop.description") || ""}
+          onVisibilityChanged={maskTxtAnimation}
+        />
+      </section>
     </div>
   );
 };

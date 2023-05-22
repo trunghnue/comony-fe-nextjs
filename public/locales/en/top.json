@@ -43,5 +43,21 @@
     "title1": "The creator's commitment is shown<br/>",
     "title2": "to <span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>the space gallery</span> in comony"
   },
-  "spaceListLink": "Find more"
+  "spaceListLink": "Find more",
+  "creatorsTop": {
+    "description": "<p>These are creators who were among the first to be interested in the possibilities of comony and to participate in the project. The comony space will allow a wide range of people to see architectures that have never seen the light of day.</p><p>Also, because it is a virtual space without borders, those creators are able to work outside of existing frameworks.</p>",
+    "first": {
+      "company": "Representative of studio anettai ",
+      "description": "Studio Anet Thai is an architectural design firm based in Ho Chi Minh City, Vietnam. At the same time, it is a 3D perspective production company specializing in architecture and interior design. We have been engaged in a wide range of design work, aiming to create tropical architecture, such as semi-outdoor spaces that take advantage of the tropical climate and lush green spaces with tropical plants. In contrast to Japan, where design is often carried out using architectural models, in Vietnam it is difficult to ensure the quality of model materials, and design is often carried out in 3D. ...",
+      "name": "Architect: Yamada Takahito"
+    },
+    "readMore": "Read more interviews>",
+    "second": {
+      "company": "Architectural Design Department, Nishimatsu Construction Co.",
+      "description": "I have been working as a first-class architect in the architectural design department of a so-called general contractor since 2014. I have designed a wide variety of buildings, including office buildings, commercial facilities, apartment buildings, and factories. From a digital point of view, I am also working on implementation design and presentation materials using BIM technology. As for architectural perspective, I make simple ones myself, but I often outsource...",
+      "name": "Architect: Daiki Kato"
+    },
+    "title1": "Leading creators of the times<br/>",
+    "title2": "You may find <span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>unbuilt architectures</span> that can only be experienced here"
+  }
 }

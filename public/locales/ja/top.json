@@ -43,5 +43,21 @@
     "title1": "作り手のこだわりが詰まった<br/>",
     "title2": "comonyの<span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>空間ギャラリー</span>"
   },
-  "spaceListLink": "空間をもっと見る"
+  "spaceListLink": "空間をもっと見る",
+  "creatorsTop": {
+    "description": "<p>comonyの可能性にいち早く興味を持ち、参画をいただけたクリエイターの方々です。設計したものの惜しくも日の目を浴びることがなかった未完の建築作品も、comonyを通して様々な方に体験してもらうことができるようになりました。<p/><p>また、国境のないバーチャル空間だからこそ、既存の枠にとらわれない活動をしているクリエイターもいらっしゃいます。</p>",
+    "first": {
+      "company": "studio anettai代表",
+      "description": "スタジオ・アネッタイはベトナム・ホーチミンを拠点とした建築設計事務所です。同時に、建築・内装専門の3Dパース制作会社でもあります。南国の気候を活かした半屋外空間、熱帯植物を用いた緑豊かな空間など、トロピカルな建築を目指して、幅広く設計業務を行ってきました。建築模型で設計を進めることの多い日本と対照的に、ベトナムでは模型材料の質の確保も難しく、3Dで設計を進めることが多いです。…",
+      "name": "建築家: 山田 貴仁"
+    },
+    "readMore": "インタビューをもっと読む>",
+    "second": {
+      "company": "西松建設株式会社　建築設計部",
+      "description": "2014年からいわゆるゼネコンの建築設計部で一級建築士として働いています。事務所ビルや商業施設、共同住宅、工場など多岐に渡る建築を設計してきました。デジタルな視点でいえば、BIMの技術を活用して、実施設計やプレゼンテーション資料の作成にも取り組んでいます。建築パースについては簡単なものは自分でつくりますが、外注することも多いですね…",
+      "name": "建築士: 加藤 大樹"
+    },
+    "title1": "時代をリードする参画クリエイター<br/>",
+    "title2": "ここでしか体験できない<span style='padding: 0; background: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;'>アンビルド建築</span>も"
+  }
 }
