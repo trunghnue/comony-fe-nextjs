@@ -13,7 +13,7 @@ interface SectionContainerProps {
   className?: string;
 }
 
-export const SectionContainer = ({
+const SectionContainer: React.FC<SectionContainerProps> = ({
   columns = "1",
   containerSize = "lg",
   position = "center",
@@ -23,7 +23,7 @@ export const SectionContainer = ({
   fullWidth = false,
   children,
   className = "",
-}: SectionContainerProps) => {
+}) => {
   const classes = useMemo(() => {
     return [
       className,
@@ -47,3 +47,5 @@ export const SectionContainer = ({
     </section>
   );
 };
+
+export default SectionContainer;

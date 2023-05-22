@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useRef } from "react";
 import styles from "./GallerySlider.module.scss";
 import Link from "next/link";
-import Image from "next/image";
 import { useCreateThumbnailPath } from "@/composables/useCreateThumbnailPath";
 import CurvedImage from "@/components/atoms/Image/CurvedImage";
 

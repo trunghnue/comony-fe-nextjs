@@ -9,7 +9,13 @@ interface SubHeadingBlockProps {
   onVisibilityChanged: (entry: IntersectionObserverEntry, delay?: number) => void;
 }
 
-export const SubHeadingBlock = ({ bgColor = "white", position = "left", title, description = "", onVisibilityChanged }: SubHeadingBlockProps) => {
+const SubHeadingBlock: React.FC<SubHeadingBlockProps> = ({
+  bgColor = "white",
+  position = "left",
+  title,
+  description = "",
+  onVisibilityChanged,
+}) => {
   const classes = useMemo(() => {
     return [styles[`_bgColor__${bgColor}`], styles[`_position__${position}`]].join(" ");
   }, [bgColor, position]);
@@ -47,8 +53,12 @@ export const SubHeadingBlock = ({ bgColor = "white", position = "left", title, d
           </div>
           <div>{title?.line2 && <span dangerouslySetInnerHTML={{ __html: title?.line2 || "" }} />}</div>
         </div>
-        {description && <div className={styles.subHeadingBlock_description} dangerouslySetInnerHTML={{ __html: description }} />}
+        {description && (
+          <div className={styles.subHeadingBlock_description} dangerouslySetInnerHTML={{ __html: description }} />
+        )}
       </div>
     </div>
   );
 };
+
+export default SubHeadingBlock;

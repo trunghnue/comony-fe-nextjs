@@ -5,7 +5,7 @@ interface AnimatedBackgroundProps {
   children: React.ReactNode;
 }
 
-export const AnimatedBackground = ({ children }: AnimatedBackgroundProps) => {
+const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ children }) => {
   const [particleSmall, setParticleSmall] = useState<number>(0);
   const [particleMedium, setParticleMedium] = useState<number>(0);
   const [particleLarge, setParticleLarge] = useState<number>(0);
@@ -57,3 +57,5 @@ export const AnimatedBackground = ({ children }: AnimatedBackgroundProps) => {
     </div>
   );
 };
+
+export default AnimatedBackground;

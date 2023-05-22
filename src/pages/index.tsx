@@ -1,7 +1,7 @@
 import MainVisualVideo2 from "@/components/organisms/MainVisual/MainVisualVideo2";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { SectionContainer } from "@/components/atoms/SectionContainer/SectionContainer";
+import SectionContainer from "@/components/atoms/SectionContainer/SectionContainer";
 import DefaultLayout from "@/components/organisms/Layout/DefaultLayout";
 import styles from "./index.module.scss";
 import Link from "next/link";
@@ -13,9 +13,9 @@ import NewsItem from "@/components/molecules/NewsItem/NewsItem";
 import { i18n, useTranslation } from "next-i18next";
 import LinkText from "@/components/atoms/LinkText/LinkText";
 import { I_Get_News_Id_Response_Data, I_Newslist } from "@/types/schema/news";
-import { SubHeadingBlock } from "@/components/molecules/SubHeadingBlock/SubHeadingBlock";
-import { Video } from "@/components/atoms/Video/Video";
-import { AnimatedBackground } from "@/components/atoms/AnimatedBackground/AnimatedBackground";
+import SubHeadingBlock from "@/components/molecules/SubHeadingBlock/SubHeadingBlock";
+import Video from "@/components/atoms/Video/Video";
+import AnimatedBackground from "@/components/atoms/AnimatedBackground/AnimatedBackground";
 import ImageBox from "@/components/organisms/ImageBox/ImageBox";
 import SquareLively from "@/components/atoms/LivelyIcon/SquareLively/SquareLively";
 import FlashLively from "@/components/atoms/LivelyIcon/FlashLively/FlashLively";
@@ -122,7 +122,6 @@ const NewsList = () => {
     newListRef.current && newListObserver.observe(newListRef.current);
 
     const controller = new AbortController();
-    const signal = controller.signal;
     const fetchNews = async () => {
       const params: I_Newslist = {
         direction: "DESC",
@@ -133,9 +132,9 @@ const NewsList = () => {
 
       try {
         const queryParams = formatParams(params);
-        const response = await fetch(`https://api.comony.net/news?${new URLSearchParams(queryParams)}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news?${new URLSearchParams(queryParams)}`, {
           headers,
-          signal,
+          signal: controller.signal,
         });
 
         if (!response.ok) {
@@ -451,6 +450,8 @@ const HeadingBlock3 = () => {
 const Gallery = () => {
   const [spaceList, setSpaceList] = useState<I_SpaceListDTO[]>([]);
   const { t } = useTranslation("top");
+  const galleryRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const spacesParams: I_SpaceListRequest = {
       direction: "DESC",
@@ -459,11 +460,13 @@ const Gallery = () => {
       page: 0,
       publishedStatus: publishedStatusId.OPEN,
     };
+    const controller = new AbortController();
     const fetchSpacelist = async () => {
       try {
         const queryParams = formatParams(spacesParams);
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/spaces?${new URLSearchParams(queryParams)}`, {
           headers,
+          signal: controller.signal,
         });
 
         if (!response.ok) {
@@ -478,12 +481,27 @@ const Gallery = () => {
       }
     };
 
+    const galleryObserver = new IntersectionObserver(
+      (entries) => {
+        handleVisibilityChange(entries[0], galleryObserver);
+      },
+      { rootMargin: "50px" }
+    );
+
+    galleryRef.current && galleryObserver.observe(galleryRef.current);
+
     fetchSpacelist();
+
+    return () => {
+      galleryObserver.disconnect();
+      controller.abort();
+    };
   }, []);
+
   return (
-    <div className="animatedDirection -bottomToTop">
+    <div className="animatedDirection -bottomToTop" ref={galleryRef}>
       <SectionContainer
-        className={`${styles.gallery} imagedBoxAnimated`}
+        className={`imageBoxAnimated ${styles.gallery}`}
         bgColor="black-gradient"
         columns="1"
         fullWidth

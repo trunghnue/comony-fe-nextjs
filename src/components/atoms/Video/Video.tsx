@@ -8,7 +8,11 @@ interface VideoProps {
   src?: string;
 }
 
-export const Video = ({ height = "250px", src = "https://www.youtube.com/embed/akeytNVcIy4", width = "500px" }: VideoProps) => {
+const Video: React.FC<VideoProps> = ({
+  height = "250px",
+  src = "https://www.youtube.com/embed/akeytNVcIy4",
+  width = "500px",
+}) => {
   const [stateButton, setStateButton] = useState<boolean>(true);
   const [trigger, setTrigger] = useState<number>(0);
   const playButtonRef = useRef<HTMLDivElement>(null);
@@ -83,3 +87,5 @@ export const Video = ({ height = "250px", src = "https://www.youtube.com/embed/a
     </div>
   );
 };
+
+export default Video;
