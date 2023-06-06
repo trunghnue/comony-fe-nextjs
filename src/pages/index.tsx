@@ -63,6 +63,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <HeadingBlock3 />
         <Gallery />
         <HeadingBlock4 />
+        <CreatorBanner />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -554,6 +555,35 @@ const HeadingBlock4 = () => {
           onVisibilityChanged={maskTxtAnimation}
         />
       </section>
+    </div>
+  );
+};
+
+const CreatorBanner = () => {
+  const { t } = useTranslation("top");
+  const creatorBannerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const creatorBannerObserver = new IntersectionObserver((entries) => {
+      handleVisibilityChange(entries[0], creatorBannerObserver);
+    });
+    creatorBannerRef.current && creatorBannerObserver.observe(creatorBannerRef.current);
+    return () => {
+      creatorBannerObserver.disconnect();
+    };
+  }, []);
+  return (
+    <div className={styles.creatorBanner}>
+      <div className="animatedDirection -bottomToTop" ref={creatorBannerRef}>
+        <SectionContainer
+          className={`${styles.creatorSection} imageBoxAnimated`}
+          bgColor="black-gradient"
+          containerSize="full"
+          columns="1"
+          position="left"
+        >
+          111
+        </SectionContainer>
+      </div>
     </div>
   );
 };
