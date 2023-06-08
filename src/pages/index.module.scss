@@ -111,3 +111,18 @@
     }
   }
 }
+
+.creatorBanner {
+  position: relative;
+}
+.creatorSection {
+  &_item {
+    &:not(:last-child) {
+      margin-bottom: $spacing_6x;
+
+      @include mb() {
+        margin-bottom: $spacing_14x;
+      }
+    }
+  }
+}

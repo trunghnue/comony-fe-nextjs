@@ -11,9 +11,18 @@ interface LinkTextProps {
   fontSize: "small" | "medium" | "standard" | "large";
 }
 
-export default function LinkText({ className = "", value, link = "", color = "black", underline = false, fontSize = "small" }: LinkTextProps) {
+export default function LinkText({
+  className = "",
+  value,
+  link = "",
+  color = "black",
+  underline = false,
+  fontSize = "small",
+}: LinkTextProps) {
   const classes = useMemo(() => {
-    return [className, styles[`_color__${color}`], styles[`_fontSize__${fontSize}`], underline && styles._underline].filter(Boolean).join(" ");
+    return [className, styles[`_color__${color}`], styles[`_fontSize__${fontSize}`], underline && styles._underline]
+      .filter(Boolean)
+      .join(" ");
   }, [className, color, fontSize, underline]);
 
   return (

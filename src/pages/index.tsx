@@ -23,8 +23,9 @@ import AppDownloadCTABanner from "@/components/organisms/CTABanner/AppDownloadCT
 import GallerySlider from "@/components/organisms/GallerySlider/GallerySlider";
 import { I_SpaceListDTO, I_SpaceListRequest } from "@/types/schema/spaces";
 import { publishedStatusId } from "@/constants/spaces";
+import CreatorArticle from "@/components/organisms/CreatorArticle/CreatorArticle";
 
-const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage } = handleScroll();
+const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage, slideItems } = handleScroll();
 const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
   const isVisible = entry.isIntersecting;
   if (isVisible) {
@@ -562,6 +563,20 @@ const HeadingBlock4 = () => {
 const CreatorBanner = () => {
   const { t } = useTranslation("top");
   const creatorBannerRef = useRef<HTMLDivElement>(null);
+  const creatorImages = [
+    { thumbnailUrl: "/images/creator/01/image_02_sm.webp", title: "image2" },
+    { thumbnailUrl: "/images/creator/01/image_01_sm.webp", title: "image1" },
+    { thumbnailUrl: "/images/creator/01/image_03_sm.webp", title: "image3" },
+    { thumbnailUrl: "/images/creator/01/image_04_sm.webp", title: "image4" },
+  ];
+
+  const creatorImages2 = [
+    { thumbnailUrl: "/images/creator/02/image_01_sm.webp", title: "image1" },
+    { thumbnailUrl: "/images/creator/02/image_02_sm.webp", title: "image2" },
+    { thumbnailUrl: "/images/creator/02/image_03_sm.webp", title: "image3" },
+    { thumbnailUrl: "/images/creator/02/image_04_sm.webp", title: "image4" },
+  ];
+
   useEffect(() => {
     const creatorBannerObserver = new IntersectionObserver((entries) => {
       handleVisibilityChange(entries[0], creatorBannerObserver);
@@ -571,17 +586,39 @@ const CreatorBanner = () => {
       creatorBannerObserver.disconnect();
     };
   }, []);
+
   return (
     <div className={styles.creatorBanner}>
       <div className="animatedDirection -bottomToTop" ref={creatorBannerRef}>
         <SectionContainer
-          className={`${styles.creatorSection} imageBoxAnimated`}
+          className="imageBoxAnimated"
           bgColor="black-gradient"
           containerSize="full"
           columns="1"
           position="left"
         >
-          111
+          <CreatorArticle
+            className={styles.creatorSection_item}
+            backgroundPath="/images/gallery_bg1.webp"
+            imageList={creatorImages}
+            to="./interview-takahito-yamada"
+            heading={t("creatorsTop.first.name") || ""}
+            subHeading={t("creatorsTop.first.company") || ""}
+            content={t("creatorsTop.first.description") || ""}
+            link={t("creatorsTop.readMore") || ""}
+            onVisibilityChanged={slideItems}
+          />
+          <CreatorArticle
+            className={styles.creatorSection_item}
+            backgroundPath="/images/gallery_bg2.webp"
+            imageList={creatorImages2}
+            to="./interview-daiki-kato"
+            heading={t("creatorsTop.second.name") || ""}
+            subHeading={t("creatorsTop.second.company") || ""}
+            content={t("creatorsTop.second.description") || ""}
+            link={t("creatorsTop.readMore") || ""}
+            onVisibilityChanged={slideItems}
+          />
         </SectionContainer>
       </div>
     </div>

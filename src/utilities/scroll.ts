@@ -35,5 +35,21 @@ export function handleScroll() {
     }
   };
 
-  return { visibilityChangedArrows, maskTxtAnimation, handleScaleImage, visibilityChangedImageBoxContent };
+  const slideItems = (isVisible: boolean, entry: IntersectionObserverEntry, time = 220, classes = "is-active") => {
+    if (isVisible) {
+      const elm = entry.target;
+      const items = elm.querySelectorAll(".slide-in-item");
+
+      items.forEach((item, index) => {
+        const order = index + 1;
+        const delay = order * time;
+
+        setTimeout(() => {
+          item.classList.add(classes);
+        }, delay);
+      });
+    }
+  };
+
+  return { visibilityChangedArrows, maskTxtAnimation, handleScaleImage, visibilityChangedImageBoxContent, slideItems };
 }

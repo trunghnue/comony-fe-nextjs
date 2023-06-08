@@ -21,12 +21,13 @@ $breakpoints: (
   // Extra screen / desktop
   xxxl: 1368px
 ) !default;
+
 $breakpoints_header: 924px;
+$breakpoints_dashboard: 584px;
 
 /* -----------------------------------------
       Color
 ------------------------------------------- */
-
 // static pages
 $font_color_base: #222;
 $color_primary: #f69a08;
@@ -42,6 +43,10 @@ $color_gray_lighten2: #e5e5e5;
 $color_gray_lighten3: #f8f8f8;
 $color_darkblue: #0d3584;
 
+// sns color
+$color_facebook: #1877f2;
+$color_twitter: #1d9bf0;
+
 // Gray
 $color_white: #fff;
 $color_gray_50: #faf9fa;
@@ -55,6 +60,10 @@ $color_gray_700: #615f63;
 $color_gray_800: #484649;
 $color_gray_900: #212022;
 $color_gray_1000: #100f09;
+
+// LightBlue
+$color_light_blue_100: #f7f7fd;
+$color_light_blue_200: #dfe6f0;
 
 // Yellow
 $color_yellow: #ffc700;
@@ -73,9 +82,39 @@ $color_yellow_a_400: #f5cd12;
 $color_yellow_a_700: #f5b40e;
 $color_yellow_new: #fdcf10;
 
-// LightBlue
-$color_light_blue_100: #f7f7fd;
-$color_light_blue_200: #dfe6f0;
+// Blue
+$color_blue_50: #e4ebf8;
+$color_blue_100: #b6bee0;
+$color_blue_200: #8e9bcf;
+$color_blue_300: #687ac0;
+$color_blue_400: #215ed8;
+$color_blue_500: #2648ae;
+$color_blue_600: #1f40a5;
+$color_blue_700: #163798;
+$color_blue_800: #052e8d;
+$color_blue_900: #001b78;
+$color_blue_a_100: #7893f7;
+$color_blue_a_200: #3264f7;
+$color_blue_a_400: #0054fc;
+$color_blue_a_700: #0049fd;
+$color_blue: #006cfa;
+
+// Red
+$color_red_100: #faeff1;
+$color_red_500: #e34561;
+$color_red_a_500: #ff5e7b;
+$color_red_error: #f2453d;
+
+// Green
+$color_green_100: #f1fcf9;
+$color_green_500: #00b07d;
+
+// Explanation Text
+$color_explanationText: #9f9f9f;
+
+$fileDropDown_Overlay_Background: rgba(0, 0, 0, 0.3);
+$tooltip_background: rgba(0, 0, 0, 0.6);
+$banner_background: rgba(0, 0, 0, 0.4);
 
 // Gradiention
 $color_yellow_gradient: linear-gradient(103.27deg, #ffc700 18.62%, #ffe600 82.01%), #000;
@@ -87,6 +126,53 @@ $color_white_gradient: linear-gradient(108.46deg, #fff 1.35%, #faf9f3 85.13%);
 $color_blue_gradient: linear-gradient(179.48deg, #b3cede 3.48%, #d7cdbf 92.91%);
 $color_white_gradient_2: linear-gradient(181.9deg, rgba(255, 255, 255, 0) -3.93%, #fff 85.61%);
 $color_black_gradient_4: linear-gradient(90deg, rgba(16, 15, 9, 0.6) 0%, rgba(43, 46, 51, 0.6) 100%);
+
+/* -----------------------------------------
+      Font size
+------------------------------------------- */
+$font_size_160: 160;
+$font_size_100: 100;
+$font_size_64: 64;
+$font_size_55: 55;
+$font_size_53: 53;
+$font_size_48: 48;
+$font_size_46: 46;
+$font_size_42: 42;
+$font_size_40: 40;
+$font_size_37: 37;
+$font_size_34: 34;
+$font_size_32: 32;
+$font_size_30: 30;
+$font_size_28: 28;
+$font_size_26: 26;
+$font_size_24: 24;
+$font_size_22: 22;
+$font_size_20: 20;
+$font_size_19: 19;
+$font_size_18: 18;
+$font_size_17: 17;
+$font_size_16: 16;
+$font_size_15: 15;
+$font_size_14: 14;
+$font_size_13: 13;
+$font_size_12: 12;
+$font_size_11: 11;
+$font_size_10: 10;
+
+/* -----------------------------------------
+     Opacity
+------------------------------------------- */
+$opacity_hover: 0.75;
+
+/* -----------------------------------------
+     Line Height
+------------------------------------------- */
+$line_height_article: 1.875;
+
+/* -----------------------------------------
+      Font family
+------------------------------------------- */
+$font_base: "Noto Sans JP", sans-serif;
 
 /* -----------------------------------------
       Font Weight
@@ -102,12 +188,66 @@ $font_weight_light: 100;
 ------------------------------------------- */
 $header_H_pc: 64px;
 $header_H_sp: 48px;
+$input_H: 4rem;
+$select_W: 260px;
+$select_H: 40px;
+$AddressBar_W: 28rem;
+$checkbox_W: 18px;
+$checkbox_H: 18px;
+
+// for dashboard
+$dashboard_sidebar_W_pc: 300px;
+$dashboard_sidebar_W_mb: 100px;
+$dashboard_contents_W: 1044px;
+$dashboard_contents_W_large: 1440px;
+$dashboard_single_contents_W: 964px;
 
 // for business
 $default_contents_W: 1044px;
 $default_contents_W_medium: 1216px;
 $default_contents_W_large: 1440px;
 $default_contents_W_xlarge: 1920px;
+
+$business_contents_W: 1920px;
+$interview_contents_W: 1044px;
+$interview_contents_W_large: 1920px;
+$interview_contents_W_medium: 1216px;
+
+// for space
+$space_contents_W: 1920px;
+$space_modal_contents_W: 360px;
+
+/* -----------------------------------------
+      Border Radius
+------------------------------------------- */
+$input_BorderRadius: 5px;
+$checkbox_BorderRadius: 3px;
+
+// Border Radius
+$input_BorderRadius: 5px;
+$select_BorderRadius: 6px;
+$tag_BorderRadius_small: 4px;
+$tag_BorderRadius_medium: 5px;
+$tag_BorderRadius_larger: 22px;
+$fileDownload_BorderRadius: 8px;
+$formContainer_BorderRadius: 8px;
+$modalContainer_BorderRadius: 8px;
+$label_BorderRadius_xsmall: 2px;
+$label_BorderRadius_small: 4px;
+$label_BorderRadius_medium: 10px;
+$textArea_BorderRadius: 6px;
+$searchBox_BorderRadius: 6px;
+$fileDropBox_BorderRadius: 3px;
+$licenseCard_BorderRadius: 8px;
+$memberInvitation_BorderRadius: 6px;
+$privacySetting_BorderRadius: 8px;
+$radioButton_BorderRadius: 6px;
+$galleryWithThumbnail_BorderRadius: 183px;
+$galleryWithThumbnail_BorderRadius_sp: 114px;
+$appDownLoadButton_BorderRadius: 6px;
+$userProfile_BorderRadius_medium: 34px;
+$userProfile_BorderRadius_small: 25px;
+$userProfile_BorderRadius_xsmall: 14px;
 
 /* ------------------------------------------
       spacing for padding / margin
@@ -151,69 +291,6 @@ $spacing_60x: 24.2rem;
 $spacing_82x: 33rem;
 
 /* -----------------------------------------
-      Font size
+      Image path
 ------------------------------------------- */
-$font_size_160: 160;
-$font_size_100: 100;
-$font_size_64: 64;
-$font_size_55: 55;
-$font_size_53: 53;
-$font_size_48: 48;
-$font_size_46: 46;
-$font_size_42: 42;
-$font_size_40: 40;
-$font_size_37: 37;
-$font_size_34: 34;
-$font_size_32: 32;
-$font_size_30: 30;
-$font_size_28: 28;
-$font_size_26: 26;
-$font_size_24: 24;
-$font_size_22: 22;
-$font_size_20: 20;
-$font_size_19: 19;
-$font_size_18: 18;
-$font_size_17: 17;
-$font_size_16: 16;
-$font_size_15: 15;
-$font_size_14: 14;
-$font_size_13: 13;
-$font_size_12: 12;
-$font_size_11: 11;
-$font_size_10: 10;
-
-// Border Radius
-$input_BorderRadius: 5px;
-$select_BorderRadius: 6px;
-$tag_BorderRadius_small: 4px;
-$tag_BorderRadius_medium: 5px;
-$tag_BorderRadius_larger: 22px;
-$fileDownload_BorderRadius: 8px;
-$formContainer_BorderRadius: 8px;
-$modalContainer_BorderRadius: 8px;
-$label_BorderRadius_xsmall: 2px;
-$label_BorderRadius_small: 4px;
-$label_BorderRadius_medium: 10px;
-$textArea_BorderRadius: 6px;
-$searchBox_BorderRadius: 6px;
-$fileDropBox_BorderRadius: 3px;
-$licenseCard_BorderRadius: 8px;
-$memberInvitation_BorderRadius: 6px;
-$privacySetting_BorderRadius: 8px;
-$radioButton_BorderRadius: 6px;
-$galleryWithThumbnail_BorderRadius: 183px;
-$galleryWithThumbnail_BorderRadius_sp: 114px;
-$appDownLoadButton_BorderRadius: 6px;
-$userProfile_BorderRadius_medium: 34px;
-$userProfile_BorderRadius_small: 25px;
-$userProfile_BorderRadius_xsmall: 14px;
-
-/* -----------------------------------------
-      Font family
-------------------------------------------- */
-$font_base: "Noto Sans JP", sans-serif;
-
-/* -----------------------------------------
-     Opacity
-------------------------------------------- */
-$opacity_hover: 0.75;
+$img_path: "@/assets/images/";
