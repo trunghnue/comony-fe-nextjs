@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./CreatorArticle.module.scss";
-import Link from "next/link";
-import Image from "next/image";
 import LinkText from "@/components/atoms/LinkText/LinkText";
 import GalleryWithThumbnail, {
   I_GalleryWithThumbnailElement,

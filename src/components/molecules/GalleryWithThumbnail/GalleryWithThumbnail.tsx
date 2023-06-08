@@ -15,8 +15,6 @@ interface GalleryWithThumbnailProps {
 }
 
 const GalleryWithThumbnail: React.FC<GalleryWithThumbnailProps> = ({ alt, backgroundPath, imageList }) => {
-  console.log("🚀 ~ file: GalleryWithThumbnail.tsx:17 ~ imageList:", imageList);
-
   return (
     <div className={styles.galleryWithThumbnail}>
       <Image

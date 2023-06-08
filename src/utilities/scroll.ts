@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export function handleScroll() {
+  // --------- Direction animation ----------
   const visibilityChangedArrows = (entry: IntersectionObserverEntry) => {
     const elm = entry.target || document;
     const itemsClass = elm.classList;

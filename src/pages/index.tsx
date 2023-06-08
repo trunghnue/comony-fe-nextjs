@@ -26,13 +26,6 @@ import { publishedStatusId } from "@/constants/spaces";
 import CreatorArticle from "@/components/organisms/CreatorArticle/CreatorArticle";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage, slideItems } = handleScroll();
-const handleVisibilityChange = (entry: IntersectionObserverEntry, observer: IntersectionObserver) => {
-  const isVisible = entry.isIntersecting;
-  if (isVisible) {
-    visibilityChangedArrows(entry);
-    observer.unobserve(entry.target);
-  }
-};
 const headers = new Headers();
 headers.set(process.env.NEXT_PUBLIC_API_KEY_NAME!, process.env.NEXT_PUBLIC_API_KEY_VALUE!);
 headers.set(process.env.NEXT_PUBLIC_FRONT_SERVER_KEY_NAME!, process.env.NEXT_PUBLIC_FRONT_SERVER_KEY_VALUE!);
@@ -74,9 +67,14 @@ const ArchitectBanner = () => {
   const architectBannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const architectBannerObserver: IntersectionObserver = new IntersectionObserver((entries) =>
-      handleVisibilityChange(entries[0], architectBannerObserver)
-    );
+    const architectBannerObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      const isVisible = entry.isIntersecting;
+      if (isVisible) {
+        visibilityChangedArrows(entry);
+        architectBannerObserver.unobserve(entry.target);
+      }
+    });
 
     architectBannerRef.current && architectBannerObserver.observe(architectBannerRef.current);
 
@@ -115,8 +113,15 @@ const NewsList = () => {
   const newListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const newListObserver: IntersectionObserver = new IntersectionObserver(
-      (entries) => handleVisibilityChange(entries[0], newListObserver),
+    const newListObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          newListObserver.unobserve(entry.target);
+        }
+      },
       {
         rootMargin: "50px",
       }
@@ -193,22 +198,27 @@ const NewsList = () => {
 
 const HeadingBlock1 = () => {
   const { t } = useTranslation("top");
-  const headingBlockRef = useRef<HTMLDivElement>(null);
+  const headingBlock1Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const headingBlockObserver: IntersectionObserver = new IntersectionObserver((entries) =>
-      handleVisibilityChange(entries[0], headingBlockObserver)
-    );
+    const headingBlock1Observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      const isVisible = entry.isIntersecting;
+      if (isVisible) {
+        visibilityChangedArrows(entry);
+        headingBlock1Observer.unobserve(entry.target);
+      }
+    });
 
-    headingBlockRef.current && headingBlockObserver.observe(headingBlockRef.current);
+    headingBlock1Ref.current && headingBlock1Observer.observe(headingBlock1Ref.current);
 
     return () => {
-      headingBlockObserver.disconnect();
+      headingBlock1Observer.disconnect();
     };
   }, []);
 
   return (
-    <div className="animatedDirection -right" ref={headingBlockRef}>
+    <div className="animatedDirection -right" ref={headingBlock1Ref}>
       <section className={`heading ${styles._position__right}`}>
         <SubHeadingBlock
           title={{
@@ -226,8 +236,15 @@ const HeadingBlock1 = () => {
 const VideoYoutube = () => {
   const videoYoutubeRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const videoYoutubeObserver: IntersectionObserver = new IntersectionObserver(
-      (entries) => handleVisibilityChange(entries[0], videoYoutubeObserver),
+    const videoYoutubeObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          videoYoutubeObserver.unobserve(entry.target);
+        }
+      },
       {
         rootMargin: "50px",
       }
@@ -253,8 +270,15 @@ const HeadingBlock2 = () => {
   const commitmentBlockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const commitmentBlockObserver: IntersectionObserver = new IntersectionObserver(
-      (entries) => handleVisibilityChange(entries[0], commitmentBlockObserver),
+    const commitmentBlockObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          commitmentBlockObserver.unobserve(entry.target);
+        }
+      },
       { rootMargin: "50px" }
     );
 
@@ -287,8 +311,15 @@ const ImageBox1 = () => {
   const imageBox1Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox1Observer: IntersectionObserver = new IntersectionObserver(
-      (entries) => handleVisibilityChange(entries[0], imageBox1Observer),
+    const imageBox1Observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          imageBox1Observer.unobserve(entry.target);
+        }
+      },
       {
         rootMargin: "50px",
       }
@@ -324,8 +355,15 @@ const ImageBox2 = () => {
   const imageBox2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox2Observer: IntersectionObserver = new IntersectionObserver(
-      (entries) => handleVisibilityChange(entries[0], imageBox2Observer),
+    const imageBox2Observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          imageBox2Observer.unobserve(entry.target);
+        }
+      },
       {
         rootMargin: "50px",
       }
@@ -358,8 +396,15 @@ const ImageBox3 = () => {
   const imageBox3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox3Observer: IntersectionObserver = new IntersectionObserver(
-      (entries) => handleVisibilityChange(entries[0], imageBox3Observer),
+    const imageBox3Observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          imageBox3Observer.unobserve(entry.target);
+        }
+      },
       {
         rootMargin: "50px",
       }
@@ -398,7 +443,12 @@ const AppDownload = () => {
   useEffect(() => {
     const appDownloadObserver = new IntersectionObserver(
       (entries) => {
-        handleVisibilityChange(entries[0], appDownloadObserver);
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          appDownloadObserver.unobserve(entry.target);
+        }
       },
       { rootMargin: "50px" }
     );
@@ -426,7 +476,12 @@ const HeadingBlock3 = () => {
   useEffect(() => {
     const headingBlock3Observer = new IntersectionObserver(
       (entries) => {
-        handleVisibilityChange(entries[0], headingBlock3Observer);
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          headingBlock3Observer.unobserve(entry.target);
+        }
       },
       { rootMargin: "50px" }
     );
@@ -486,7 +541,12 @@ const Gallery = () => {
 
     const galleryObserver = new IntersectionObserver(
       (entries) => {
-        handleVisibilityChange(entries[0], galleryObserver);
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          galleryObserver.unobserve(entry.target);
+        }
       },
       { rootMargin: "50px" }
     );
@@ -536,7 +596,14 @@ const HeadingBlock4 = () => {
 
   useEffect(() => {
     const headingBlock4Observer: IntersectionObserver = new IntersectionObserver(
-      (entries) => handleVisibilityChange(entries[0], headingBlock4Observer),
+      (entries) => {
+        const entry = entries[0];
+        const isVisible = entry.isIntersecting;
+        if (isVisible) {
+          visibilityChangedArrows(entry);
+          headingBlock4Observer.unobserve(entry.target);
+        }
+      },
       { rootMargin: "50px" }
     );
 
@@ -569,7 +636,6 @@ const CreatorBanner = () => {
     { thumbnailUrl: "/images/creator/01/image_03_sm.webp", title: "image3" },
     { thumbnailUrl: "/images/creator/01/image_04_sm.webp", title: "image4" },
   ];
-
   const creatorImages2 = [
     { thumbnailUrl: "/images/creator/02/image_01_sm.webp", title: "image1" },
     { thumbnailUrl: "/images/creator/02/image_02_sm.webp", title: "image2" },
@@ -579,9 +645,15 @@ const CreatorBanner = () => {
 
   useEffect(() => {
     const creatorBannerObserver = new IntersectionObserver((entries) => {
-      handleVisibilityChange(entries[0], creatorBannerObserver);
+      const entry = entries[0];
+      const isVisible = entry.isIntersecting;
+      if (isVisible) {
+        visibilityChangedArrows(entry);
+        creatorBannerObserver.unobserve(entry.target);
+      }
     });
     creatorBannerRef.current && creatorBannerObserver.observe(creatorBannerRef.current);
+
     return () => {
       creatorBannerObserver.disconnect();
     };
