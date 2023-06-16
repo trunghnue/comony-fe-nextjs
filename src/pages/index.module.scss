@@ -114,6 +114,28 @@
 
 .creatorBanner {
   position: relative;
+
+  &_squareIcon {
+    position: absolute;
+    right: -120px;
+    bottom: 31rem;
+    z-index: 2;
+    transform: rotate(-22.25deg);
+
+    @include mb() {
+      right: -50px;
+      bottom: 86rem;
+    }
+
+    @include screen(map-get($breakpoints, md), map-get($breakpoints, lg)) {
+      right: -56px;
+      bottom: 44rem;
+    }
+
+    @include screen(map-get($breakpoints, lg), map-get($breakpoints, xxxl)) {
+      bottom: 36rem;
+    }
+  }
 }
 .creatorSection {
   &_item {

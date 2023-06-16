@@ -37,6 +37,23 @@ const formatParams = (params: any) => {
     }, "")
     .slice(1);
 };
+const createObserver = (ref: React.RefObject<HTMLDivElement>, rootMargin = "0px") => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+      const isVisible = entry.isIntersecting;
+      if (isVisible) {
+        visibilityChangedArrows(entry);
+        observer.unobserve(entry.target);
+      }
+    },
+    { rootMargin: rootMargin }
+  );
+
+  ref.current && observer.observe(ref.current);
+
+  return observer;
+};
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
   // console.log("🚀 ~ file: index.tsx:21 ~ Home _ props: ", _props);
@@ -67,16 +84,7 @@ const ArchitectBanner = () => {
   const architectBannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const architectBannerObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      const isVisible = entry.isIntersecting;
-      if (isVisible) {
-        visibilityChangedArrows(entry);
-        architectBannerObserver.unobserve(entry.target);
-      }
-    });
-
-    architectBannerRef.current && architectBannerObserver.observe(architectBannerRef.current);
+    const architectBannerObserver = createObserver(architectBannerRef);
 
     return () => {
       architectBannerObserver.disconnect();
@@ -113,21 +121,7 @@ const NewsList = () => {
   const newListRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const newListObserver = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          newListObserver.unobserve(entry.target);
-        }
-      },
-      {
-        rootMargin: "50px",
-      }
-    );
-
-    newListRef.current && newListObserver.observe(newListRef.current);
+    const newListObserver = createObserver(newListRef, "50px");
 
     const controller = new AbortController();
     const fetchNews = async () => {
@@ -201,16 +195,7 @@ const HeadingBlock1 = () => {
   const headingBlock1Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const headingBlock1Observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      const isVisible = entry.isIntersecting;
-      if (isVisible) {
-        visibilityChangedArrows(entry);
-        headingBlock1Observer.unobserve(entry.target);
-      }
-    });
-
-    headingBlock1Ref.current && headingBlock1Observer.observe(headingBlock1Ref.current);
+    const headingBlock1Observer = createObserver(headingBlock1Ref);
 
     return () => {
       headingBlock1Observer.disconnect();
@@ -236,21 +221,7 @@ const HeadingBlock1 = () => {
 const VideoYoutube = () => {
   const videoYoutubeRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const videoYoutubeObserver = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          videoYoutubeObserver.unobserve(entry.target);
-        }
-      },
-      {
-        rootMargin: "50px",
-      }
-    );
-
-    videoYoutubeRef.current && videoYoutubeObserver.observe(videoYoutubeRef.current);
+    const videoYoutubeObserver = createObserver(videoYoutubeRef, "50px");
 
     return () => {
       videoYoutubeObserver.disconnect();
@@ -270,19 +241,7 @@ const HeadingBlock2 = () => {
   const commitmentBlockRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const commitmentBlockObserver = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          commitmentBlockObserver.unobserve(entry.target);
-        }
-      },
-      { rootMargin: "50px" }
-    );
-
-    commitmentBlockRef.current && commitmentBlockObserver.observe(commitmentBlockRef.current);
+    const commitmentBlockObserver = createObserver(commitmentBlockRef, "50px");
 
     return () => {
       commitmentBlockObserver.disconnect();
@@ -311,21 +270,7 @@ const ImageBox1 = () => {
   const imageBox1Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox1Observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          imageBox1Observer.unobserve(entry.target);
-        }
-      },
-      {
-        rootMargin: "50px",
-      }
-    );
-
-    imageBox1Ref.current && imageBox1Observer.observe(imageBox1Ref.current);
+    const imageBox1Observer = createObserver(imageBox1Ref, "50px");
 
     return () => {
       imageBox1Observer.disconnect();
@@ -355,21 +300,7 @@ const ImageBox2 = () => {
   const imageBox2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox2Observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          imageBox2Observer.unobserve(entry.target);
-        }
-      },
-      {
-        rootMargin: "50px",
-      }
-    );
-
-    imageBox2Ref.current && imageBox2Observer.observe(imageBox2Ref.current);
+    const imageBox2Observer = createObserver(imageBox2Ref, "50px");
 
     return () => {
       imageBox2Observer.disconnect();
@@ -396,21 +327,7 @@ const ImageBox3 = () => {
   const imageBox3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const imageBox3Observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          imageBox3Observer.unobserve(entry.target);
-        }
-      },
-      {
-        rootMargin: "50px",
-      }
-    );
-
-    imageBox3Ref.current && imageBox3Observer.observe(imageBox3Ref.current);
+    const imageBox3Observer = createObserver(imageBox3Ref, "50px");
 
     return () => {
       imageBox3Observer.disconnect();
@@ -441,18 +358,7 @@ const AppDownload = () => {
   const { t } = useTranslation("top");
   const appDownloadRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const appDownloadObserver = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          appDownloadObserver.unobserve(entry.target);
-        }
-      },
-      { rootMargin: "50px" }
-    );
-    appDownloadRef.current && appDownloadObserver.observe(appDownloadRef.current);
+    const appDownloadObserver = createObserver(appDownloadRef, "50px");
 
     return () => {
       appDownloadObserver.disconnect();
@@ -474,19 +380,7 @@ const HeadingBlock3 = () => {
   const headingBlock3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const headingBlock3Observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          headingBlock3Observer.unobserve(entry.target);
-        }
-      },
-      { rootMargin: "50px" }
-    );
-
-    headingBlock3Ref.current && headingBlock3Observer.observe(headingBlock3Ref.current);
+    const headingBlock3Observer = createObserver(headingBlock3Ref, "50px");
 
     return () => {
       headingBlock3Observer.disconnect();
@@ -539,19 +433,7 @@ const Gallery = () => {
       }
     };
 
-    const galleryObserver = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          galleryObserver.unobserve(entry.target);
-        }
-      },
-      { rootMargin: "50px" }
-    );
-
-    galleryRef.current && galleryObserver.observe(galleryRef.current);
+    const galleryObserver = createObserver(galleryRef, "50px");
 
     fetchSpacelist();
 
@@ -595,19 +477,7 @@ const HeadingBlock4 = () => {
   const headingBlock4Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const headingBlock4Observer: IntersectionObserver = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        const isVisible = entry.isIntersecting;
-        if (isVisible) {
-          visibilityChangedArrows(entry);
-          headingBlock4Observer.unobserve(entry.target);
-        }
-      },
-      { rootMargin: "50px" }
-    );
-
-    headingBlock4Ref.current && headingBlock4Observer.observe(headingBlock4Ref.current);
+    const headingBlock4Observer = createObserver(headingBlock4Ref, "50px");
 
     return () => {
       headingBlock4Observer.disconnect();
@@ -630,6 +500,7 @@ const HeadingBlock4 = () => {
 const CreatorBanner = () => {
   const { t } = useTranslation("top");
   const creatorBannerRef = useRef<HTMLDivElement>(null);
+  const appDownloadRef = useRef<HTMLDivElement>(null);
   const creatorImages = [
     { thumbnailUrl: "/images/creator/01/image_02_sm.webp", title: "image2" },
     { thumbnailUrl: "/images/creator/01/image_01_sm.webp", title: "image1" },
@@ -644,18 +515,12 @@ const CreatorBanner = () => {
   ];
 
   useEffect(() => {
-    const creatorBannerObserver = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      const isVisible = entry.isIntersecting;
-      if (isVisible) {
-        visibilityChangedArrows(entry);
-        creatorBannerObserver.unobserve(entry.target);
-      }
-    });
-    creatorBannerRef.current && creatorBannerObserver.observe(creatorBannerRef.current);
+    const creatorBannerObserver = createObserver(creatorBannerRef);
+    const appDownloadObserver = createObserver(appDownloadRef, "50px");
 
     return () => {
       creatorBannerObserver.disconnect();
+      appDownloadObserver.disconnect();
     };
   }, []);
 
@@ -692,6 +557,15 @@ const CreatorBanner = () => {
             onVisibilityChanged={slideItems}
           />
         </SectionContainer>
+      </div>
+      <SquareLively className={styles.creatorBanner_squareIcon} />
+      <div className="animatedDirection -bottomToTop" ref={appDownloadRef}>
+        <AppDownloadCTABanner
+          className="imageBoxAnimated"
+          image="CTABanner.webp"
+          text={t("appDownloadCTABanner.title") || ""}
+          link="./spaces"
+        />
       </div>
     </div>
   );
