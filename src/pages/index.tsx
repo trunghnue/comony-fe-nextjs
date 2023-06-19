@@ -25,6 +25,7 @@ import { I_SpaceListDTO, I_SpaceListRequest } from "@/types/schema/spaces";
 import { publishedStatusId } from "@/constants/spaces";
 import CreatorArticle from "@/components/organisms/CreatorArticle/CreatorArticle";
 import FigureCaptionList from "@/components/organisms/FigureCaptionList/FigureCaptionList";
+import FAQ from "@/components/organisms/FAQ/FAQ";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage, slideItems } = handleScroll();
 const headers = new Headers();
@@ -78,6 +79,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <CreatorBanner />
         <HeadingBlock5 />
         <FigureCaption />
+        <FAQGroup />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -637,6 +639,48 @@ const FigureCaption = () => {
     </div>
   );
 };
+
+const FAQGroup = () => {
+  const { t } = useTranslation("top");
+  const headingRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const headingObserver = createObserver(headingRef, "50px");
+
+    return () => {
+      headingObserver.disconnect();
+    };
+  }, []);
+  return (
+    <div className={styles.faqGroup}>
+      <div className="animatedDirection -left" ref={headingRef}>
+        <section className={`heading ${styles._position__left}`}>
+          <SubHeadingBlock
+            position="right"
+            title={{ line1: "FAQ" }}
+            description={t("faqTop.description") || ""}
+            onVisibilityChanged={maskTxtAnimation}
+          />
+        </section>
+      </div>
+      <div className={styles.faqGroup_section}>
+        <div className="animatedDirection -bottomToTop">
+          <SectionContainer
+            className="imageBoxAnimated"
+            bgColor="black-gradient"
+            columns="1"
+            containerSize="lg"
+            position="left"
+            fullWidth
+          >
+            <FAQ />
+          </SectionContainer>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? "en", ["common", "top", "downloads"])),
