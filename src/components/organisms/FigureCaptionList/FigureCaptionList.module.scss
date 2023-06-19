@@ -1,0 +1,39 @@
+.figureCaptionList {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  @include mb() {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &_item {
+    @include mb() {
+      max-width: 32rem;
+    }
+
+    &:not(:last-child) {
+      margin-right: $spacing_7x;
+
+      @include mb() {
+        margin-right: 0;
+      }
+    }
+
+    &:nth-child(2) {
+      margin-top: $spacing_10x;
+    }
+
+    &:nth-child(3) {
+      margin-top: $spacing_20x;
+    }
+
+    &:nth-child(2),
+    :nth-child(3) {
+      @include mb() {
+        margin-top: $spacing_14x;
+      }
+    }
+  }
+}

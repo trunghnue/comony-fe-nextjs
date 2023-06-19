@@ -24,6 +24,7 @@ import GallerySlider from "@/components/organisms/GallerySlider/GallerySlider";
 import { I_SpaceListDTO, I_SpaceListRequest } from "@/types/schema/spaces";
 import { publishedStatusId } from "@/constants/spaces";
 import CreatorArticle from "@/components/organisms/CreatorArticle/CreatorArticle";
+import FigureCaptionList from "@/components/organisms/FigureCaptionList/FigureCaptionList";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage, slideItems } = handleScroll();
 const headers = new Headers();
@@ -75,6 +76,8 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <Gallery />
         <HeadingBlock4 />
         <CreatorBanner />
+        <HeadingBlock5 />
+        <FigureCaption />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -515,7 +518,7 @@ const CreatorBanner = () => {
   ];
 
   useEffect(() => {
-    const creatorBannerObserver = createObserver(creatorBannerRef);
+    const creatorBannerObserver = createObserver(creatorBannerRef, "50px");
     const appDownloadObserver = createObserver(appDownloadRef, "50px");
 
     return () => {
@@ -571,6 +574,69 @@ const CreatorBanner = () => {
   );
 };
 
+const HeadingBlock5 = () => {
+  const { t } = useTranslation("top");
+  const headingBlock5Ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const headingBlock5Observer = createObserver(headingBlock5Ref, "50px");
+
+    return () => {
+      headingBlock5Observer.disconnect();
+    };
+  }, []);
+  return (
+    <div className="animatedDirection -left" ref={headingBlock5Ref}>
+      <section className={`heading ${styles._position__left}`}>
+        <SubHeadingBlock
+          position="right"
+          title={{ line1: t("figure.title1"), line2: t("figure.title2") || "" }}
+          description={t("figure.description") || ""}
+          onVisibilityChanged={maskTxtAnimation}
+        />
+      </section>
+    </div>
+  );
+};
+
+const FigureCaption = () => {
+  const { t } = useTranslation("top");
+  const figureRef = useRef<HTMLDivElement>(null);
+  const figureCaptionList = [
+    {
+      image: "figureCaptionItem1.webp",
+      text: t("figure.boxDescription1"),
+      title: t("figure.boxTitle1"),
+    },
+    {
+      image: "figureCaptionItem2.webp",
+      text: t("figure.boxDescription2"),
+      title: t("figure.boxTitle2"),
+    },
+    {
+      image: "figureCaptionItem3.webp",
+      text: t("figure.boxDescription3"),
+      title: t("figure.boxTitle3"),
+    },
+  ];
+  useEffect(() => {
+    const figureObserver = createObserver(figureRef, "50px");
+
+    return () => {
+      figureObserver.disconnect();
+    };
+  });
+  return (
+    <div className="animatedDirection -bottomToTop" ref={figureRef}>
+      <FigureCaptionList
+        className="imageBoxAnimated"
+        figureCaptionList={figureCaptionList}
+        isScroll
+        onVisibilityChanged={slideItems}
+      />
+    </div>
+  );
+};
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
     ...(await serverSideTranslations(locale ?? "en", ["common", "top", "downloads"])),

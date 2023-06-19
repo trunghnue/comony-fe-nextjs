@@ -40,7 +40,7 @@ const SectionContainer: React.FC<SectionContainerProps> = ({
   return (
     <section className={`${styles.section} ${classes}`}>
       <div className={`${styles.section_inner} ${styles[`_containerSize__${containerSize}`]}`}>
-        <div className={styles.section_content}>
+        <div className={styles.section_contents}>
           <div className={`${styles.section_column} ${styles[`_col__${columns}`]}`}>{children}</div>
         </div>
       </div>

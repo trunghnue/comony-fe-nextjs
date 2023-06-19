@@ -1,0 +1,66 @@
+.figureCaptionItem {
+  position: relative;
+  max-width: 330px;
+
+  @include mb() {
+    max-width: 100%;
+  }
+
+  &._size {
+    &__medium {
+      & .figureCaptionItem_image {
+        height: 42.2rem;
+      }
+    }
+    &__small {
+      & .figureCaptionItem_image {
+        height: 24rem;
+      }
+    }
+  }
+
+  &_title {
+    margin-bottom: $spacing_6x;
+    font-weight: $font_weight_bold;
+    color: $color_white;
+
+    @include fz($font_size_24);
+
+    @include mb() {
+      @include fz($font_size_18);
+    }
+  }
+
+  &_image {
+    width: 100%;
+    height: 42.2rem;
+    margin: $spacing_6x 0;
+
+    @include mb() {
+      margin: $spacing_6x 0 $spacing_4x;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      @include mb() {
+        width: 100%;
+      }
+    }
+  }
+
+  &_text {
+    padding: 0;
+    margin: 0;
+    font-weight: $font_weight_normal;
+    color: $color_white;
+
+    @include fz($font_size_16);
+
+    @include mb() {
+      @include fz($font_size_12);
+    }
+  }
+}
