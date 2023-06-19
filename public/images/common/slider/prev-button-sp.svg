@@ -1,0 +1,6 @@
+<svg id="Group_2899" data-name="Group 2899" xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 24 30">
+  <path id="Rectangle_2210" data-name="Rectangle 2210" d="M0,0H18a6,6,0,0,1,6,6V24a6,6,0,0,1-6,6H0a0,0,0,0,1,0,0V0A0,0,0,0,1,0,0Z" opacity="0.5"/>
+  <g id="angle-arrow-down" transform="translate(15 9) rotate(90)">
+    <path id="Path_2902" data-name="Path 2902" d="M10.963.666,10.409.111a.349.349,0,0,0-.51,0L5.537,4.472,1.176.111a.349.349,0,0,0-.51,0L.111.666a.349.349,0,0,0,0,.51L5.282,6.347a.349.349,0,0,0,.51,0l5.171-5.171a.35.35,0,0,0,0-.511Z" fill="#fff"/>
+  </g>
+</svg>
