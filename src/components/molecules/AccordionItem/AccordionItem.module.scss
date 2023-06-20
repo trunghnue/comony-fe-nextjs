@@ -1,0 +1,149 @@
+.accordionItem {
+  margin-bottom: $spacing_14x;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &_trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 143px;
+    padding-left: $spacing_37x;
+    font-weight: $font_weight_bold;
+    cursor: pointer;
+    background-color: $color_white;
+    transition: all 0.2s ease-in;
+
+    @include fz($font_size_24);
+
+    @include mb() {
+      min-height: 10rem;
+      padding-left: $spacing_24x;
+
+      @include fz($font_size_18);
+    }
+
+    &_item {
+      margin: 0;
+      margin-right: $spacing_16x;
+      word-break: break-word;
+
+      @include mb() {
+        margin-right: $spacing_4x;
+      }
+    }
+
+    &_icon {
+      width: 20px;
+      height: 20px;
+      margin-left: auto;
+      transition: all 0.2s ease-in;
+
+      &.is_open {
+        transition: all 0.2s ease-in;
+        transform: rotate(180deg);
+      }
+    }
+
+    &._color {
+      &__transparent {
+        color: $color_white;
+        background-color: transparent;
+      }
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &::after {
+      content: "Q";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      font-weight: 100;
+      line-height: 1;
+      transform: translate(0, -60%);
+
+      @include fz($font_size_160);
+
+      @include mb() {
+        @include fz($font_size_100);
+      }
+    }
+  }
+
+  &_target {
+    margin-left: $spacing_25x;
+    overflow: hidden;
+    transition: height 0.4s ease-in-out;
+
+    @include mb() {
+      margin-left: $spacing_1x;
+    }
+  }
+
+  &_contents {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 143px;
+    padding-right: $spacing_18x;
+    padding-left: $spacing_42x;
+    margin-top: $spacing_12x;
+    font-weight: $font_weight_normal;
+    color: $color_white;
+
+    @include fz($font_size_16);
+
+    @include mb() {
+      min-height: 7.1rem;
+      padding-right: $spacing_10x;
+      padding-left: $spacing_28x;
+      margin: $spacing_9x 0 0;
+
+      @include fz($font_size_12);
+    }
+
+    &._color {
+      &__black {
+        background-color: $font_color_base;
+      }
+
+      &__darkblue {
+        background-color: $color_darkblue;
+      }
+
+      &__transparent {
+        color: $color_white;
+      }
+    }
+
+    &::after {
+      content: "A";
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      font-weight: 100;
+      line-height: 1;
+      transform: translate(0, -60%);
+
+      @include fz($font_size_160);
+
+      @include mb() {
+        @include fz($font_size_100);
+      }
+    }
+
+    &._hasLink {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      text-align: left;
+    }
+  }
+}

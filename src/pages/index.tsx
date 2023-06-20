@@ -643,12 +643,37 @@ const FigureCaption = () => {
 const FAQGroup = () => {
   const { t } = useTranslation("top");
   const headingRef = useRef<HTMLDivElement>(null);
+  const faqGroupRef = useRef<HTMLDivElement>(null);
+  const faqList = [
+    {
+      answer: t("faqTop.first.answer"),
+      question: t("faqTop.first.question"),
+    },
+    {
+      answer: t("faqTop.second.answer"),
+      question: t("faqTop.second.question"),
+    },
+    {
+      answer: t("faqTop.third.answer"),
+      question: t("faqTop.third.question"),
+    },
+  ];
+  const slideFAQ = (
+    isVisible: boolean,
+    entry: IntersectionObserverEntry,
+    delayTime: number,
+    classes = "is-active--according"
+  ) => {
+    return slideItems(isVisible, entry, delayTime, classes);
+  };
 
   useEffect(() => {
     const headingObserver = createObserver(headingRef, "50px");
+    const faqGroupObserver = createObserver(faqGroupRef, "100px");
 
     return () => {
       headingObserver.disconnect();
+      faqGroupObserver.disconnect();
     };
   }, []);
   return (
@@ -664,7 +689,7 @@ const FAQGroup = () => {
         </section>
       </div>
       <div className={styles.faqGroup_section}>
-        <div className="animatedDirection -bottomToTop">
+        <div className="animatedDirection -bottomToTop" ref={faqGroupRef}>
           <SectionContainer
             className="imageBoxAnimated"
             bgColor="black-gradient"
@@ -673,7 +698,7 @@ const FAQGroup = () => {
             position="left"
             fullWidth
           >
-            <FAQ />
+            <FAQ isScroll listItem={faqList} bgColor="transparent" visibilityChanged={slideFAQ} />
           </SectionContainer>
         </div>
       </div>

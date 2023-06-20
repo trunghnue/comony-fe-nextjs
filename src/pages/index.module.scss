@@ -148,3 +148,12 @@
     }
   }
 }
+
+.faqGroup {
+  position: relative;
+  margin-bottom: $spacing_41x;
+
+  @include mb() {
+    margin-bottom: $spacing_20x;
+  }
+}

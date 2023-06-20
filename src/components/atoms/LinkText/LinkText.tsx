@@ -7,7 +7,7 @@ interface LinkTextProps {
   value: string;
   link?: string;
   color?: "primary" | "secondary" | "black" | "notice" | "blue" | "white";
-  underline: boolean;
+  underline?: boolean;
   fontSize: "small" | "medium" | "standard" | "large";
 }
 
