@@ -4,7 +4,7 @@ import styles from "./TextMainVisual.module.scss";
 interface TextMainVisualProps {
   className?: string;
   tag?: string;
-  type?: string;
+  type?: "default" | "heading" | "subTitle" | "title" | "accordionTitle" | "imageBoxTitle" | "heroTitle";
   id?: string;
   position?: string;
   color?: string;
@@ -23,7 +23,12 @@ export default function TextMainVisual({
   type = "default",
 }: TextMainVisualProps) {
   const classes = useMemo(() => {
-    return [styles[`_type__${type}`], styles[`_position__${position}`], styles[`_color__${color}`], isVertical && styles["__vertical"]]
+    return [
+      styles[`_type__${type}`],
+      styles[`_position__${position}`],
+      styles[`_color__${color}`],
+      isVertical && styles["__vertical"],
+    ]
       .filter(Boolean)
       .join(" ");
   }, [color, isVertical, position, type]);

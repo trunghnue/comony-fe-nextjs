@@ -48,6 +48,7 @@ const FAQ: React.FC<I_FAQProps> = ({ bgColor = "black", isScroll, listItem, visi
             isScroll={isScroll}
             accordionItem={item}
             color="transparent"
+            showText={showText}
           />
         ))}
       </div>

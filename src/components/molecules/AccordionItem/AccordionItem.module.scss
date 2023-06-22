@@ -147,3 +147,17 @@
     }
   }
 }
+
+.js_accordion {
+  &_enter__active {
+    animation-name: js-accordion--anime__opend;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+  &_leave__active {
+    animation-name: js-accordion--anime__closed;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+}

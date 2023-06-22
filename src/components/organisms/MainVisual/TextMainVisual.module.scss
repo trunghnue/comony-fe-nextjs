@@ -79,7 +79,7 @@
         animation: opacityDrop 0.75s both;
       }
     }
-    &__accorditionTitle {
+    &__accordionTitle {
       overflow: hidden;
       font-weight: $font_weight_normal;
       word-break: break-word;
@@ -90,7 +90,7 @@
         @include fz($font_size_18);
       }
 
-      ::v-deep span {
+      span {
         word-break: break-word;
         // display: inline-block;
         animation: opacityDrop 2s both;
