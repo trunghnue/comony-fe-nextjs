@@ -81,13 +81,12 @@ const AccordionItem: React.FC<I_AccordionItemProps> = ({
       </dt>
       <Transition
         in={isOpened}
-        timeout={400}
+        timeout={0}
         onEnter={beforeEnter}
         onEntered={enter}
         onExit={beforeLeave}
         onExited={leave}
         mountOnEnter
-        unmountOnExit
       >
         <dd className={`${styles.accordionItem_target} ${isOpened ? styles.is_open : ""}`} ref={targetRef}>
           <div
