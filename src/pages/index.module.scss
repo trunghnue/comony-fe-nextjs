@@ -157,3 +157,43 @@
     margin-bottom: $spacing_20x;
   }
 }
+
+.ctaBannerCreator {
+  position: relative;
+  overflow: hidden;
+
+  @include mb() {
+    margin-bottom: $spacing_22x;
+  }
+
+  &_flashIcon {
+    position: absolute;
+    bottom: -100px;
+    left: -360px;
+    z-index: 1;
+
+    @include mb() {
+      top: 70%;
+      left: -82%;
+    }
+  }
+
+  &_circleLively {
+    position: absolute;
+    top: -10rem;
+    right: -20rem;
+    z-index: 3;
+    transform: translateY(28rem);
+
+    @include mb() {
+      top: 50rem;
+      right: -8rem;
+      transform: translateY(-16.5rem);
+    }
+
+    @include screen(map-get($breakpoints, md), map-get($breakpoints, xl)) {
+      top: -5rem;
+      right: -28rem;
+    }
+  }
+}

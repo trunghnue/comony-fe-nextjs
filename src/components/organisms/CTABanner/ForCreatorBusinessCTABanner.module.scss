@@ -1,0 +1,90 @@
+.forCreatorBusinessCTABanner {
+  position: relative;
+  padding: $spacing_14x $spacing_8x $spacing_24x;
+  color: $color_white;
+
+  @include mb() {
+    padding: $spacing_8x $spacing_4x $spacing_14x;
+  }
+
+  &_image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+
+    &::before {
+      position: absolute;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background-color: rgba($color_gray_1000, 0.4);
+      backdrop-filter: blur(5px);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &_inner {
+    position: relative;
+    z-index: 1;
+    margin-bottom: $spacing_14x;
+
+    @include mb() {
+      margin-bottom: $spacing_20x;
+    }
+  }
+
+  &_text {
+    max-width: 104.5rem;
+    margin: 0 auto;
+    margin-bottom: $spacing_10x;
+    font-weight: $font_weight_bold;
+    color: $color_white;
+
+    @include fz($font_size_46);
+
+    @include mb() {
+      margin-bottom: $spacing_6x;
+
+      @include fz($font_size_18);
+    }
+  }
+
+  &_description {
+    max-width: 104.5rem;
+    margin: 0 auto $spacing_14x;
+    font-weight: $font_weight_bold;
+    line-height: 2;
+    color: $color_white;
+
+    @include fz($font_size_18);
+
+    @include mb() {
+      @include fz($font_size_12);
+    }
+  }
+
+  &_wrapperButton {
+    display: flex;
+    justify-content: center;
+
+    @include mb() {
+      margin: 0 1.6rem;
+    }
+  }
+
+  &_button {
+    @include mb() {
+      width: 100%;
+      min-width: auto !important;
+    }
+  }
+}

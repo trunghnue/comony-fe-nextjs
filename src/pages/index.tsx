@@ -26,6 +26,9 @@ import { publishedStatusId } from "@/constants/spaces";
 import CreatorArticle from "@/components/organisms/CreatorArticle/CreatorArticle";
 import FigureCaptionList from "@/components/organisms/FigureCaptionList/FigureCaptionList";
 import FAQ from "@/components/organisms/FAQ/FAQ";
+import ForCreatorBusinessCTABanner from "@/components/organisms/CTABanner/ForCreatorBusinessCTABanner";
+import CircleLively from "@/components/atoms/LivelyIcon/CircleLively/CircleLively";
+import { useVisible } from "@/composables/useVisible";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage, slideItems } = handleScroll();
 const headers = new Headers();
@@ -80,6 +83,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <HeadingBlock5 />
         <FigureCaption />
         <FAQGroup />
+        <CTABannerCreator />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -701,6 +705,73 @@ const FAQGroup = () => {
             <FAQ isScroll listItem={faqList} bgColor="transparent" visibilityChanged={slideFAQ} />
           </SectionContainer>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const CTABannerCreator = () => {
+  const { t } = useTranslation("top");
+  const creatorRef = useRef<HTMLDivElement>(null);
+  const businessRef = useRef<HTMLDivElement>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
+  const { visibleChangedCircle, visibilityChangedCircle } = useVisible();
+
+  useEffect(() => {
+    const creatorObserver = createObserver(creatorRef, "100px");
+    creatorRef.current && creatorObserver.observe(creatorRef.current);
+
+    const businessObserver = createObserver(businessRef, "100px");
+    businessRef.current && businessObserver.observe(businessRef.current);
+
+    const circleObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      const isVisible = entry.isIntersecting;
+      if (isVisible) {
+        visibilityChangedCircle(isVisible);
+        circleObserver.unobserve(entry.target);
+      }
+    });
+    circleRef.current && circleObserver.observe(circleRef.current);
+
+    return () => {
+      creatorObserver.disconnect();
+      businessObserver.disconnect();
+      circleObserver.disconnect();
+    };
+  }, [visibilityChangedCircle]);
+
+  return (
+    <div className={styles.ctaBannerCreator}>
+      <div className="animatedDirection -bottomToTop" ref={creatorRef}>
+        <ForCreatorBusinessCTABanner
+          className="imageBoxAnimated"
+          link="./creator"
+          image="creator/heroImageSection_creator.webp"
+          title={t("forCreatorBusinessCTABanner.title1") || ""}
+          buttonLabel={t("forCreatorBusinessCTABanner.button1") || ""}
+          description={t("forCreatorBusinessCTABanner.description1") || ""}
+        />
+      </div>
+      <div className="animatedDirection -bottomToTop" ref={businessRef}>
+        <ForCreatorBusinessCTABanner
+          className="imageBoxAnimated"
+          link="./business"
+          image="business/banner.webp"
+          title={t("forCreatorBusinessCTABanner.title2") || ""}
+          buttonLabel={t("forCreatorBusinessCTABanner.button2") || ""}
+          description={t("forCreatorBusinessCTABanner.description2") || ""}
+        />
+      </div>
+      <div>
+        <div className={styles.ctaBannerCreator_flashIcon}>
+          <FlashLively />
+        </div>
+        <CircleLively
+          className={styles.ctaBannerCreator_circleLively}
+          visibleAnimated={visibleChangedCircle}
+          ref={circleRef}
+        />
       </div>
     </div>
   );
