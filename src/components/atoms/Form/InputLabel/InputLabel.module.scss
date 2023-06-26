@@ -1,0 +1,75 @@
+.label {
+  @include fz($font_size_14);
+  display: block;
+  margin-bottom: $spacing_1x;
+  font-weight: $font_weight_medium;
+  line-height: 1;
+
+  &._color {
+    &__black {
+      color: $font_color_base;
+    }
+
+    &__gray {
+      color: $color_gray_darken2;
+    }
+
+    &__label {
+      color: $color_gray_900;
+    }
+
+    &__white {
+      color: $color_white;
+    }
+  }
+
+  &._size {
+    &__small {
+      @include fz($font_size_10);
+    }
+
+    &__medium {
+      @include pc() {
+        @include fz($font_size_16);
+      }
+
+      @include mb() {
+        @include fz($font_size_14);
+      }
+    }
+
+    &__large {
+      @include fz($font_size_24);
+
+      @include mb() {
+        @include fz($font_size_18);
+      }
+    }
+  }
+
+  &_required {
+    &._colorRequired {
+      &__black {
+        color: $color_gray_1000;
+      }
+
+      &__white {
+        color: $color_white;
+      }
+
+      &__notice {
+        color: $color_notice;
+      }
+    }
+
+    &_tag {
+      width: fit-content;
+      padding: $spacing_1x;
+      margin-left: $spacing_4x;
+      color: $color_gray_1000;
+      background-color: $color_yellow;
+
+      @include fz($font_size_14);
+    }
+  }
+}

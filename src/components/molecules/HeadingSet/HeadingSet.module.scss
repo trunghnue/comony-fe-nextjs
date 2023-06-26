@@ -1,0 +1,115 @@
+.headingSet {
+  text-align: center;
+
+  @include pc() {
+    margin-bottom: $spacing_15x;
+  }
+
+  @include mb() {
+    margin-bottom: $spacing_10x;
+  }
+
+  &_label {
+    margin-bottom: $spacing_2x;
+    font-weight: $font_weight_bold;
+
+    &._labelSize {
+      &__small {
+        @include fz($font_size_15);
+      }
+
+      &__medium {
+        @include fz($font_size_17);
+      }
+
+      &__large {
+        @include fz($font_size_20);
+      }
+
+      &__extra {
+        @include fz($font_size_30);
+      }
+    }
+
+    &._labelColor {
+      &__primary {
+        color: $color_primary;
+      }
+
+      &__secondary {
+        color: $color_secondary;
+      }
+
+      &__black {
+        color: $color_gray_1000;
+      }
+
+      &__white {
+        color: $color_white !important;
+      }
+
+      &__darkblue {
+        color: $color_darkblue;
+      }
+
+      &__alert {
+        color: $color_notice;
+      }
+    }
+  }
+
+  &_note {
+    @include pc() {
+      @include fz($font_size_16);
+      margin-top: $spacing_5x;
+    }
+
+    @include mb() {
+      margin-bottom: $spacing_3x;
+    }
+
+    &._labelColor {
+      &__primary {
+        color: $color_primary;
+      }
+
+      &__secondary {
+        color: $color_secondary;
+      }
+
+      &__black {
+        color: $color_gray_1000;
+      }
+
+      &__white {
+        color: $color_white !important;
+      }
+
+      &__darkblue {
+        color: $color_darkblue;
+      }
+
+      &__alert {
+        color: $color_notice;
+      }
+    }
+
+    &._noteSize {
+      &__small {
+        @include fz($font_size_12);
+      }
+
+      &__medium {
+        @include fz($font_size_14);
+      }
+
+      &__large {
+        @include fz($font_size_16);
+      }
+
+      &__extra {
+        @include fz($font_size_18);
+      }
+    }
+  }
+}

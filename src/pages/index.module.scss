@@ -196,4 +196,10 @@
       right: -28rem;
     }
   }
+
+  .inquiryFormHome {
+    @include mb() {
+      margin-bottom: $spacing_22x;
+    }
+  }
 }

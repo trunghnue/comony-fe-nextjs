@@ -15,7 +15,7 @@ interface HeadingProps {
   fontWeight?: string;
 }
 
-export default function Heading({ align = "center", level = "1", headings, fontWeight = "400" }: HeadingProps) {
+const Heading: React.FC<HeadingProps> = ({ align = "center", level = "1", headings, fontWeight = "400" }) => {
   const Component: React.ElementType = `h${level}`;
 
   const styless = useMemo(() => {
@@ -33,11 +33,18 @@ export default function Heading({ align = "center", level = "1", headings, fontW
           //     className={[styles[`_fontColor__${heading.color}`], heading.spBreak ? styles["-spBreak"] : ""].join(" ")}
           //     dangerouslySetInnerHTML={{ __html: heading.text }}
           //   />
-          <span key={index} className={[styles[`_fontColor__${heading.color}`], heading.spBreak && styles["-spBreak"]].filter(Boolean).join(" ")}>
+          <span
+            key={index}
+            className={[styles[`_fontColor__${heading.color}`], heading.spBreak && styles["-spBreak"]]
+              .filter(Boolean)
+              .join(" ")}
+          >
             {heading.text}{" "}
           </span>
         );
       })}
     </Component>
   );
-}
+};
+
+export default Heading;

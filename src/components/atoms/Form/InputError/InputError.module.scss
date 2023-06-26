@@ -1,0 +1,8 @@
+.inputError {
+  @include fz($font_size_12);
+  display: block;
+  // keep current 2px
+  margin: $spacing_1x 2px;
+  line-height: 1.5;
+  color: $color_notice;
+}

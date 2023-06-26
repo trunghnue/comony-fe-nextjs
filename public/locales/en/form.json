@@ -1,0 +1,240 @@
+{
+  "addressBar": {
+    "cambodiaTitle": "Cambodia Development Office",
+    "japanAddress": "Shinkawa ST Building 2F, 1-25-2 Shinkawa, Chuo-ku, Tokyo (Future Tech Hub)",
+    "japanTitle": "Tokyo Development Office",
+    "vietnamTitle": "Vietnam Development Office"
+  },
+  "fixedRequest": {
+    "contactDetailsRadioOptions": "Inquiry from Service Page"
+  },
+  "form": {
+    "button": {
+      "back": "Back Input Form",
+      "save": "Save",
+      "send": "Send"
+    },
+    "errorMessage": {
+      "alert": "Please check and fill fields",
+      "alreadyExistEmail": "Email is already exists",
+      "badRequest": "There is an error in your input.",
+      "biography": "Biography is required",
+      "common": {
+        "approved": "Already approved",
+        "changed": "Already change.",
+        "error": "System error.",
+        "isExists": "Already exists.",
+        "notFound": "Not found. If you have any questions, please contact your administrator.",
+        "notFoundResource": "{resource} is not found. If you have any questions, please contact your administrator.",
+        "notPermission": "Don't have permission."
+      },
+      "company": "Company is required",
+      "companyLimit": "name must be shorter than or equal to 255 characters",
+      "confirmCode": "Authorization code is required",
+      "contactDetails": "Detail is required",
+      "department": "Department is required",
+      "description": "Description is required",
+      "detail": "Detail is required",
+      "email": "Email is required",
+      "emailConfirm": "Email does not match",
+      "emailDuplicated": "This email has already been added",
+      "emailInvalid": "Invalid email",
+      "emailLimit": "This limits the total number of registration is 20",
+      "emailRequired": "Email is required",
+      "emailUnconfirm": "Please confirm all email addresses that you entered",
+      "expiredVerifyCode": "The authentication email has expired. We re-sended this registration email",
+      "facebook": "Facebook is required",
+      "fileSize": {
+        "line1": "The file size is too large.",
+        "line2": "Please upload a file that is less than 1MB."
+      },
+      "fileType": "The extension of the file that is not supported.",
+      "forceLogin": "please sign-in to comony.",
+      "forceLoginToApp": "please sign-in to comony to use the application.",
+      "inquiryForm": "Inquiry Form is required",
+      "introductionLimit": "Introduction must be shorter than or equal to 255 characters",
+      "limitExceeded": "Attempt limit exceeded, please try after some time.",
+      "name": "Name is required",
+      "nameLimit": "Name must be shorter than or equal to 255 characters",
+      "normal": "An unexpected error has occurred. Please try again",
+      "notAuthorizedException": "Your password was incorrect.",
+      "optionRadio": "Inquiry content is required",
+      "organizationName": "Organization Name is required",
+      "password": "Password is required",
+      "passwordConfirm": "Password does not match",
+      "passwordInvalid": "Please enter a password of at least 8 characters include number",
+      "phoneInvalid": "Invalid phone number (9-11 digits or symbol)",
+      "phoneRequired": "Phone is required",
+      "reason": "Reason is required",
+      "resendVerifyEmail": "The registration process has not been completed. We have sent you an email for this registration.",
+      "space": {
+        "common": {
+          "notFound": "Space is not found. If you have any questions, please contact your administrator."
+        },
+        "unPermission": "You do not have permission to register / change spaces."
+      },
+      "spaceInstance": {
+        "isExpired": "instanceId is Expired.",
+        "notFound": "spaceInstance not found."
+      },
+      "tagLimit": "Each post can have up to 10 tags. ",
+      "title": "Title is required",
+      "twitter": "Twitter is required",
+      "unFilledFormInput": "There is an error in the input content",
+      "updated": "Please try again",
+      "url": "URL is not in the correct format",
+      "urlLimit": "Url must be shorter than or equal to 255 characters",
+      "user": {
+        "notFound": "user not found.",
+        "notMine": "This user is not mine."
+      },
+      "userIsNotFound": "There are no users in the workspace you selected.",
+      "userNotFoundException": "The email address you entered is not registered or unauthorized.",
+      "username": "Account Name is required",
+      "usersCount": "UsersCount is required",
+      "usersCountMaxNumber": "Please enter less than 1000 people.",
+      "usersCountNumber": "Please enter a number only.",
+      "websiteUrl": "Site Url is required",
+      "workSpaceIcon": "Work Space Icon is required",
+      "workSpaceName": "Work Space Name is required",
+      "workspace": {
+        "haveOwner": "There is a workspace for which you are the owner. <br />If you have any questions, please contact the administrator.",
+        "haveParticipating": "You have a workspace that you are currently participating in. Please delete your account after the owner has deleted it."
+      },
+      "workspaceSpaces": {
+        "notVolume": "workspace not enough data volume."
+      },
+      "workspaceUser": {
+        "isLimit": {
+          "common": {
+            "notFound": "Space is not found. If you have any questions, please contact your administrator."
+          },
+          "text1": "The maximum number of accounts that can be invited is",
+          "text2": ". You have exceeded the limit by",
+          "text3": "user."
+        },
+        "needAdminHigher": "It's requires admin or higher privileges.",
+        "notChangeHigher": "You do not have permission to make changes.",
+        "notChangeOwner": "Cannot change owner role.",
+        "notOwnerPermission": "You don't have Owner permission.",
+        "notToOwner": "Cannot change role to owner."
+      }
+    },
+    "label": {
+      "companyName": "Company Name",
+      "confirmCode": "Authorization code",
+      "contactDetails": "Contact details",
+      "department": "Department",
+      "email": "Email",
+      "inquiryDetaill": "Inquiry detail",
+      "inquiryDetailsOptions": {
+        "aboutServiceUsage": "About service usage（Demo version）",
+        "documentRequest": "Document request / Counseling-related consultation",
+        "other": "Other"
+      },
+      "mailAddress": "Mail Address",
+      "name": "Account Name",
+      "newPassword": "New Password",
+      "newPasswordConfirm": "New Password（Confirmation）",
+      "password": "Password",
+      "passwordConfirm": "Password (Confirmation)",
+      "phoneNumber": "Phone Number",
+      "required": "Required",
+      "username": "Account Name"
+    },
+    "placeHolder": {
+      "company": "LASTMILE WORKS Co., Ltd.",
+      "companyUrl": "https://comony.net/",
+      "contactUrl": "https://comony.net/contact",
+      "department": "Marketing",
+      "detail": "Please fill in the form",
+      "email": "lastmile@comony.net",
+      "facebookUrl": "https://facebook.com/comony_JP",
+      "inquiry": "Inquiry detail",
+      "name": "Ex.Taro Yamada",
+      "phone": "09012345678",
+      "twitterUrl": "https://twitter.com/comony_JP",
+      "username": "YamadaTaro_123"
+    },
+    "successMessage": {
+      "applyWorkspce": "We got your request of space upload authority successfully.<br />Please wait a while until approval is granted.",
+      "createdWorkspce": "Updated successfully. A new workspace has been registered.",
+      "deleted": "Deleted successfully",
+      "description": "Your application for issuing a new space has been completed.",
+      "emailChanged": "Email has beed changed. Please sign-in with your new email address.",
+      "inviteMember": {
+        "alreadyRegistered": "The user you invited is already registered.",
+        "invited": "users have been invited successfully."
+      },
+      "subDescription": "Please wait for an email from comony support team.",
+      "title": "Aplication is completed",
+      "updated": "Updated successfully"
+    }
+  },
+  "formContact": {
+    "buttonMsg": {
+      "back": "Return to input page",
+      "confirm": "Agree and Confirm the entered infomation",
+      "send": "Send"
+    },
+    "content": {
+      "heading": "Contact",
+      "label": "What can I help you ?"
+    },
+    "inquiryFormHeading": "Job Request・Inquiry Form",
+    "inquiryFormSubHeading": "We will contact you back within 3 business days.",
+    "inquiryResponse": {
+      "heading": "Job Request・Inquiry Form",
+      "subHeading": "Thank you for your contacting us."
+    },
+    "label": {
+      "companyName": "Company Name",
+      "companyNameAndDepartment": "Company name or department name",
+      "contactDetails": "Contact details",
+      "department": "Department",
+      "inquiryDetaill": "Inquiry detail",
+      "inquiryDetailsOptions": {
+        "aboutContractDetail": "About contract detail",
+        "aboutServiceUsage": "About service usage（Demo version）",
+        "documentRequest": "Document request / Counseling-related consultation",
+        "other": " Other"
+      },
+      "mailAddress": "Mail Address",
+      "name": "Name",
+      "option": "Corporation/Individual",
+      "phoneNumber": "Phone Number"
+    },
+    "language": "en",
+    "link": {
+      "backToMenu": "Back To Top Page",
+      "policy": "「 Privacy Policy 」"
+    },
+    "message": {
+      "policy": "If you agree to our privacy policy, please click the confirm button below.",
+      "success": "Thank you for your inquiry.<br/>We will get in touch with you again shortly"
+    },
+    "note": "*It is a required field",
+    "notice": "There are missing required fields or input has errors.",
+    "options": {
+      "corporation": "Corporation",
+      "individual": "Individual"
+    },
+    "placeHolder": {
+      "companyName": "LASTMILE WORKS Co., Ltd.",
+      "department": "Marketing",
+      "detail": "Please fill in the form.",
+      "email": "info@lastmile-worls.com",
+      "inquiry": "Inquiry detail",
+      "name": "Ex. Taro Yamada",
+      "phone": "09012345678"
+    },
+    "stepper": {
+      "step1": "INPUT",
+      "step2": "CONFIRM",
+      "step3": "COMPLETE"
+    }
+  },
+  "notification": {
+    "return": "return"
+  }
+}

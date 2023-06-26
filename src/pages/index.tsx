@@ -29,6 +29,7 @@ import FAQ from "@/components/organisms/FAQ/FAQ";
 import ForCreatorBusinessCTABanner from "@/components/organisms/CTABanner/ForCreatorBusinessCTABanner";
 import CircleLively from "@/components/atoms/LivelyIcon/CircleLively/CircleLively";
 import { useVisible } from "@/composables/useVisible";
+import InquiryForm from "@/components/organisms/InquiryForm/InquiryForm";
 
 const { visibilityChangedArrows, maskTxtAnimation, handleScaleImage, slideItems } = handleScroll();
 const headers = new Headers();
@@ -84,6 +85,7 @@ export default function Home(_props: InferGetStaticPropsType<typeof getStaticPro
         <FigureCaption />
         <FAQGroup />
         <CTABannerCreator />
+        <InquiryFormHome />
       </AnimatedBackground>
     </DefaultLayout>
   );
@@ -777,8 +779,25 @@ const CTABannerCreator = () => {
   );
 };
 
+const InquiryFormHome = () => {
+  const inquiryFormRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const inquiryFormObserver = createObserver(inquiryFormRef, "50px");
+    inquiryFormRef.current && inquiryFormObserver.observe(inquiryFormRef.current);
+
+    return () => inquiryFormObserver.disconnect();
+  }, []);
+
+  return (
+    <div className="animatedDirection -bottomToTop" ref={inquiryFormRef}>
+      <InquiryForm className={`${styles.inquiryFormHome} imageBoxAnimated`} />
+    </div>
+  );
+};
+
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "en", ["common", "top", "downloads"])),
+    ...(await serverSideTranslations(locale ?? "en", ["common", "top", "downloads", "form"])),
   },
 });
