@@ -1,8 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, ChangeEvent } from "react";
 import styles from "./TextInput.module.scss";
 import Image from "next/image";
 
 interface TextInputProps {
+  className?: string;
+  autoComplete?: string;
   modelValue?: string | number;
   typeInput?: "number" | "text" | "email" | "password";
   borderColor?: "primary" | "gray" | "white" | "none";
@@ -19,10 +21,12 @@ interface TextInputProps {
   hasFocus?: boolean;
   colorInput?: "black" | "white";
   idInput?: string;
-  onUpdateModelValue: (value: string) => void;
+  emitInputChange: (value: string) => void;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
+  className = "",
+  autoComplete = "",
   modelValue,
   typeInput = "text",
   borderColor = "gray",
@@ -39,7 +43,7 @@ const TextInput: React.FC<TextInputProps> = ({
   hasFocus = false,
   colorInput = "black",
   idInput = "",
-  onUpdateModelValue,
+  emitInputChange,
 }) => {
   const [typeInputCheck, setTypeInputCheck] = useState(typeInput);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -51,7 +55,7 @@ const TextInput: React.FC<TextInputProps> = ({
   }, [hasFocus]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onUpdateModelValue(event.target.value);
+    emitInputChange(event.target.value);
   };
 
   const switchVisibility = () => {
@@ -60,41 +64,40 @@ const TextInput: React.FC<TextInputProps> = ({
 
   const suffixClasses = suffix ? styles.input_suffix : "";
   const inputClasses = [
-    styles.input_field,
-    styles[`-borderColor--${borderColor}`],
-    styles[`-size--${size}`],
-    borderRadius ? styles["-border"] : "",
-    disabled ? styles["-disabled"] : "",
-    errorMessage ? styles["-error"] : "",
-  ].join(" ");
+    styles[`_borderColor__${borderColor}`],
+    styles[`_size__${size}`],
+    borderRadius ? styles._border : "",
+    disabled ? styles._disabled : "",
+    errorMessage ? styles._error : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-  const iconInputClasses = icon ? styles[`-icon--${iconPosition}`] : "";
-  const colorInputClasses = styles[`-colorInput--${colorInput}`];
-  const iconClasses = icon ? styles[`-position--${iconPosition}`] : "";
+  const iconInputClasses = icon ? styles[`)_icon__${iconPosition}`] : "";
+  const colorInputClasses = styles[`_colorInput__${colorInput}`];
+  const iconClasses = icon ? styles[`_position__${iconPosition}`] : "";
 
   const getPasswordIconSrc = () => {
     if (typeInputCheck === "password") {
-      return require("@/assets/images/icon/icon-password-hide.svg");
+      return "/images/icon/icon-password-hide.svg";
     } else {
-      return require("@/assets/images/icon/icon-password-show.svg");
+      return "/images/icon/icon-password-show.svg";
     }
   };
 
   return (
-    <div className={styles.input}>
+    <div className={`${className} ${styles.input}`}>
       <input
         id={idInput ? idInput : undefined}
         ref={inputRef}
-        className={`${icon ? styles[`_icon__${iconPosition}`] : ""} ${
-          styles[`_colorInput__${colorInput}`]
-        } ${inputClasses}`}
+        className={`${styles.input_field} ${inputClasses} ${iconInputClasses} ${colorInputClasses}`}
         value={modelValue}
         type={typeInputCheck}
         placeholder={placeHolder}
         min={typeInputCheck === "number" ? minValue : undefined}
         max={typeInputCheck === "number" ? maxValue : undefined}
         disabled={disabled}
-        autoComplete="off"
+        autoComplete={autoComplete}
         onChange={handleInputChange}
       />
       {icon === "password" && (
@@ -109,11 +112,7 @@ const TextInput: React.FC<TextInputProps> = ({
         />
       )}
       {icon !== "password" && icon && (
-        <Image
-          className={`${styles.input_icon} ${iconClasses}`}
-          src={require(`@/assets/images/icon/icon-${icon}.svg`)}
-          alt={icon}
-        />
+        <Image className={`${styles.input_icon} ${iconClasses}`} src={`/images/icon/icon-${icon}.svg`} alt={icon} />
       )}
       {suffix && <p className={`${styles.input_suffix} ${suffixClasses}`}>{suffix}</p>}
     </div>

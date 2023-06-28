@@ -1,0 +1,145 @@
+.input {
+  position: relative;
+
+  &_field {
+    width: 100%;
+    height: $input_H;
+    padding: 0 $spacing_3x;
+    background: $color_gray_50;
+    border: none;
+    outline: none;
+
+    &:focus {
+      border: 1px solid $color_gray_300;
+    }
+
+    &._border {
+      border-radius: $input_BorderRadius;
+    }
+
+    &._borderColor {
+      &__primary {
+        color: $color_gray_900;
+        border-color: 1px solid $color_gray_lighten1;
+      }
+
+      &__gray {
+        border: 1px solid $color_gray_300;
+
+        &:focus {
+          border: 1px solid $color_blue_400;
+        }
+      }
+
+      &__white {
+        border: 1px solid $color_white;
+      }
+    }
+
+    &._error {
+      border: 1px solid $color_red_error;
+    }
+
+    &._size {
+      &__small {
+        @include fz($font_size_10);
+        height: 40px;
+      }
+
+      &__medium {
+        @include fz($font_size_16);
+      }
+
+      &__large {
+        @include fz($font_size_18);
+      }
+    }
+
+    &._icon {
+      &__left {
+        padding-left: $spacing_9x;
+      }
+
+      &__right {
+        padding-right: $spacing_9x;
+      }
+    }
+
+    &._disabled {
+      color: $color_gray_800;
+      pointer-events: none;
+    }
+
+    &._colorInput {
+      &__black {
+        color: $color_gray_1000;
+        background: $color_white;
+      }
+
+      &__white {
+        color: $color_white;
+        background: rgba(255, 255, 255, 0.3);
+      }
+    }
+  }
+
+  &_icon {
+    position: absolute;
+    top: 50%;
+    display: block;
+    max-width: 20px;
+    cursor: pointer;
+    opacity: 0.5;
+    transform: translate(0, -50%);
+
+    &._disabled {
+      opacity: 0.3;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+    &._position {
+      &__left {
+        left: 1rem;
+      }
+
+      &__right {
+        right: 1rem;
+      }
+    }
+  }
+
+  &_suffix {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 1rem;
+    padding: 0;
+    margin: 0;
+
+    @include fz($font_size_12);
+
+    &.-disabled {
+      color: $color_gray_400;
+    }
+  }
+}
+
+// input[type="number"] {
+//   height: $input_H;
+//   color: $font_color_base;
+//   border: 1px solid $color_gray_lighten1;
+//   outline: none;
+//   -moz-appearance: textfield;
+// }
+
+// input[type="number"]::-webkit-inner-spin-button,
+// input[type="number"]::-webkit-outer-spin-button {
+//   width: 15px;
+//   height: 25px;
+//   margin: 0;
+//   opacity: 1;
+//   -webkit-appearance: none;
+// }

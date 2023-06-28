@@ -1,0 +1,81 @@
+.textArea {
+  &_group {
+    position: relative;
+    width: fit-content;
+  }
+
+  &_count {
+    position: absolute;
+    right: 12px;
+    bottom: 8px;
+    font-style: normal;
+    font-weight: $font_weight_medium;
+    color: $color_gray_600;
+
+    @include fz($font_size_12);
+  }
+
+  &_item {
+    width: 100%;
+    padding: $spacing_2x;
+    // keep current -6px
+    margin-bottom: -6px;
+    overflow: auto;
+    line-height: 24px;
+    color: $color_gray_900;
+    outline: none;
+
+    @include fz($font_size_16);
+    @include ls(30);
+
+    &._borderColor {
+      &__primary {
+        color: $color_gray_900;
+        border-color: 1px solid $color_gray_lighten1;
+      }
+
+      &__gray {
+        border: 1px solid $color_gray_300;
+
+        &:focus {
+          border: 1px solid $color_blue_400;
+        }
+      }
+
+      &__white {
+        border: 1px solid $color_white;
+      }
+    }
+
+    &:focus {
+      border: 1px solid $color_blue_400;
+    }
+
+    &._borderRadius {
+      border-radius: $textArea_BorderRadius;
+    }
+
+    &._border {
+      border: 1px solid $color_red_500;
+    }
+
+    &._bgColor {
+      &__gray {
+        background-color: $color_gray_50;
+      }
+
+      &__inquiryForm {
+        color: $color_white;
+        background: rgba(255, 255, 255, 0.3);
+
+        &:focus {
+          border: 1px solid $color_white;
+        }
+      }
+
+      &__white {
+        background-color: $color_white;
+      }
+    }
+  }
+}

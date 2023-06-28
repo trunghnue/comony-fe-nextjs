@@ -1,4 +1,87 @@
 .inquiryFormContainer {
   padding: $spacing_14x $spacing_4x $spacing_24x;
   background: $color_black_gradient;
+
+  @include mb() {
+    padding: $spacing_6x $spacing_4x $spacing_14x;
+  }
+
+  & .inquiryForm {
+    max-width: $dashboard_contents_W;
+    margin: 0 auto;
+
+    &_heading {
+      margin-bottom: $spacing_8x;
+
+      @include fz($font_size_46);
+
+      .headingSet_note {
+        margin-top: $spacing_6x;
+      }
+
+      @include mb() {
+        @include fz(28);
+        margin-bottom: $spacing_6x;
+
+        .headingSet_note {
+          margin-top: $spacing_4x;
+          margin-bottom: 0 !important;
+
+          @include fz($font_size_10);
+        }
+      }
+    }
+
+    &_form {
+      margin-bottom: $spacing_6x;
+
+      &_textArea {
+        margin-bottom: $spacing_1x;
+
+        @include mb() {
+          margin-bottom: $spacing_2x;
+        }
+      }
+
+      &_label {
+        display: flex;
+        align-items: center;
+        margin: auto 0 $spacing_4x;
+
+        @include mb() {
+          margin-bottom: $spacing_2x;
+        }
+      }
+
+      &_input {
+        color: $color_white !important;
+
+        &_error {
+          margin-bottom: $spacing_6x;
+        }
+      }
+
+      &_button {
+        margin: $spacing_19x auto 0;
+
+        @include mb() {
+          margin: $spacing_14x auto 0;
+        }
+      }
+
+      &_note {
+        float: right;
+        color: $color_white;
+
+        @include fz($font_size_14);
+
+        @include mb() {
+          @include fz($font_size_10);
+        }
+      }
+    }
+  }
+}
+.hidden {
+  display: none;
 }

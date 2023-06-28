@@ -10,6 +10,7 @@ export interface HeadingLineInterface {
 }
 
 interface HeadingSetProps {
+  className?: string;
   label?: string;
   note?: string;
   labelColor?: "primary" | "secondary" | "black" | "white" | "darkblue" | "alert";
@@ -22,6 +23,7 @@ interface HeadingSetProps {
 }
 
 const HeadingSet: FC<HeadingSetProps> = ({
+  className = "",
   align = "center",
   fontWeight = "400",
   headings,
@@ -40,7 +42,7 @@ const HeadingSet: FC<HeadingSetProps> = ({
   }`;
 
   return (
-    <div className={`${styles.headingSet} ${labelClasses}`} style={{ textAlign: align }}>
+    <div className={`${className} ${styles.headingSet} ${labelClasses}`} style={{ textAlign: align }}>
       {label && <div className={styles.headingSet_label}>{label}</div>}
 
       <Heading level={level} align={align} headings={headings} fontWeight={fontWeight} />

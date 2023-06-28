@@ -10,6 +10,7 @@ interface RadioElement {
 }
 
 interface RadioButtonsProps {
+  className?: string;
   isVerticalItem?: boolean;
   InputError?: string;
   tableCheckbox?: boolean;
@@ -22,10 +23,11 @@ interface RadioButtonsProps {
   labelColor?: "black" | "white" | "gray";
   dotColor?: "blue" | "yellow";
   radioButtonsData: RadioElement[];
-  handleEmitButtonRadio: (event?: ChangeEvent<HTMLInputElement>) => void;
+  emitRadioChange: (value: string) => void;
 }
 
 const RadioButtons: FC<RadioButtonsProps> = ({
+  className = "",
   isVerticalItem = false,
   errorMessage = "",
   modelValue,
@@ -36,14 +38,14 @@ const RadioButtons: FC<RadioButtonsProps> = ({
   type = "default",
   dotColor = "blue",
   labelColor = "black",
-  handleEmitButtonRadio,
+  emitRadioChange,
 }) => {
   const classes = [styles[`_type__${type}`], styles[`_labelColor__${labelColor}`], styles[`_dotColor__${dotColor}`]]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <div className={`${styles.radioButton} ${classes}`}>
+    <div className={`${className} ${styles.radioButton} ${classes}`}>
       {radioButtonsData.map((item) => (
         <div key={item.id} className={`${styles.radioButton_group} ${isVerticalItem ? styles._vertical : ""}`}>
           <input
@@ -53,7 +55,7 @@ const RadioButtons: FC<RadioButtonsProps> = ({
             type="radio"
             value={item.value}
             checked={item.value == modelValue}
-            onChange={handleEmitButtonRadio}
+            onChange={(event) => emitRadioChange(event.target.value)}
           />
           {isVerticalItem ? (
             <label className={styles.verticalItem} htmlFor={item.id}>
