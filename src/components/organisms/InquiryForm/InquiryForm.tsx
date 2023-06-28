@@ -9,6 +9,7 @@ import { useFormValuesInit } from "@/composables/useFormValueInit";
 import InputError from "@/components/atoms/Form/InputError/InputError";
 import TextArea from "@/components/atoms/Form/TextArea/TextArea";
 import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
+import { handleInputChangeComposables } from "@/utilities/formValidate/handleInputChange";
 
 interface InquiryFormProps {
   className?: string;
@@ -35,6 +36,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ className = "" }) => {
   ];
   const handleInputFieldSetChange = (value: string, fieldName: string) => {
     setFormValues({ ...formValues, [fieldName]: value });
+    handleInputChangeComposables(formValues, msgError, value, fieldName, t);
   };
   const { formValues, setFormValues, msgError, isDisableBtnWithCondition } = useFormValuesInit({
     companyName: "",
@@ -136,7 +138,7 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ className = "" }) => {
           autoComplete="organization"
           emitInputChange={(value) => handleInputFieldSetChange(value, "companyName")}
         />
-        <InputError className={styles.inquiryForm_form_input_error} value={msgError.phone} />
+        <InputError className={styles.inquiryForm_form_input_error} value={msgError.companyName} />
       </div>
 
       {/* Email */}
