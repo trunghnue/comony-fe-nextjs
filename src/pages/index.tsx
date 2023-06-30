@@ -798,6 +798,6 @@ const InquiryFormHome = () => {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "en", ["common", "top", "downloads", "form"])),
+    ...(await serverSideTranslations(locale ?? "en", ["common", "top", "downloads", "form", "login"])),
   },
 });

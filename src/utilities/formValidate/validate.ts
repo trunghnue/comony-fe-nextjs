@@ -12,7 +12,6 @@ export function validateName(data: string, errorData: any, field: string = "name
 }
 
 export function validateCompanyName(data: string, errorData: any, field: string = "companyName", t: any): void {
-  console.log("🚀 ~ file: validate.ts:15 ~ data:", data);
   if (Object.keys(errorData).includes(field)) {
     if (data.trim().length === 0) {
       errorData[field] = t("form.errorMessage.company");

@@ -73,6 +73,7 @@ export const useFormValuesInit = (params: I_ParamRequest) => {
     setFormValues,
     isDisableBtnWithCondition,
     msgError,
+    setMsgError,
     resetForm,
   };
 };

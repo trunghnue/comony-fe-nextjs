@@ -8,7 +8,7 @@ interface LinkTextProps {
   link?: string;
   color?: "primary" | "secondary" | "black" | "notice" | "blue" | "white";
   underline?: boolean;
-  fontSize: "small" | "medium" | "standard" | "large";
+  fontSize?: "small" | "medium" | "standard" | "large";
 }
 
 export default function LinkText({

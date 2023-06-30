@@ -1,0 +1,112 @@
+{
+  "authenticationCode": {
+    "failed": {
+      "heading1": "The authentication code has expired.",
+      "heading2": "Confirmation email has been resent.",
+      "text1": "The authentication code expires in one hour.",
+      "text2": "Please click on the URL in the resent email and click on ",
+      "text3": "Please reset your password."
+    },
+    "successed": {
+      "heading": "Sended authentication code",
+      "text1": "You have received an email with an authentication code.",
+      "text2": "The authentication code is valid for one hour.",
+      "text3": "Please click the URL in the email to reset your password."
+    }
+  },
+  "bktohome": {
+    "home": "Back to Home page",
+    "login": "Back to Login page"
+  },
+  "cautionNotMainSended": {
+    "heading": "If you do not receive the email",
+    "text1": "Please check your spam folder.",
+    "text2": "If your email address is incorrect, please complete the account registration form again."
+  },
+  "completeSignup": {
+    "heading": "Completed registration",
+    "headingError": "Error",
+    "link": "Sign in",
+    "linkError": "Sign up",
+    "text1": "Your account has been successfully registered.",
+    "text1Error": "The registration process has failed.",
+    "text2": "Please try to login and enjoy comony.",
+    "text2Error": "I'm sorry. Please try to register again"
+  },
+  "forcePwReset": {
+    "backLink": "Back To Top Page",
+    "button": "Reset password",
+    "heading": "Password has expired",
+    "text": "Your password has expired. <br/>Please reset your password and log in again."
+  },
+  "login": {
+    "button": "Sign In",
+    "heading": "Sign In",
+    "resetting": "Forgot Password?",
+    "save": "Keep me signed in",
+    "sns": {
+      "withFacebook": "Sign in with Facebook",
+      "withGoogle": "Sign in with Google",
+      "withSNS": "Sign in with your social account"
+    },
+    "subtext1": "",
+    "subtext2": "Please create a new account",
+    "withEmail": "Or login with your email address"
+  },
+  "reminds": {
+    "button": "Reset Password",
+    "heading": "Reset Password",
+    "leadtext1": "We will send you an email to reissue your password.",
+    "leadtext2": "Please enter the email address you have registered.",
+    "link": "Returns to sign-in page",
+    "pageTitle": "Reset Password",
+    "successed": {
+      "heading": "Email has been sent",
+      "leadtext1": "We have sent you an email to reset your password.",
+      "leadtext2": "Please re-register from the URL in the email you sent."
+    }
+  },
+  "resetpw": {
+    "button": "Submit",
+    "completeText": "The password reset for this email address has been completed.",
+    "heading": "Set your new password",
+    "successed": {
+      "heading": "Password reset complete",
+      "leadtext1": "Password resetting has been completed.",
+      "leadtext2": "Please login again with your new password."
+    }
+  },
+  "signup": {
+    "accept1": "I agree to the",
+    "accept2": "terms of service",
+    "accept3": "",
+    "backButton": "Return to Input Page",
+    "confirm": {
+      "pageTitle": "Confirmation of registration details"
+    },
+    "confirmButton": "Confirm",
+    "confirmHeading": "Confirmation",
+    "heading": "Sign Up",
+    "headingModalText1": "Free registration is </br>required to enjoy this space.",
+    "note1": "already have an account?",
+    "note2": "Sign In",
+    "pageTitle": "Sign Up",
+    "sns": {
+      "withFacebook": "Sign up with Facebook",
+      "withGoogle": "Sign up with Google",
+      "withSNS": "Sign up with your social account"
+    },
+    "submitButton": "Register",
+    "withEmail": "Or sign up with your email address"
+  },
+  "temporary": {
+    "heading": "Completed your temporary registration",
+    "link": "Return to top page",
+    "text1": "",
+    "text2": "An authentication email has been sent to your registered email.",
+    "text3": "Click on the verification URL in the email to complete your new account registration.",
+    "text4": "If you don't receive the mail",
+    "text5": "If you don't receive the mail",
+    "text6": "If your e-mail address is incorrect, please register again from the account registration form."
+  }
+}

@@ -80,6 +80,25 @@
         }
       }
     }
+
+    &_step2 {
+      &_heading {
+        width: fit-content;
+      }
+
+      &_card {
+        width: 80%;
+        padding: $spacing_12x $spacing_4x;
+        margin: 0 auto $spacing_8x;
+        color: $color_white;
+        text-align: center;
+        background: $color_gray_700;
+
+        @include mb() {
+          width: 100%;
+        }
+      }
+    }
   }
 }
 .hidden {
