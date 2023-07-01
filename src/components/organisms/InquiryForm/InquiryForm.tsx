@@ -280,10 +280,10 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ className = "" }) => {
         <div className={`${styles.inquiryForm} ${styles.inquiryForm_step2}`}>
           <HeadingSet
             level="1"
-            note-size="large"
-            label-color="white"
+            noteSize="large"
+            labelColor="white"
             className={styles.inquiryForm_step2_heading}
-            font-weight="900"
+            fontWeight="900"
             headings={[{ text: t("formContact.inquiryResponse.heading"), color: "white", spBreak: false }]}
             note={t("formContact.inquiryResponse.subHeading") || ""}
             align="left"
