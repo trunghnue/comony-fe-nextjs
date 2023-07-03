@@ -8,7 +8,6 @@ import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
 import styles from "./Header.module.scss";
 
 export default function Header({ bgColor }: { bgColor: string }) {
-  // console.log("🚀 ~ file: Header.tsx:11 ~ Header:");
   const { t } = useTranslation("common");
   const iconColor = bgColor === "white" ? "black" : "white";
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
@@ -96,7 +95,11 @@ export default function Header({ bgColor }: { bgColor: string }) {
                 iconHoverColor={bgColor === "black" ? "#fff" : "#2b5ba9"}
               />
             </button>
-            <div className={`${styles.header_dropdown} ${isLanguageMenuOpen ? styles.is_open : ""}  ${styles[`_bgColor__${bgColor}`]}`}>
+            <div
+              className={`${styles.header_dropdown} ${isLanguageMenuOpen ? styles.is_open : ""}  ${
+                styles[`_bgColor__${bgColor}`]
+              }`}
+            >
               <div className={styles.header_dropdown_item}>
                 <Link href="/" locale="ja">
                   日本語
@@ -112,10 +115,20 @@ export default function Header({ bgColor }: { bgColor: string }) {
 
           {/* Language Menu in mobile */}
           <div className={`${styles.header_nav_lang} is-header-mb`}>
-            <Link className={i18n?.language === "en" ? styles._active : ""} href="/" locale="en" onClick={onCloseHumbergerMenu}>
+            <Link
+              className={i18n?.language === "en" ? styles._active : ""}
+              href="/"
+              locale="en"
+              onClick={onCloseHumbergerMenu}
+            >
               English
             </Link>
-            <Link className={i18n?.language === "ja" ? styles._active : ""} href="/" locale="ja" onClick={onCloseHumbergerMenu}>
+            <Link
+              className={i18n?.language === "ja" ? styles._active : ""}
+              href="/"
+              locale="ja"
+              onClick={onCloseHumbergerMenu}
+            >
               日本語
             </Link>
           </div>

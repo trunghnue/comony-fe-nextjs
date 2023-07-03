@@ -423,13 +423,13 @@ const Gallery = () => {
       page: 0,
       publishedStatus: publishedStatusId.OPEN,
     };
-    const controller = new AbortController();
+    // const controller = new AbortController();
     const fetchSpacelist = async () => {
       try {
         const queryParams = formatParams(spacesParams);
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/spaces?${new URLSearchParams(queryParams)}`, {
           headers,
-          signal: controller.signal,
+          // signal: controller.signal,
         });
 
         if (!response.ok) {
@@ -450,7 +450,7 @@ const Gallery = () => {
 
     return () => {
       galleryObserver.disconnect();
-      controller.abort();
+      // controller.abort();
     };
   }, []);
 
