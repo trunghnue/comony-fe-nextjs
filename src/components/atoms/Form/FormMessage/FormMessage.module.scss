@@ -1,0 +1,16 @@
+.formMessage {
+  display: block;
+  width: 100%;
+  padding: $spacing_3x $spacing_4x;
+  margin-bottom: $spacing_5x;
+  border-radius: 5px;
+
+  @include fz($font_size_12);
+
+  &._type {
+    &__warning {
+      color: $color_notice;
+      background-color: $color_notice_lighten1;
+    }
+  }
+}
