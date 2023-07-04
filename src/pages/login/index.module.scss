@@ -1,0 +1,11 @@
+.loginTemp {
+  &_toPassChange {
+    margin: $spacing_5x auto;
+    text-align: center;
+  }
+
+  &_heading {
+    font-size: inherit;
+    line-height: 1.5;
+  }
+}

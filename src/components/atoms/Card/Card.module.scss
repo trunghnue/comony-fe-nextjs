@@ -1,0 +1,92 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 0 auto;
+  background: $color_white;
+  border-radius: 5px;
+
+  &._cardPadding {
+    &__default {
+      @include pc() {
+        padding: $spacing_10x;
+      }
+
+      @include mb() {
+        padding: $spacing_10x $spacing_5x;
+      }
+    }
+
+    &__small {
+      @include pc() {
+        padding: $spacing_4x;
+      }
+
+      @include mb() {
+        padding: 0;
+      }
+    }
+  }
+
+  &._isShadow {
+    box-shadow: 0 2px 5px $color_gray_lighten3;
+  }
+
+  &._isLoading {
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      content: "";
+      background: $color_white;
+      opacity: 0.5;
+    }
+  }
+
+  &_title {
+    @include fz($font_size_28);
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: $spacing_5x;
+    font-weight: $font_weight_bold;
+  }
+
+  &_subtitle {
+    margin-bottom: $spacing_5x;
+    line-height: 1.5;
+    text-align: center;
+
+    @include fz($font_size_13);
+  }
+
+  &._cardType__horizon {
+    display: flex;
+    width: 944.45px;
+    height: 336.83px;
+    padding: 0 0 $spacing_8x 0;
+    margin: $spacing_3x;
+    box-shadow: none;
+
+    & .card_header {
+      width: 100%;
+    }
+
+    & .card_body {
+      width: 80%;
+      margin: 0 auto;
+    }
+  }
+
+  &._size {
+    &__small {
+      width: 600px;
+    }
+
+    &__medium {
+      width: 700px;
+    }
+  }
+}

@@ -1,12 +1,14 @@
 import React, { ReactNode } from "react";
 import styles from "./DefaultLayout.module.scss";
 
-interface Props {
+interface I_CardProps {
   children: ReactNode;
   bgColor?: "white" | "gray" | "whiteGradient" | "blackGradient";
   title?: string;
 }
 
-export default function DefaultLayout({ children, bgColor = "white", title = "" }: Props) {
+const DefaultLayout: React.FC<I_CardProps> = ({ children, bgColor = "white", title = "" }) => {
   return <div className={styles.contents}>{children}</div>;
-}
+};
+
+export default DefaultLayout;
