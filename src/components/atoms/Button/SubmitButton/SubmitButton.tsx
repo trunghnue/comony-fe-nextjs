@@ -3,6 +3,7 @@ import Spinner from "@/components/atoms/Spinner/Spinner";
 import styles from "./SubmitButton.module.scss";
 
 interface SubmitButtonProps {
+  className?: string;
   isLoading?: boolean;
   spinner?: boolean;
   spinnerColor?: "primary" | "secondary" | "black" | "white";
@@ -32,7 +33,7 @@ const SubmitButton: FC<SubmitButtonProps> = (props) => {
     .join(" ");
 
   return (
-    <button className={buttonClasses} type="submit" onClick={props.onClick}>
+    <button className={`${props.className} ${buttonClasses}`} type="submit" onClick={props.onClick}>
       {props.spinner && props.isLoading && (
         <div className={styles.button_spinner}>
           <Spinner size="small" color={props.spinnerColor} />
@@ -44,6 +45,7 @@ const SubmitButton: FC<SubmitButtonProps> = (props) => {
 };
 
 SubmitButton.defaultProps = {
+  className: "",
   isLoading: false,
   spinner: false,
   spinnerColor: "black",

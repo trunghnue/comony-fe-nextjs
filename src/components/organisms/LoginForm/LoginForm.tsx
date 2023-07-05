@@ -15,7 +15,7 @@ interface LoginFormProps {
 }
 
 const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
-  const { t } = useTranslation("");
+  const { t } = useTranslation(["login", "form"]);
   const formValues: I_LoginRequest = {
     email: "",
     password: "",
@@ -66,7 +66,7 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
   return (
     <form className={styles.login} onKeyDown={(event) => event.key !== "Enter"}>
       {serverError !== "" && <FormMessage className="is-pc" value={serverError} />}
-      <DividerWithText className={styles.loginDivider} msg="$t('login.sns.withSNS')" fontSize="1.2rem" />
+      <DividerWithText className={styles.loginDivider} msg={t("login.sns.withSNS")} fontSize="1.2rem" />
       <div className={styles.loginSocial}>
         <Button
           className={styles.loginSocialButton}
@@ -78,24 +78,24 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
         />
         <Button
           className={styles.loginSocialButton}
-          label="$t('login.sns.withGoogle')"
+          label={t("login.sns.withGoogle")}
           borderColor="gray"
           bgColor="white"
           icon="google"
           onClick={() => onClickSNSLogin("google")}
         />
       </div>
-      <DividerWithText className={styles.loginDivider} msg="$t('login.withEmail')" fontSize="1.2rem" />
+      <DividerWithText className={styles.loginDivider} msg={t("login.withEmail")} fontSize="1.2rem" />
       {serverError !== "" && <FormMessage className={styles.isSp} value={serverError} />}
       <InputFieldSet
         className={styles.loginInput}
-        label="$t('form.label.email')"
+        label={t("form.label.email", { ns: "form" }) || ""}
         type="email"
         autocomplete="email"
         modelValue={formValues.email}
         errorMessage={msgError.email}
-        placeholder="$t('form.placeHolder.email')"
-        onUpdateModelValue={(value) => handlEmailInputChange(value, "email")}
+        placeHolder={t("form.placeHolder.email") || ""}
+        // onUpdateModelValue={(value) => handlEmailInputChange(value, "email")}
       />
       <InputFieldSet
         icon="password"
@@ -103,11 +103,11 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
         className={styles.loginInput}
         type="password"
         autocomplete="password"
-        label="$t('form.label.password')"
+        label={t("form.label.password", { ns: "form" }) || ""}
         modelValue={formValues.password}
         errorMessage={msgError.password}
-        placeholder="・・・・・・・・"
-        onUpdateModelValue={(value) => handlPasswordInputChange(value, "password")}
+        placeHolder="・・・・・・・・"
+        // onUpdateModelValue={(value) => handlPasswordInputChange(value, "password")}
       />
       <div className={styles.loginSubmit}>
         <SubmitButton
@@ -115,12 +115,12 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
           spinnerColor="secondary"
           isLoading={isLoading}
           className={styles.loginButton}
-          label="$t('login.button')"
+          label={t("login.button")}
           size="medium"
           bgColor="secondary"
           borderColor="secondary"
           rounded
-          onClick={onClickSubmit}
+          // onClick={onClickSubmit}
         />
       </div>
     </form>

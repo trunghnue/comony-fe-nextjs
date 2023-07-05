@@ -7,6 +7,7 @@ import React from "react";
 import styles from "./index.module.scss";
 import { useTranslation } from "next-i18next";
 import LinkText from "@/components/atoms/LinkText/LinkText";
+import LoginForm from "@/components/organisms/LoginForm/LoginForm";
 
 const Login = () => {
   const { t } = useTranslation("login");
@@ -24,6 +25,7 @@ const Login = () => {
               <LinkText color="secondary" link="/register" value={t("login.subtext2")} />
             </Card.Subtitle>
             <Card.Body>
+              <LoginForm isLoading={false} serverError="serverError" />
               <div className={styles.loginTemp_toPassChange}>
                 <LinkText link="./pass_reminds-step1" color="secondary" value={t("login.resetting")} />
               </div>
@@ -39,6 +41,6 @@ export default Login;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
   props: {
-    ...(await serverSideTranslations(locale ?? "en", ["common", "login"])),
+    ...(await serverSideTranslations(locale ?? "en", ["common", "login", "form"])),
   },
 });

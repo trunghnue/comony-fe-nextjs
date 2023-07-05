@@ -67,7 +67,7 @@ const Button: FC<ButtonProps> = (props) => {
           className={styles.button_icon}
           width={props.iconWidth}
           height={props.iconHeight}
-          src={`assets/images/icon/icon-${props.icon}.svg`}
+          src={`/images/icon/icon-${props.icon}.svg`}
           alt={props.label}
         />
       )}
