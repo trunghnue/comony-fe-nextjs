@@ -2,37 +2,49 @@
 		Media-query Mixin
 ********************************************/
 
-// $breakpoints: (
-// Extra small screen / Fold screen
-// xxs: 280px,
-// Extra small screen / phone
-// xs: 414px,
-// Small screen / phone
-// sm: 640px,
-// Medium screen / tablet
-// md: 768px,
-// lg: 1044px,
-// xl: 1120px,
-// Large screen / desktop
-// xxl: 1280px,
-// Extra screen / desktop
-// xxxl: 1368px
-// ) !default;
-
-@mixin max-screen($breakpoints_min) {
-  @media screen and (max-width: $breakpoints_min) {
+// var の map-get($breakpoints, md) の値+1px以上
+@mixin pc() {
+  @media screen and (min-width: map-get($breakpoints, md)) {
     @content;
   }
 }
 
-@mixin screen($breakpoints_min, $breakpoints_max) {
-  @media screen and (min-width: $breakpoints_min) and (max-width: $breakpoints_max) {
+@mixin h-pc() {
+  @media (min-height: 1024px) {
+    @content;
+  }
+}
+
+// var の map-get($breakpoints, md) の値以下
+@mixin mb() {
+  @media screen and (max-width: (map-get($breakpoints, md) - 1)) {
+    @content;
+  }
+}
+
+// $break_point_max以上
+@mixin min-screen($break_point_max) {
+  @media screen and (min-width: $break_point_max) {
+    @content;
+  }
+}
+
+// $break_point_min以下
+@mixin max-screen($break_point_min) {
+  @media screen and (max-width: $break_point_min) {
+    @content;
+  }
+}
+
+// $break_point_min 以上 $break_point_max)以下
+@mixin screen($break_point_min, $break_point_max) {
+  @media screen and (min-width: $break_point_min) and (max-width: $break_point_max) {
     @content;
   }
 }
 
 @mixin ipad() {
-  @media screen and (min-width: map-get($breakpoints, xs)) and (max-width: map-get($breakpoints, md) - 1) {
+  @media screen and (min-width: map-get($breakpoints, xs)) and (max-width: (map-get($breakpoints, md) - 1)) {
     @content;
   }
 }
@@ -50,20 +62,15 @@
   }
 }
 
-@mixin mb() {
-  @media screen and (max-width: (map-get($breakpoints, md) - 1)) {
+// dashboard break_point
+@mixin dashboard-pc() {
+  @media screen and (min-width: ($breakpoints_dashboard + 1)) {
     @content;
   }
 }
 
-@mixin pc() {
-  @media screen and (min-width: map-get($breakpoints, md)) {
-    @content;
-  }
-}
-
-@mixin screen($breakpoints_min, $breakpoints_max) {
-  @media screen and (min-width: $breakpoints_min) and (max-width: $breakpoints_max) {
+@mixin dashboard-mb() {
+  @media screen and (max-width: $breakpoints_dashboard) {
     @content;
   }
 }

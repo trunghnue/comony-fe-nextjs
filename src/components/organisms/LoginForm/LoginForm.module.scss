@@ -1,0 +1,40 @@
+.login {
+  &_input {
+    margin-bottom: $spacing_5x;
+  }
+
+  &_submit {
+    margin: $spacing_10x auto 0;
+    text-align: center;
+  }
+
+  &_button {
+    @include pc() {
+      min-width: 300px;
+    }
+  }
+
+  &_divider {
+    margin-bottom: $spacing_5x;
+  }
+
+  &_social {
+    margin: 0 auto $spacing_10x;
+    text-align: center;
+
+    @include min-screen(map-get($breakpoints, sm) + 1px) {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    &_button {
+      width: 46% !important;
+      min-width: auto;
+
+      @include max-screen(map-get($breakpoints, sm)) {
+        width: 100% !important;
+        margin: 0 0 $spacing_2x !important;
+      }
+    }
+  }
+}

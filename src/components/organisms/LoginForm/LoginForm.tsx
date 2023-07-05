@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Button from "@/components/atoms/Button/Button";
 import SubmitButton from "@/components/atoms/Button/SubmitButton/SubmitButton";
 import FormMessage from "@/components/atoms/Form/FormMessage/FormMessage";
@@ -16,21 +16,21 @@ interface LoginFormProps {
 
 const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
   const { t } = useTranslation(["login", "form"]);
-  const formValues: I_LoginRequest = {
+  const [formValues, setFormValues] = useState<I_LoginRequest>({
     email: "",
     password: "",
     remember_me: false, // TODO: BEの処理復活したら戻す
-  };
+  });
 
-  const msgError: I_MsgErrorLoginRequest = {
+  const [msgError, setMsgError] = useState<I_MsgErrorLoginRequest>({
     email: "",
     password: "",
-  };
+  });
 
-  //   const handlEmailInputChange = (value: string, name: string) => {
-  //     formValues[name] = value;
-  //     validateRequiredFilled(formValues.email, msgError, 'email', app); // Adjust 'app' accordingly
-  //   };
+  const handleInputChange = (value: string, key: string) => {
+    setFormValues({ ...formValues, [key]: value });
+    // validateRequiredFilled(formValues.email, msgError, 'email', app); // Adjust 'app' accordingly
+  };
 
   //   const handlPasswordInputChange = (value: string, name: string) => {
   //     formValues[name] = value;
@@ -66,10 +66,10 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
   return (
     <form className={styles.login} onKeyDown={(event) => event.key !== "Enter"}>
       {serverError !== "" && <FormMessage className="is-pc" value={serverError} />}
-      <DividerWithText className={styles.loginDivider} msg={t("login.sns.withSNS")} fontSize="1.2rem" />
-      <div className={styles.loginSocial}>
+      <DividerWithText className={styles.login_divider} msg={t("login.sns.withSNS")} fontSize="1.2rem" />
+      <div className={styles.login_social}>
         <Button
-          className={styles.loginSocialButton}
+          className={styles.login_social_button}
           label={t("login.sns.withFacebook")}
           borderColor="white"
           bgColor="facebook"
@@ -77,7 +77,7 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
           onClick={() => onClickSNSLogin("facebook")}
         />
         <Button
-          className={styles.loginSocialButton}
+          className={styles.login_social_button}
           label={t("login.sns.withGoogle")}
           borderColor="gray"
           bgColor="white"
@@ -85,36 +85,36 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
           onClick={() => onClickSNSLogin("google")}
         />
       </div>
-      <DividerWithText className={styles.loginDivider} msg={t("login.withEmail")} fontSize="1.2rem" />
+      <DividerWithText className={styles.login_divider} msg={t("login.withEmail")} fontSize="1.2rem" />
       {serverError !== "" && <FormMessage className={styles.isSp} value={serverError} />}
       <InputFieldSet
-        className={styles.loginInput}
+        className={styles.login_input}
         label={t("form.label.email", { ns: "form" }) || ""}
         type="email"
         autocomplete="email"
         modelValue={formValues.email}
         errorMessage={msgError.email}
-        placeHolder={t("form.placeHolder.email") || ""}
-        // onUpdateModelValue={(value) => handlEmailInputChange(value, "email")}
+        placeHolder={t("form.placeHolder.email", { ns: "form" }) || ""}
+        onUpdateModelValue={(value) => handleInputChange(value, "email")}
       />
       <InputFieldSet
         icon="password"
         iconPosition="right"
-        className={styles.loginInput}
+        className={styles.login_input}
         type="password"
         autocomplete="password"
         label={t("form.label.password", { ns: "form" }) || ""}
         modelValue={formValues.password}
         errorMessage={msgError.password}
         placeHolder="・・・・・・・・"
-        // onUpdateModelValue={(value) => handlPasswordInputChange(value, "password")}
+        onUpdateModelValue={(value) => handleInputChange(value, "password")}
       />
-      <div className={styles.loginSubmit}>
+      <div className={styles.login_submit}>
         <SubmitButton
           spinner
           spinnerColor="secondary"
           isLoading={isLoading}
-          className={styles.loginButton}
+          className={styles.login_button}
           label={t("login.button")}
           size="medium"
           bgColor="secondary"

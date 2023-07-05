@@ -21,14 +21,14 @@ interface InputFieldSetProps {
   size?: "small" | "medium" | "large";
   type?: "number" | "text" | "email" | "password";
   value?: string;
-  onUpdateModelValue?: (value: string | number | boolean) => void;
+  onUpdateModelValue?: (value: string) => void;
 }
 
 const InputFieldSet: FC<InputFieldSetProps> = (props) => {
-  const handleInputFieldChange = (value: string | number | boolean) => {
-    // if (onUpdateModelValue) {
-    //   onUpdateModelValue(value);
-    // }
+  const handleInputFieldChange = (value: string) => {
+    if (props.onUpdateModelValue) {
+      props.onUpdateModelValue(value);
+    }
   };
 
   return (
