@@ -172,10 +172,10 @@ export function validateRequiredFilled(
 ): void {
   if (Object.keys(errorData).includes(field)) {
     if (data.toString().trim().length === 0) {
-      const errorValue = t(`${baseLocale}.${field}`);
+      const errorValue = t(`${baseLocale}.${field}`, { ns: "form" });
 
       if (errorValue.includes(`.${field}`)) {
-        errorData[field] = t("form.errorMessage.alert");
+        errorData[field] = t("form.errorMessage.alert", { ns: "form" });
       } else if (errorValue) {
         errorData[field] = errorValue;
       }

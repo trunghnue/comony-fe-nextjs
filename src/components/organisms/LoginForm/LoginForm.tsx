@@ -28,12 +28,13 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
   });
 
   const handleInputChange = (value: string, key: string) => {
-    setFormValues({ ...formValues, [key]: value });
-    // validateRequiredFilled(formValues.email, msgError, 'email', app); // Adjust 'app' accordingly
+    setFormValues((prevState) => ({ ...prevState, [key]: value }));
+    validateRequiredFilled(value, msgError, key, t);
+    setMsgError({ ...msgError });
   };
 
   //   const handlPasswordInputChange = (value: string, name: string) => {
-  //     formValues[name] = value;
+  //     formValues[name] = value
   //     validateRequiredFilled(formValues.password, msgError, 'password', app); // Adjust 'app' accordingly
   //   };
 
