@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, MouseEvent } from "react";
 import Spinner from "@/components/atoms/Spinner/Spinner";
 import styles from "./SubmitButton.module.scss";
 
@@ -16,7 +16,7 @@ interface SubmitButtonProps {
   iconWidth?: string;
   iconHeight?: string;
   disabled?: boolean;
-  onClick?: () => void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void | undefined;
 }
 
 const SubmitButton: FC<SubmitButtonProps> = (props) => {
