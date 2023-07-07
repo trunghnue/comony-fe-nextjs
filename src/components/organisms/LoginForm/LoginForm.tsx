@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, MouseEvent } from "react";
 import Button from "@/components/atoms/Button/Button";
 import SubmitButton from "@/components/atoms/Button/SubmitButton/SubmitButton";
 import FormMessage from "@/components/atoms/Form/FormMessage/FormMessage";
@@ -10,11 +10,12 @@ import styles from "./LoginForm.module.scss";
 import { useTranslation } from "next-i18next";
 
 interface LoginFormProps {
-  isLoading: boolean;
-  serverError: string;
+  isLoading?: boolean;
+  serverError?: string;
+  emitOnClickSubmit: (formValues: I_LoginRequest) => void;
 }
 
-const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
+const LoginForm: FC<LoginFormProps> = (props) => {
   const { t } = useTranslation(["login", "form"]);
   const [formValues, setFormValues] = useState<I_LoginRequest>({
     email: "",
@@ -33,26 +34,25 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
     setMsgError({ ...msgError });
   };
 
-  //   const handlPasswordInputChange = (value: string, name: string) => {
-  //     formValues[name] = value
-  //     validateRequiredFilled(formValues.password, msgError, 'password', app); // Adjust 'app' accordingly
-  //   };
+  const onClickSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
 
-  //   const onClickSubmit = () => {
-  //     let isPass = true;
-  //     const msgErrorKeys: string[] = Object.keys(msgError);
+    let isPass = true;
+    const msgErrorKeys: Array<keyof I_MsgErrorLoginRequest> = Object.keys(msgError) as Array<
+      keyof I_MsgErrorLoginRequest
+    >;
 
-  //     for (let i = 0; i < msgErrorKeys.length; i++) {
-  //       if (msgError[msgErrorKeys[i]] !== '') {
-  //         isPass = false;
-  //         break;
-  //       }
-  //     }
+    for (let i = 0; i < msgErrorKeys.length; i++) {
+      if (msgError[msgErrorKeys[i]] !== "") {
+        isPass = false;
+        break;
+      }
+    }
 
-  //     if (isPass) {
-  //       // Emit the 'onClickSubmit' event
-  //     }
-  //   };
+    if (isPass) {
+      props.emitOnClickSubmit(formValues);
+    }
+  };
 
   const onClickSNSLogin = (SNSTypeStr: string) => {
     // Emit the 'onClickSNSLogin' event
@@ -66,7 +66,7 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
 
   return (
     <form className={styles.login} onKeyDown={(event) => event.key !== "Enter"}>
-      {serverError !== "" && <FormMessage className="is-pc" value={serverError} />}
+      {props.serverError !== "" && <FormMessage className="is-pc" value={props.serverError} />}
       <DividerWithText className={styles.login_divider} msg={t("login.sns.withSNS")} fontSize="1.2rem" />
       <div className={styles.login_social}>
         <Button
@@ -87,7 +87,7 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
         />
       </div>
       <DividerWithText className={styles.login_divider} msg={t("login.withEmail")} fontSize="1.2rem" />
-      {serverError !== "" && <FormMessage className={styles.isSp} value={serverError} />}
+      {props.serverError !== "" && <FormMessage className="is-sp" value={props.serverError} />}
       <InputFieldSet
         className={styles.login_input}
         label={t("form.label.email", { ns: "form" }) || ""}
@@ -114,18 +114,23 @@ const LoginForm: FC<LoginFormProps> = ({ isLoading, serverError }) => {
         <SubmitButton
           spinner
           spinnerColor="secondary"
-          isLoading={isLoading}
+          isLoading={props.isLoading}
           className={styles.login_button}
           label={t("login.button")}
           size="medium"
           bgColor="secondary"
           borderColor="secondary"
           rounded
-          // onClick={onClickSubmit}
+          onClick={onClickSubmit}
         />
       </div>
     </form>
   );
+};
+
+LoginForm.defaultProps = {
+  isLoading: false,
+  serverError: "",
 };
 
 export default LoginForm;
