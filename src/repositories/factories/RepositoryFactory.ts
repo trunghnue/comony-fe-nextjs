@@ -1,6 +1,8 @@
+import AuthRepository from "../AuthRepository";
 import ContactRepository from "../ContactRepository";
 
 const repositories: any = {
+  auth: AuthRepository,
   contact: ContactRepository,
 };
 
