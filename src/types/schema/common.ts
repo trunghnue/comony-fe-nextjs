@@ -11,3 +11,12 @@ export interface I_Response_Type<T> {
   };
   data: T;
 }
+
+export interface I_Meta {
+  httpStatusCode: ICode;
+  requestId: string;
+  attempts: number;
+  totalRetryDelay: number;
+  extendedRequestId: string;
+  cfId: string;
+}
