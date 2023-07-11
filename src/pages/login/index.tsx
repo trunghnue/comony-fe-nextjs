@@ -10,11 +10,29 @@ import LinkText from "@/components/atoms/LinkText/LinkText";
 import LoginForm from "@/components/organisms/LoginForm/LoginForm";
 import { I_LoginRequest } from "@/types/schema/auth";
 import { repositories } from "@/repositories/factories/RepositoryFactory";
+import { useSetCookie } from "@/composables/useSetCookie";
 
 const Login = () => {
   const { t } = useTranslation(["login", "form"]);
   const [serverError, setServerError] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  /*
+   * set Token to cookie
+   */
+  const { setCookieToken, removeCookieToken } = useSetCookie();
+
+  /*
+   * fetch user
+   */
+  const fetchUser = async () => {
+    await repositories
+      .user()
+      .userAccount()
+      .then(async (response: any) => {
+        console.log("🚀 ~ file: index.tsx:30 ~ response:", response);
+      });
+  };
 
   /*
    * click login submit button
@@ -26,14 +44,19 @@ const Login = () => {
       .login({ ...formValues })
       .then((response: any) => {
         console.log("🚀 ~ file: index.tsx:19 ~ response:", response);
+        if (response?.data.data.message === "resend confirm email") {
+        } else {
+          // Login successful
+          const idToken = response?.data?.data?.AuthenticationResult?.IdToken;
+          const expiresIn = response?.data?.data?.AuthenticationResult?.ExpiresIn;
+          const domain = process.env.NEXT_PUBLIC_LOGIN_COOKIE_DOMAIN || "";
+
+          setCookieToken(idToken, domain, "/", expiresIn);
+        }
       })
       .catch((error: any) => {
         console.log("🚀 ~ file: index.tsx:24 ~ error:", error);
         const errorMessage = error.response?.data?.message;
-
-        if (errorMessage === "UserNotFoundException") {
-          setServerError(t("form.errorMessage.userNotFoundException", { ns: "form" }) || "");
-        }
 
         if (errorMessage === "PasswordResetRequiredException") {
           // useLoginUserState.setEmail(formValues.email)
