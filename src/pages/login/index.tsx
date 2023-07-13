@@ -11,11 +11,14 @@ import LoginForm from "@/components/organisms/LoginForm/LoginForm";
 import { I_LoginRequest } from "@/types/schema/auth";
 import { repositories } from "@/repositories/factories/RepositoryFactory";
 import { useSetCookie } from "@/composables/useSetCookie";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Login = () => {
   const { t } = useTranslation(["login", "form"]);
   const [serverError, setServerError] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
+  console.log("🚀 ~ file: index.tsx:21 ~ isLoggedIn:", isLoggedIn);
 
   /*
    * set Token to cookie
@@ -25,12 +28,14 @@ const Login = () => {
   /*
    * fetch user
    */
-  const fetchUser = async () => {
+  const fetchUser = async (idToken: string) => {
     await repositories
       .user()
-      .userAccount()
+      .userAccount(idToken)
       .then(async (response: any) => {
         console.log("🚀 ~ file: index.tsx:30 ~ response:", response);
+        setIsLoggedIn(true);
+        setAuthUser({ ...response.data });
       });
   };
 
@@ -52,6 +57,7 @@ const Login = () => {
           const domain = process.env.NEXT_PUBLIC_LOGIN_COOKIE_DOMAIN || "";
 
           setCookieToken(idToken, domain, "/", expiresIn);
+          fetchUser(idToken);
         }
       })
       .catch((error: any) => {

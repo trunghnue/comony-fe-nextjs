@@ -6,6 +6,7 @@ import AppLogo from "@/components/atoms/AppLogo/AppLogo";
 import IconBase from "@/components/atoms/IconBase/IconBase";
 import CTAButton from "@/components/atoms/Button/CTAButton/CTAButton";
 import styles from "./Header.module.scss";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Header({ bgColor }: { bgColor: string }) {
   const { t } = useTranslation("common");
@@ -24,6 +25,7 @@ export default function Header({ bgColor }: { bgColor: string }) {
       isHumbergerOpen: false,
     });
   };
+  const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
 
   return (
     <header className={`${styles.header} ${styles[`_bgColor__${bgColor}`]}`}>
@@ -134,9 +136,11 @@ export default function Header({ bgColor }: { bgColor: string }) {
           </div>
         </nav>
         <div>
-          <div className={styles.header_button}>
-            <CTAButton link="/login" label={t("header.tryNow") || ""} type="outline" size="small" />
-          </div>
+          {!isLoggedIn && (
+            <div className={styles.header_button}>
+              <CTAButton link="/login" label={t("header.tryNow") || ""} type="outline" size="small" />
+            </div>
+          )}
         </div>
       </div>
     </header>
