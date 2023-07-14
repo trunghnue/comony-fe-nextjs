@@ -12,6 +12,7 @@ import { I_LoginRequest } from "@/types/schema/auth";
 import { repositories } from "@/repositories/factories/RepositoryFactory";
 import { useSetCookie } from "@/composables/useSetCookie";
 import { useAuth } from "@/contexts/AuthContext";
+import { useSetLocalStorage } from "@/composables/useSetLocalStorage";
 
 const Login = () => {
   const { t } = useTranslation(["login", "form"]);
@@ -24,6 +25,7 @@ const Login = () => {
    * set Token to cookie
    */
   const { setCookieToken, removeCookieToken } = useSetCookie();
+  const { setLocalStorageToken } = useSetLocalStorage();
 
   /*
    * fetch user
@@ -57,6 +59,7 @@ const Login = () => {
           const domain = process.env.NEXT_PUBLIC_LOGIN_COOKIE_DOMAIN || "";
 
           setCookieToken(idToken, domain, "/", expiresIn);
+          setLocalStorageToken(idToken);
           fetchUser(idToken);
         }
       })
