@@ -1,0 +1,56 @@
+.circleImage {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  overflow: hidden;
+  background: $color_white;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border: 8px solid $color_gray_lighten2;
+  border-radius: 100%;
+  object-fit: cover;
+
+  &._type {
+    &__icon {
+      background-size: contain;
+      background-size: 50%;
+      object-fit: contain;
+
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &__image {
+      background-size: cover;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &._borderColor {
+    &__primary {
+      border: 8px solid lighten($color_primary, 35%);
+    }
+
+    r &__secondary {
+      border: 8px solid lighten($color_secondary, 35%);
+    }
+
+    &__gray {
+      border: 8px solid lighten($color_gray, 22%);
+    }
+
+    &__none {
+      border: none;
+    }
+  }
+}
