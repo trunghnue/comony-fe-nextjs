@@ -74,18 +74,14 @@ const InquiryForm: React.FC<InquiryFormProps> = ({ className = "" }) => {
 
     const formValuesIndividual = { ...formValues, companyName: "", phone: "" };
 
-    console.log("🚀 ~ file: InquiryForm.tsx:74 ~ formValuesIndividual:", formValuesIndividual);
     return await repositories
       .contact()
       .contactSend(formValues.optionRadio === "Individual" ? formValuesIndividual : formValues)
       .then(() => {
         setInquiryFormContactStep((a) => a + 1);
-        console.log("🚀 ~ file: InquiryForm.tsx:80 ~ axios api done");
       })
       .catch((error: any) => {
-        console.log("🚀 ~ file: InquiryForm.tsx:81 ~ error:", error);
         // const errorKeyCode = error.response?.data?.response.key
-
         // setError(errorKeyCode, '')
       });
   };
