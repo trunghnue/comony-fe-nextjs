@@ -62,8 +62,6 @@ const createObserver = (ref: React.RefObject<HTMLDivElement>, rootMargin = "0px"
 };
 
 export default function Home(_props: InferGetStaticPropsType<typeof getStaticProps>) {
-  // console.log("🚀 ~ file: index.tsx:21 ~ Home _ props: ", _props);
-
   return (
     <DefaultLayout>
       <MainVisualVideo2 />
@@ -437,7 +435,6 @@ const Gallery = () => {
         }
 
         const res = await response.json();
-        // console.log("🚀 ~ file: index.tsx:432 ~ data:", res);
         setSpaceList(res.data.list);
       } catch (error) {
         throw error;

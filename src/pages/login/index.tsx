@@ -19,7 +19,6 @@ const Login = () => {
   const [serverError, setServerError] = useState("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
-  console.log("🚀 ~ file: index.tsx:21 ~ isLoggedIn:", isLoggedIn);
 
   /*
    * set Token to cookie
@@ -35,7 +34,6 @@ const Login = () => {
       .user()
       .userAccount(idToken)
       .then(async (response: any) => {
-        console.log("🚀 ~ file: index.tsx:30 ~ response:", response);
         setIsLoggedIn(true);
         setAuthUser({ ...response.data });
       });
@@ -50,7 +48,6 @@ const Login = () => {
       .auth()
       .login({ ...formValues })
       .then((response: any) => {
-        console.log("🚀 ~ file: index.tsx:19 ~ response:", response);
         if (response?.data.data.message === "resend confirm email") {
         } else {
           // Login successful
@@ -64,7 +61,6 @@ const Login = () => {
         }
       })
       .catch((error: any) => {
-        console.log("🚀 ~ file: index.tsx:24 ~ error:", error);
         const errorMessage = error.response?.data?.message;
 
         if (errorMessage === "PasswordResetRequiredException") {

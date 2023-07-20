@@ -9,10 +9,8 @@ export const useSetCookie = () => {
     if (typeof window !== "undefined") {
       if (domain && path) {
         document.cookie = `${tokeyKey}=${value}; domain=${domain}; path=${path}; max-age=${tokenExpire}; Secure`;
-        console.log("🚀 ~ file: useSetCookie.ts:13 ~ document.cookie:", document.cookie);
       } else {
         document.cookie = `${tokeyKey}=${value}; max-age=${tokenExpire}; Secure`;
-        console.log("🚀 ~ file: useSetCookie.ts:16 ~ document.cookie:", document.cookie);
       }
     }
   };

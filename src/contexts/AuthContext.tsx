@@ -23,14 +23,12 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{}>> = (props) => {
         .user()
         .userAccount(idToken)
         .then(async (response: any) => {
-          console.log("🚀 ~ file: index.tsx:30 ~ response:", response);
           setIsLoggedIn(true);
           setAuthUser({ ...response.data });
         });
     };
 
     const idToken = localStorage.getItem("auth._token.local");
-    console.log("🚀 ~ file: _app.tsx:26 ~ idToken:", idToken);
     if (idToken) {
       const token = idToken.split(" ")[1];
       fetchUser(token);
