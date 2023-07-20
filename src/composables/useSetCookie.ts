@@ -3,12 +3,8 @@ export const useSetCookie = () => {
   const tokeyKey = encodeURIComponent("auth._token.local");
 
   const setCookieToken = (idToken: string, domain: string, path: string, expiresIn: number): void => {
-    console.log("🚀 ~ file: useSetCookie.ts:6 ~ path:", path);
-    console.log("🚀 ~ file: useSetCookie.ts:6 ~ domain:", domain);
     const value = encodeURI(`Bearer ${idToken}`);
     const tokenExpire = expiresIn || 86400;
-    console.log("🚀 ~ file: useSetCookie.ts:10 ~ tokenExpire:", tokenExpire);
-    console.log("🚀 ~ file: useSetCookie.ts:10 ~ value:", value);
 
     if (typeof window !== "undefined") {
       if (domain && path) {
