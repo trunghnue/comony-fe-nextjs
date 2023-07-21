@@ -25,7 +25,7 @@ export default function Header({ bgColor }: { bgColor: string }) {
       isHumbergerOpen: false,
     });
   };
-  const { authUser, setAuthUser, isLoggedIn, setIsLoggedIn } = useAuth();
+  const { authUser, isLoggedIn } = useAuth();
 
   return (
     <header className={`${styles.header} ${styles[`_bgColor__${bgColor}`]}`}>
@@ -114,6 +114,7 @@ export default function Header({ bgColor }: { bgColor: string }) {
               </div>
             </div>
           </div>
+          {/* End language menu in pc */}
 
           {/* Language Menu in mobile */}
           <div className={`${styles.header_nav_lang} is-header-mb`}>
@@ -134,11 +135,16 @@ export default function Header({ bgColor }: { bgColor: string }) {
               日本語
             </Link>
           </div>
+          {/* End language menu */}
         </nav>
         <div>
-          {!isLoggedIn && (
+          {!isLoggedIn ? (
             <div className={styles.header_button}>
               <CTAButton link="/login" label={t("header.tryNow") || ""} type="outline" size="small" />
+            </div>
+          ) : (
+            <div className={`${styles.header_nav} is-header-pc`}>
+              <button className={styles.header_dropdown_parent}></button>
             </div>
           )}
         </div>
