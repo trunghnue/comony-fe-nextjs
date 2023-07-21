@@ -8,7 +8,7 @@ interface SquareImageProps {
   alt: string;
   width: number;
   height: number;
-  rounded: "default" | "small" | "medium" | "xsmall";
+  rounded?: "default" | "small" | "medium" | "xsmall";
 }
 
 const SquareImage: React.FC<SquareImageProps> = (props) => {
